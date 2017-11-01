@@ -76,6 +76,10 @@
     <Compile Include="DataContext\Species.cs" />
     <Compile Include="DataContext\Type.cs" />
     <Compile Include="DataContext\ZooContext.cs" />
+    <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.cs" />
+    <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.Designer.cs">
+      <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,6 +100,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201711012210130_InitialMigrationWithEntities.resx">
+      <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
