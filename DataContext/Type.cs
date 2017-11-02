@@ -11,9 +11,4 @@ namespace Zoo.DataContext
         public List<Species> Species { get; set; }
 
     }
-
-    public enum EnumType
-    {
-        Köttätare, Växtätare
-    }
 }

@@ -20,7 +20,7 @@ namespace Zoo.DataContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Animal>().Property(x => x.Quantity).IsRequired();
+            modelBuilder.Entity<Animal>().Property(x => x.Name).IsRequired();
 
             modelBuilder.Entity<Enviroment>().Property(x => x.Name).IsRequired();
 

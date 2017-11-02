@@ -12,6 +12,6 @@ namespace Zoo.DataContext
 
         public virtual Species Species { get; set; }
 
-        public int Quantity { get; set; }
+        public string Name { get; set; }
     }
 }

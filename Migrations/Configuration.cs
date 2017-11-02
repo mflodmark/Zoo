@@ -26,22 +26,21 @@ namespace Zoo.Migrations
             var type1 = new DataContext.Type {Name = "Köttätare"};
             var type2 = new DataContext.Type {Name = "Växtätare"};
 
-            //context.Types.AddOrUpdate(x => x.Name, type1, type2);
-
             var enviroment1 = new Enviroment() {Name = "Mark"};
             var enviroment2 = new Enviroment() {Name = "Träd"};
             var enviroment3 = new Enviroment() {Name = "Vatten"};
 
-            //context.Enviroments.AddOrUpdate(x => x.Name, enviroment1, enviroment2, enviroment3);
-
             var animal1 = new DataContext.Animal()
             {
                 Enviroment = enviroment1,
-                Quantity = 1,
-                
+                Name = "Markus"
             };
 
-            //context.Animals.AddOrUpdate(x => x.);
+            var animal3 = new DataContext.Animal()
+            {
+                Enviroment = enviroment3,
+                Name = "Gustav"
+            };
 
             var species1 = new Species()
             {
@@ -49,11 +48,22 @@ namespace Zoo.Migrations
                 Type = type2,
                 Animals = new List<DataContext.Animal>()
             };
-            species1.Animals.Add(animal1);
-
-            context.Species.AddOrUpdate(x => x.Name, species1);
 
             
+            var species3 = new Species()
+            {
+                Name = "Haj",
+                Type = type1,
+                Animals = new List<DataContext.Animal>()
+            };
+
+            species1.Animals.Add(animal1);
+            species3.Animals.Add(animal3);
+
+            context.Species.AddOrUpdate(x => x.Name, species1, species3);
+            context.Enviroments.AddOrUpdate(x => x.Name, enviroment2);
+
+
         }
     }
 }

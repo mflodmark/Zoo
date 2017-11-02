@@ -12,8 +12,4 @@ namespace Zoo.DataContext
 
     }
 
-    public enum EnumEnviroment
-    {
-        Mark, Träd, Vatten
-    }
 }

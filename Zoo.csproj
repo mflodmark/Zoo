@@ -81,13 +81,9 @@
     <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.Designer.cs">
       <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711020711303_AmendedDatatypeOnTypeName.cs" />
-    <Compile Include="Migrations\201711020711303_AmendedDatatypeOnTypeName.Designer.cs">
-      <DependentUpon>201711020711303_AmendedDatatypeOnTypeName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711020727395_AmendDatatypeOnEnviromentName.cs" />
-    <Compile Include="Migrations\201711020727395_AmendDatatypeOnEnviromentName.Designer.cs">
-      <DependentUpon>201711020727395_AmendDatatypeOnEnviromentName.cs</DependentUpon>
+    <Compile Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.cs" />
+    <Compile Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.Designer.cs">
+      <DependentUpon>201711021136503_AddNameAndRemoveQuantityOnAnimal.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\MainWindow.xaml.cs">
@@ -113,11 +109,8 @@
     <EmbeddedResource Include="Migrations\201711012210130_InitialMigrationWithEntities.resx">
       <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711020711303_AmendedDatatypeOnTypeName.resx">
-      <DependentUpon>201711020711303_AmendedDatatypeOnTypeName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711020727395_AmendDatatypeOnEnviromentName.resx">
-      <DependentUpon>201711020727395_AmendDatatypeOnEnviromentName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.resx">
+      <DependentUpon>201711021136503_AddNameAndRemoveQuantityOnAnimal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
