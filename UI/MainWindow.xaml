@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo"
         mc:Ignorable="d" FontSize="18" FontFamily="Segui UI"
-        Title="Zoo" Height="350" Width="525">
+        Title="Zoo" Height="450" Width="525">
     <Grid>
         <Grid.Resources>
 
@@ -54,7 +54,7 @@
         <Button x:Name="SearchButton" Content="Search!" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"
                 Margin="0,5,0,5" Click="SearchButton_Click"></Button>
 
-        <DataGrid x:Name="AnimalGrid" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="100" 
+        <DataGrid x:Name="AnimalGrid" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="250" 
                   Margin="0,0,0,0" Grid.Row="7" VerticalAlignment="Top" Width="460"/>
         
     </Grid>

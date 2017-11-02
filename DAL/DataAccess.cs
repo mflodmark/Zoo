@@ -11,45 +11,48 @@ namespace Zoo.DAL
 {
     public class DataAccess
     {
-        public BindingList<DataContext.Animal> LoadAnimals()
+        public BindingList<Animal> LoadAnimals()
         {
-            BindingList<DataContext.Animal> animal;
+            BindingList<Animal> animal;
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.ToList();
 
-                animal = new BindingList<DataContext.Animal>(query);
+                var query = db.Animals.Select(x => new Animal()
+                {
+                    Name = x.Name,
+                    Enviroment = x.Enviroment.Name,
+                    Species = x.Species.Name,
+                    Type = x.Species.Type.Name
+
+                }).ToList();
+               
+                animal = new BindingList<Animal>(query);
             }
 
             return animal;
-
         }
 
-        //public BindingList<Book> CreateAndReturnLibrary(string category)
-        //{
-        //    BindingList<Book> library;
+        public BindingList<Animal> Search(string type, string enviroment, string species)
+        {
+            BindingList<Animal> animal;
 
-        //    using (var db = new BibliotekDB())
-        //    {
-        //        var q2 = db.Books.Where(x => x.Category.Name == category).ToList();
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Where(y => y.Species.Type.Name == type).Select(x => new Animal()
+                {
+                    Name = x.Name,
+                    Enviroment = x.Enviroment.Name,
+                    Species = x.Species.Name,
+                    Type = x.Species.Type.Name
 
-        //        //var book = new Book() { Name = name };
-        //        //db.Blogs.Add(blog);
-        //        //db.SaveChanges();
+                }).ToList();
 
-        //        //var query = from b in db.Blogs
-        //        //            orderby b.Name
-        //        //            select new Model.Blog
-        //        //            {
-        //        //                Id = b.BlogId,
-        //        //                Name = b.Name
-        //        //            };
+                animal = new BindingList<Animal>(query);
+            }
 
-        //        library = new BindingList<Book>(q2);
-        //    }
-
-        //    return library;
-        //}
+            return animal;
+        }
+        
     }
 }

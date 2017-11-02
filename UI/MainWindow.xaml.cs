@@ -70,16 +70,24 @@ namespace Zoo
 
         #endregion
 
+        #region Search
+
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            var dataAccess = new DataAccess();
 
+            AnimalGrid.ItemsSource = dataAccess.Search(SearchTypeBox.Text, SearchEnviromentBox.Text, SearchSpeciesBox.Text);
         }
+
+        #endregion
+
+
 
         private void LoadInitialDataToDataGrid()
         {
             var dataAccess = new DataAccess();
 
-            AnimalGrid.DataContext = dataAccess.LoadAnimals();
+            AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
             
         }
     }
