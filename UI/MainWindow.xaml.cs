@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zoo.DAL;
 using Zoo.DataContext;
+using Zoo.UI;
 
 namespace Zoo
 {
@@ -32,9 +33,10 @@ namespace Zoo
             AddValuesToComboBoxType();
             AddValuesToComboBoxEnviroment();
             AddValuesToComboBoxSpecies();
+
         }
 
-        
+
         #region AddValuesToComboBoxes
 
         private void AddValuesToComboBoxSpecies()
@@ -89,6 +91,13 @@ namespace Zoo
 
             AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
             
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openForm = new AddNewAnimal();
+
+            openForm.Show();
         }
     }
 }
