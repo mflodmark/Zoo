@@ -4,9 +4,50 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        mc:Ignorable="d" FontSize="18" FontFamily="Segui UI"
+        Title="Zoo" Height="350" Width="525">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+
+        <!--<TextBlock Grid.Column="1" Grid.Row="1" FontSize="36" 
+                   Text="Sign Up" Grid.ColumnSpan="3" Margin="0,0,0,10"></TextBlock>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" FontWeight="SemiBold"
+                   Text="Username" FontFamily="Segui UI" Margin="0,0,10,0"></TextBlock>-->
+
+        <ComboBox x:Name="SearchTypeBox" Grid.Column="1" Grid.Row="2" Width="150"
+                 Margin="0,0,5,10" Text="Markus"></ComboBox>
+
+        <ComboBox x:Name="SearchEnviromentBox" Grid.Column="2" Grid.Row="2" Width="150"
+                  Margin="0,0,5,10"></ComboBox>
+
+        <ComboBox x:Name="SearchSpeciesBox" Grid.Column="3" Grid.Row="2" Width="150"
+                  Margin="0,0,5,10"></ComboBox>
+
+        <Button x:Name="SubmitButton" Content="Search!" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"
+                Margin="10"></Button>
         
+        <DataGrid Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Left" Height="100" 
+                  Margin="0,0,0,0" Grid.Row="7" VerticalAlignment="Top" Width="300"/>
     </Grid>
 </Window>
