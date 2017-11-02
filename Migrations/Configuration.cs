@@ -25,6 +25,12 @@ namespace Zoo.Migrations
             var type2 = new DataContext.Type {Name = EnumType.Växtätare};
 
             context.Types.AddOrUpdate(x => x.Name, type1, type2);
+
+            var enviroment1 = new Enviroment() {Name = EnumEnviroment.Mark};
+            var enviroment2 = new Enviroment() {Name = EnumEnviroment.Träd};
+            var enviroment3 = new Enviroment() {Name = EnumEnviroment.Vatten};
+
+            context.Enviroments.AddOrUpdate(x => x.Name, enviroment1, enviroment2, enviroment3);
         }
     }
 }
