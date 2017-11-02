@@ -6,7 +6,7 @@ namespace Zoo.DataContext
     {
         public int TypeId { get; set; }
 
-        public EnumType Name { get; set; }
+        public string Name { get; set; }
 
         public List<Species> Species { get; set; }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Zoo.DataContext;
 using Animal = Zoo.Model.Animal;
 
@@ -22,22 +23,37 @@ namespace Zoo.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            var type1 = new DataContext.Type {Name = EnumType.Köttätare};
-            var type2 = new DataContext.Type {Name = EnumType.Växtätare};
+            var type1 = new DataContext.Type {Name = "Köttätare"};
+            var type2 = new DataContext.Type {Name = "Växtätare"};
 
-            context.Types.AddOrUpdate(x => x.Name, type1, type2);
+            //context.Types.AddOrUpdate(x => x.Name, type1, type2);
 
-            var enviroment1 = new Enviroment() {Name = EnumEnviroment.Mark};
-            var enviroment2 = new Enviroment() {Name = EnumEnviroment.Träd};
-            var enviroment3 = new Enviroment() {Name = EnumEnviroment.Vatten};
+            var enviroment1 = new Enviroment() {Name = "Mark"};
+            var enviroment2 = new Enviroment() {Name = "Träd"};
+            var enviroment3 = new Enviroment() {Name = "Vatten"};
 
-            context.Enviroments.AddOrUpdate(x => x.Name, enviroment1, enviroment2, enviroment3);
+            //context.Enviroments.AddOrUpdate(x => x.Name, enviroment1, enviroment2, enviroment3);
 
             var animal1 = new DataContext.Animal()
             {
                 Enviroment = enviroment1,
-
+                Quantity = 1,
+                
             };
+
+            //context.Animals.AddOrUpdate(x => x.);
+
+            var species1 = new Species()
+            {
+                Name = "Elefant",
+                Type = type2,
+                Animals = new List<DataContext.Animal>()
+            };
+            species1.Animals.Add(animal1);
+
+            context.Species.AddOrUpdate(x => x.Name, species1);
+
+            
         }
     }
 }
