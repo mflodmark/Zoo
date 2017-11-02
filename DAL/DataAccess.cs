@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +33,40 @@ namespace Zoo.DAL
             }
 
             return animal;
+        }
+
+        public void AddAnimal(string animalName, string enviromentName, string speciesName, string typeName)
+        {
+            using (var db = new ZooContext())
+            {
+                var enviromentId = db.Enviroments.Where(x => x.Name == enviromentName).Select(y => y.EnviromentId).ToString();
+                var typeId = db.Types.Where(x => x.Name == typeName).Select(y => y.TypeId).ToString();
+
+                var species = new Species()
+                {
+                    Name = speciesName,
+                    TypeId = int.Parse(typeId)
+                };
+
+                db.Species.AddOrUpdate(x => x.Name, species);
+
+                db.SaveChanges();
+
+                var speciesId = species.SpeciesId;
+
+                var animal = new DataContext.Animal()
+                {
+                    Name = animalName,
+                    EnviromentId = int.Parse(enviromentId),
+                    SpeciesId = speciesId
+                };
+
+                db.Animals.Add(animal);
+
+                db.SaveChanges();
+
+
+            }
         }
 
         public BindingList<Animal> Search(string type, string enviroment, string species)
@@ -76,6 +112,8 @@ namespace Zoo.DAL
             
             return animal;
         }
+
+        #region Different Search Methods
 
         private BindingList<Animal> SearchType(string type)
         {
@@ -211,18 +249,21 @@ namespace Zoo.DAL
             {
                 var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Name == species && y.Enviroment.Name == enviroment)
                     .Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    {
+                        Name = x.Name,
+                        Enviroment = x.Enviroment.Name,
+                        Species = x.Species.Name,
+                        Type = x.Species.Type.Name
 
-                }).ToList();
+                    }).ToList();
 
                 animal = new BindingList<Animal>(query);
             }
 
             return animal;
         }
+
+        #endregion
+
     }
 }
