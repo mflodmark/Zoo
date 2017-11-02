@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zoo.DAL;
 using Zoo.DataContext;
 
 namespace Zoo
@@ -26,11 +27,14 @@ namespace Zoo
 
             InitializeComponent();
 
+            LoadInitialDataToDataGrid();
+
             AddValuesToComboBoxType();
             AddValuesToComboBoxEnviroment();
             AddValuesToComboBoxSpecies();
         }
 
+        
         #region AddValuesToComboBoxes
 
         private void AddValuesToComboBoxSpecies()
@@ -65,5 +69,18 @@ namespace Zoo
 
 
         #endregion
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoadInitialDataToDataGrid()
+        {
+            var dataAccess = new DataAccess();
+
+            AnimalGrid.DataContext = dataAccess.LoadAnimals();
+            
+        }
     }
 }

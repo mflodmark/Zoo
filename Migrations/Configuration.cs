@@ -1,4 +1,5 @@
 using Zoo.DataContext;
+using Animal = Zoo.Model.Animal;
 
 namespace Zoo.Migrations
 {
@@ -31,6 +32,12 @@ namespace Zoo.Migrations
             var enviroment3 = new Enviroment() {Name = EnumEnviroment.Vatten};
 
             context.Enviroments.AddOrUpdate(x => x.Name, enviroment1, enviroment2, enviroment3);
+
+            var animal1 = new DataContext.Animal()
+            {
+                Enviroment = enviroment1,
+
+            };
         }
     }
 }
