@@ -6,9 +6,14 @@ namespace Zoo.DataContext
     {
         public int TypeId { get; set; }
 
-        public string Name { get; set; }
+        public EnumType Name { get; set; }
 
         public List<Species> Species { get; set; }
 
+    }
+
+    public enum EnumType
+    {
+        Köttätare, Växtätare
     }
 }

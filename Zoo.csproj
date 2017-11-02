@@ -81,6 +81,11 @@
     <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.Designer.cs">
       <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711020711303_AmendedDatatypeOnTypeName.cs" />
+    <Compile Include="Migrations\201711020711303_AmendedDatatypeOnTypeName.Designer.cs">
+      <DependentUpon>201711020711303_AmendedDatatypeOnTypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -104,6 +109,9 @@
     <EmbeddedResource Include="Migrations\201711012210130_InitialMigrationWithEntities.resx">
       <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711020711303_AmendedDatatypeOnTypeName.resx">
+      <DependentUpon>201711020711303_AmendedDatatypeOnTypeName.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -117,8 +125,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
