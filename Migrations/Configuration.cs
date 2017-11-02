@@ -1,3 +1,5 @@
+using Zoo.DataContext;
+
 namespace Zoo.Migrations
 {
     using System;
@@ -18,6 +20,11 @@ namespace Zoo.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            var type1 = new DataContext.Type {Name = EnumType.Köttätare};
+            var type2 = new DataContext.Type {Name = EnumType.Växtätare};
+
+            context.Types.AddOrUpdate(x => x.Name, type1, type2);
         }
     }
 }

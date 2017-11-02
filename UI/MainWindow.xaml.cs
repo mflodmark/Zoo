@@ -31,7 +31,7 @@ namespace Zoo
             AddValuesToComboBoxSpecies();
         }
 
-        #region AddValuesToCOmboBoxes
+        #region AddValuesToComboBoxes
 
         private void AddValuesToComboBoxSpecies()
         {
