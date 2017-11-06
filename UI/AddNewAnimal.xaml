@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo.UI"
         mc:Ignorable="d"
-        Title="AddNewAnimal" Height="300" Width="300">
+        Title="AddNewAnimal" Height="300" Width="500">
     <Grid>
         <Grid.Resources>
 
@@ -27,28 +27,104 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <ComboBox x:Name="SearchTypeBox" Grid.Column="1" Grid.Row="1" Width="150"
-                 Margin="0,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                  Text="Typ"></ComboBox>
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="25">
+            <TextBlock Text="Typ: "></TextBlock>
+            <ComboBox x:Name="TypeBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
+                      HorizontalAlignment="Right">
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="25">
+            <TextBlock Text="Miljö: "></TextBlock>
+            <ComboBox x:Name="EnviromentBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
+                      HorizontalAlignment="Right">
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="25">
+            <TextBlock Text="Kön: "></TextBlock>
+            <ComboBox x:Name="GenderBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
+                      HorizontalAlignment="Right">
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="25">
+            <TextBlock Text="Land: "></TextBlock>
+            <ComboBox x:Name="CountryBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
+                      HorizontalAlignment="Right">
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="25">
+            <TextBlock Text="Art: "></TextBlock>
+            <ComboBox x:Name="SpeciesBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
+                      HorizontalAlignment="Right">
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="25">
+            <TextBlock Text="Namn: "></TextBlock>
+            <TextBox x:Name="AnimalName" Margin="10,0,0,5"
+                     HorizontalContentAlignment="Right" Width="90">
+                </TextBox>
+        </StackPanel>
 
 
-        <ComboBox x:Name="SearchEnviromentBox" Grid.Column="1" Grid.Row="2" Width="150"
-                  Margin="0,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                  Text="Miljö"></ComboBox>
 
-        <ComboBox x:Name="SearchSpeciesBox" Grid.Column="1" Grid.Row="3" Width="150"
-                  Margin="0,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                  Text="Art"></ComboBox>
+        <StackPanel Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
+                    Grid.RowSpan="4" Orientation="Vertical" Margin="5,0,5,0">
+            <TextBlock Text="Föräldrar"></TextBlock>
 
-        <TextBox x:Name="AnimalName" Grid.Column="1" Grid.Row="4" Margin="0,0,0,5"></TextBox>
+            <DataGrid x:Name="ParentGrid" Height="60" 
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Välj befintligt djur: "></TextBlock>
+                <ComboBox x:Name="ParentBox" Width="100"
+                          Margin="5,0,5,0" Focusable="False" IsEditable="True" IsReadOnly="True"
+                          HorizontalAlignment="Center"/>
+                <Button x:Name="AddParents" Content="Lägg till förälder"></Button>
+            </StackPanel>
+        </StackPanel>
 
 
-        <Button x:Name="AddAnimal" Content="Add!" Grid.Column="1" Grid.Row="6" 
-                Margin="0,5,0,10"></Button>
+        <StackPanel Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2"
+                    Grid.RowSpan="4" Orientation="Vertical" Margin="5,0,5,0">
+            <TextBlock Text="Barn"></TextBlock>
+
+            <DataGrid x:Name="ChildrenGrid" Height="60" 
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Välj befintligt djur: "></TextBlock>
+                <ComboBox x:Name="ChildrenBox" Width="100"
+                          Margin="5,0,5,0" Focusable="False" IsEditable="True" IsReadOnly="True"
+                          HorizontalAlignment="Center"/>
+                <Button x:Name="AddChildren" Content="Lägg till barn"></Button>
+            </StackPanel>
+            
+        </StackPanel>
+        
+        <Button x:Name="AddAnimal" Content="Lägg till djur!" Grid.Column="1" Grid.Row="10" 
+                Margin="5,5,5,10" Grid.ColumnSpan="4"></Button>
 
 
     </Grid>

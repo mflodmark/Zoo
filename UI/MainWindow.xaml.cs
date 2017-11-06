@@ -79,6 +79,7 @@ namespace Zoo
             var dataAccess = new DataAccess();
 
             AnimalGrid.ItemsSource = dataAccess.Search(SearchTypeBox.Text, SearchEnviromentBox.Text, SearchSpeciesBox.Text);
+            
         }
 
         #endregion

@@ -19,7 +19,9 @@ namespace Zoo.Model
 
         public string Species { get; set; }
 
+        public string CountryOfOrigin { get; set; }
 
+        public string Gender { get; set; }
 
     }
 

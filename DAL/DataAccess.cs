@@ -19,13 +19,14 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-
                 var query = db.Animals.Select(x => new Animal()
                 {
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name
 
                 }).ToList();
                
@@ -35,17 +36,20 @@ namespace Zoo.DAL
             return animal;
         }
 
-        public void AddAnimal(string animalName, string enviromentName, string speciesName, string typeName)
+        public void AddAnimal(string animalName,string enviromentName, string speciesName, string typeName, double weigth, string country,
+            string gender)
         {
             using (var db = new ZooContext())
             {
-                //var enviromentId = db.Enviroments.Where(x => x.Name == enviromentName).Select(y => y.EnviromentId).ToString();
+                // Species
                 var typeId = db.Types.Where(x => x.Name == typeName).Select(y => y.TypeId).ToString();
+                var enviromentId = db.Enviroments.Where(x => x.Name == enviromentName).Select(y => y.EnviromentId).ToString();
 
                 var species = new Species()
                 {
                     Name = speciesName,
-                    TypeId = int.Parse(typeId)
+                    TypeId = int.Parse(typeId),
+                    EnviromentId = int.Parse(enviromentId)
                 };
 
                 db.Species.AddOrUpdate(x => x.Name, species);
@@ -54,11 +58,28 @@ namespace Zoo.DAL
 
                 var speciesId = species.SpeciesId;
 
+                // Country
+                var countryOfOrigin = new CountryOfOrigin()
+                {
+                    Name = country
+                };
+
+                db.Species.AddOrUpdate(x => x.Name, species);
+
+                db.SaveChanges();
+
+                var countryId = countryOfOrigin.CountryOfOriginId;
+
+                // Animal
+                var genderId = db.Genders.Where(x => x.Name == gender).Select(y => y.GenderId).ToString();
+
                 var animal = new DataContext.Animal()
                 {
                     Name = animalName,
-                    //EnviromentId = int.Parse(enviromentId),
-                    SpeciesId = speciesId
+                    SpeciesId = speciesId,
+                    Weight = weigth,
+                    CountryOfOriginId = countryId,
+                    GenderId = int.Parse(genderId)
                 };
 
                 db.Animals.Add(animal);
@@ -69,12 +90,13 @@ namespace Zoo.DAL
             }
         }
 
+        
         public BindingList<Animal> Search(string type, string enviroment, string species)
         {
             BindingList<Animal> animal;
-            var typeString = "Typ";
-            var enviromentString = "Miljö";
-            var speciesString = "Art";
+            var typeString = "";
+            var enviromentString = "";
+            var speciesString = "";
 
 
             if (type != typeString && enviroment == enviromentString && species == speciesString)
