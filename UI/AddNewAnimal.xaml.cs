@@ -32,6 +32,7 @@ namespace Zoo.UI
             AddValuesToComboBoxType(context);
             AddValuesToComboBoxCountry(context);
             AddValuesToComboBoxGender(context);
+            AddValuesToComboBoxParentOrChild(context);
 
         }
 
@@ -97,6 +98,16 @@ namespace Zoo.UI
             }
         }
 
+        private void AddValuesToComboBoxParentOrChild(ZooContext dbContext)
+        {
+            foreach (var item in dbContext.Animals)
+            {
+
+                ParentBox.Items.Add(item.Name + " " + item.Gender.Name);
+                ChildrenBox.Items.Add(item.Name + " " + item.Gender.Name);
+                
+            }
+        }
 
         #endregion
 
@@ -105,26 +116,35 @@ namespace Zoo.UI
             var zooContext = new ZooContext();
         
             CheckSpeciesInput(zooContext, SpeciesBox.Text);
-
         }
 
         private void CheckSpeciesInput(ZooContext zooContext, string input)
         {
             var species = zooContext.Species.SingleOrDefault(x => x.Name == input);
 
-            if (species != null)
+            if (species == null)
             {
-                TypeBox.Text = species.Type.Name;
-                EnviromentBox.Text = species.Enviroment.Name;
+                ResultText.Text = "Välj även typ och miljö";
             }
             else
             {
+                TypeBox.Text = species.Type.Name;
+                EnviromentBox.Text = species.Enviroment.Name;
+
                 TypeBox.IsEditable = true;
                 EnviromentBox.IsEditable = true;
+
+                ResultText.Text = "Ändring av typ och miljö sker på alla";
             }
 
-            TypeBox.IsDropDownOpen = true;
-            EnviromentBox.IsDropDownOpen = true;
+            ResultText.Background = Brushes.Chocolate;
+            TypeBox.IsEnabled = true;
+            EnviromentBox.IsEnabled = true;
+        }
+
+        private void TypeEnviromentBox_DropDownOpened(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ändring av typ och miljö sker på alla");
         }
     }
 }

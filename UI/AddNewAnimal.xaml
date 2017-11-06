@@ -49,8 +49,7 @@
             <TextBlock Text="Kön: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="GenderBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                      HorizontalAlignment="Right">
-            </ComboBox>
+                      HorizontalAlignment="Right"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal"
@@ -67,8 +66,7 @@
             <TextBlock Text="Art: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="SpeciesBox" Width="100"
                       Margin="10,0,0,5" Focusable="True" IsEditable="True" IsReadOnly="False"
-                      HorizontalAlignment="Right" DropDownClosed="SpeciesBox_DropDownClosed">
-            </ComboBox>
+                      HorizontalAlignment="Right" DropDownClosed="SpeciesBox_DropDownClosed"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal"
@@ -76,7 +74,7 @@
             <TextBlock Text="Typ: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="TypeBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
-                      HorizontalAlignment="Right" IsDropDownOpen="False">
+                      HorizontalAlignment="Right" IsEnabled="False" DropDownOpened="TypeEnviromentBox_DropDownOpened">
             </ComboBox>
         </StackPanel>
 
@@ -85,7 +83,7 @@
             <TextBlock Text="Miljö: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="EnviromentBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
-                      HorizontalAlignment="Right" IsDropDownOpen="False">
+                      HorizontalAlignment="Right" IsEnabled="False" DropDownOpened="TypeEnviromentBox_DropDownOpened">
             </ComboBox>
         </StackPanel>
 
