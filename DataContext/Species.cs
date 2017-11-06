@@ -14,5 +14,9 @@ namespace Zoo.DataContext
 
         public List<Animal> Animals { get; set; }
 
+        public int EnviromentId { get; set; }
+
+        public virtual Enviroment Enviroment { get; set; }
+
     }
 }

@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="DAL\DataAccess.cs" />
     <Compile Include="DataContext\Animal.cs" />
+    <Compile Include="DataContext\CountryOfOrigin.cs" />
     <Compile Include="DataContext\Enviroment.cs" />
     <Compile Include="DataContext\Species.cs" />
     <Compile Include="DataContext\Type.cs" />
@@ -88,6 +89,22 @@
     <Compile Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.cs" />
     <Compile Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.Designer.cs">
       <DependentUpon>201711021136503_AddNameAndRemoveQuantityOnAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060836565_PopulateTypes.cs" />
+    <Compile Include="Migrations\201711060836565_PopulateTypes.Designer.cs">
+      <DependentUpon>201711060836565_PopulateTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060846582_PopulateEnviroments.cs" />
+    <Compile Include="Migrations\201711060846582_PopulateEnviroments.Designer.cs">
+      <DependentUpon>201711060846582_PopulateEnviroments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060855071_MovedEnviromentToSpecies.cs" />
+    <Compile Include="Migrations\201711060855071_MovedEnviromentToSpecies.Designer.cs">
+      <DependentUpon>201711060855071_MovedEnviromentToSpecies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060905123_AddCountryAndWeight.cs" />
+    <Compile Include="Migrations\201711060905123_AddCountryAndWeight.Designer.cs">
+      <DependentUpon>201711060905123_AddCountryAndWeight.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -118,6 +135,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.resx">
       <DependentUpon>201711021136503_AddNameAndRemoveQuantityOnAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060836565_PopulateTypes.resx">
+      <DependentUpon>201711060836565_PopulateTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060846582_PopulateEnviroments.resx">
+      <DependentUpon>201711060846582_PopulateEnviroments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060855071_MovedEnviromentToSpecies.resx">
+      <DependentUpon>201711060855071_MovedEnviromentToSpecies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060905123_AddCountryAndWeight.resx">
+      <DependentUpon>201711060905123_AddCountryAndWeight.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

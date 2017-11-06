@@ -23,7 +23,7 @@ namespace Zoo.DAL
                 var query = db.Animals.Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -39,7 +39,7 @@ namespace Zoo.DAL
         {
             using (var db = new ZooContext())
             {
-                var enviromentId = db.Enviroments.Where(x => x.Name == enviromentName).Select(y => y.EnviromentId).ToString();
+                //var enviromentId = db.Enviroments.Where(x => x.Name == enviromentName).Select(y => y.EnviromentId).ToString();
                 var typeId = db.Types.Where(x => x.Name == typeName).Select(y => y.TypeId).ToString();
 
                 var species = new Species()
@@ -57,7 +57,7 @@ namespace Zoo.DAL
                 var animal = new DataContext.Animal()
                 {
                     Name = animalName,
-                    EnviromentId = int.Parse(enviromentId),
+                    //EnviromentId = int.Parse(enviromentId),
                     SpeciesId = speciesId
                 };
 
@@ -124,7 +124,7 @@ namespace Zoo.DAL
                 var query = db.Animals.Where(y => y.Species.Type.Name == type).Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -142,10 +142,10 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.Where(y => y.Enviroment.Name == enviroment).Select(x => new Animal()
+                var query = db.Animals.Where(y => y.Species.Enviroment.Name == enviroment).Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -166,7 +166,7 @@ namespace Zoo.DAL
                 var query = db.Animals.Where(y => y.Species.Name.Contains(species)).Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -184,10 +184,10 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Enviroment.Name == enviroment).Select(x => new Animal()
+                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Enviroment.Name == enviroment).Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -208,7 +208,7 @@ namespace Zoo.DAL
                 var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Name == species).Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -226,10 +226,10 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.Where(y => y.Enviroment.Name == enviroment && y.Species.Name == species).Select(x => new Animal()
+                var query = db.Animals.Where(y => y.Species.Enviroment.Name == enviroment && y.Species.Name == species).Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Enviroment = x.Enviroment.Name,
+                    Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name
 
@@ -247,11 +247,11 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Name == species && y.Enviroment.Name == enviroment)
+                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Name == species && y.Species.Enviroment.Name == enviroment)
                     .Select(x => new Animal()
                     {
                         Name = x.Name,
-                        Enviroment = x.Enviroment.Name,
+                        Enviroment = x.Species.Enviroment.Name,
                         Species = x.Species.Name,
                         Type = x.Species.Type.Name
 
