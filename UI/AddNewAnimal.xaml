@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo.UI"
         mc:Ignorable="d"
-        Title="AddNewAnimal" Height="300" Width="500">
+        Title="AddNewAnimal" Height="350" Width="550">
     <Grid>
         <Grid.Resources>
 
@@ -37,63 +37,65 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
-                    Height="25">
-            <TextBlock Text="Typ: "></TextBlock>
-            <ComboBox x:Name="TypeBox" Width="100"
-                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                      HorizontalAlignment="Right">
-            </ComboBox>
+                    Height="30">
+            <TextBlock Text="Namn: " VerticalAlignment="Center" Width="35"></TextBlock>
+            <TextBox x:Name="AnimalName" Margin="10,0,0,5"
+                     HorizontalContentAlignment="Right" Width="100">
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"
-                    Height="25">
-            <TextBlock Text="Miljö: "></TextBlock>
-            <ComboBox x:Name="EnviromentBox" Width="100"
-                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                      HorizontalAlignment="Right">
-            </ComboBox>
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal"
-                    Height="25">
-            <TextBlock Text="Kön: "></TextBlock>
+                    Height="30">
+            <TextBlock Text="Kön: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="GenderBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
                       HorizontalAlignment="Right">
             </ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal"
-                    Height="25">
-            <TextBlock Text="Land: "></TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="30">
+            <TextBlock Text="Land: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="CountryBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
                       HorizontalAlignment="Right">
             </ComboBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal"
-                    Height="25">
-            <TextBlock Text="Art: "></TextBlock>
+        <StackPanel Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="30">
+            <TextBlock Text="Art: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="SpeciesBox" Width="100"
-                      Margin="10,0,0,5" Focusable="False" IsEditable="True" IsReadOnly="True"
-                      HorizontalAlignment="Right">
+                      Margin="10,0,0,5" Focusable="True" IsEditable="True" IsReadOnly="False"
+                      HorizontalAlignment="Right" DropDownClosed="SpeciesBox_DropDownClosed">
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    Height="30">
+            <TextBlock Text="Typ: " VerticalAlignment="Center" Width="35"></TextBlock>
+            <ComboBox x:Name="TypeBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
+                      HorizontalAlignment="Right" IsDropDownOpen="False">
             </ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal"
-                    Height="25">
-            <TextBlock Text="Namn: "></TextBlock>
-            <TextBox x:Name="AnimalName" Margin="10,0,0,5"
-                     HorizontalContentAlignment="Right" Width="90">
-                </TextBox>
+                    Height="30">
+            <TextBlock Text="Miljö: " VerticalAlignment="Center" Width="35"></TextBlock>
+            <ComboBox x:Name="EnviromentBox" Width="100"
+                      Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
+                      HorizontalAlignment="Right" IsDropDownOpen="False">
+            </ComboBox>
         </StackPanel>
 
-
+        <TextBlock x:Name="ResultText" Grid.Column="1" Grid.ColumnSpan="2" 
+                   TextAlignment="Center" Grid.Row="7"></TextBlock>
 
         <StackPanel Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2"
-                    Grid.RowSpan="4" Orientation="Vertical" Margin="5,0,5,0">
-            <TextBlock Text="Föräldrar"></TextBlock>
+                    Grid.RowSpan="4" Orientation="Vertical" Margin="5,0,5,0" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Föräldrar" TextAlignment="Center"></TextBlock>
 
             <DataGrid x:Name="ParentGrid" Height="60" 
                       Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
@@ -108,8 +110,9 @@
 
 
         <StackPanel Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2"
-                    Grid.RowSpan="4" Orientation="Vertical" Margin="5,0,5,0">
-            <TextBlock Text="Barn"></TextBlock>
+                    Grid.RowSpan="4" Orientation="Vertical" Margin="5,0,5,0" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Barn" TextAlignment="Center"></TextBlock>
 
             <DataGrid x:Name="ChildrenGrid" Height="60" 
                       Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
@@ -124,7 +127,7 @@
         </StackPanel>
         
         <Button x:Name="AddAnimal" Content="Lägg till djur!" Grid.Column="1" Grid.Row="10" 
-                Margin="5,5,5,10" Grid.ColumnSpan="4"></Button>
+                Margin="5,25,5,10" Grid.ColumnSpan="4" Click="AddAnimal_Click"></Button>
 
 
     </Grid>
