@@ -23,36 +23,69 @@ namespace Zoo.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            //var animal1 = new DataContext.Animal()
-            //{
-            //    Name = "Markus",
+            var elephant1Animal = new DataContext.Animal()
+            {
+                Name = "Markus",
+                Weight = 160.5,
+                GenderId = 1,
+                CountryOfOriginId = 1,
+                SpeciesId = 16
+            };
 
-            //};
+            var elephant2Animal = new DataContext.Animal()
+            {
 
-            //var animal3 = new DataContext.Animal()
-            //{
-            //    Name = "Gustav"
-            //};
+                Name = "Gustav",
+                Weight = 260.0,
+                GenderId = 1,
+                CountryOfOriginId = 1,
+                SpeciesId = 16
+            };
 
-            //var species1 = new Species()
-            //{
-            //    Name = "Elefant",
-            //    Type = type2,
-            //    Animals = new List<DataContext.Animal>()
-            //};
+            var elephant3Animal = new DataContext.Animal()
+            {
 
+                Name = "Sandra",
+                Weight = 98.5,
+                GenderId = 2,
+                CountryOfOriginId = 2,
+                SpeciesId = 16
+            };
 
-            //var species3 = new Species()
-            //{
-            //    Name = "Haj",
-            //    Type = type1,
-            //    Animals = new List<DataContext.Animal>()
-            //};
+            var speciesElephant = new Species
+            {
+                Name = "Elefant",
+                TypeId = 18,
+                EnviromentId = 24
+            };
 
-            //species1.Animals.Add(animal1);
-            //species3.Animals.Add(animal3);
+            var shark1Animal = new DataContext.Animal()
+            {
+                Name = "Sharky",
+                Weight = 300.1,
+                GenderId = 1,
+                CountryOfOriginId = 3
+            };
 
+            var shark2Animal = new DataContext.Animal()
+            {
+                Name = "Mr.Shark",
+                Weight = 10.1,
+                GenderId = 1,
+                CountryOfOriginId = 4
+            };
 
+            var speciesShark = new Species()
+            {
+                Name = "Haj",
+                TypeId = 17,
+                EnviromentId = 26
+            };
+
+            context.Species.AddOrUpdate(x => x.Name, speciesElephant, speciesShark);
+            context.Animals.AddOrUpdate(x => x.Name, elephant1Animal, elephant2Animal, elephant3Animal
+                ,shark1Animal, shark2Animal);
+            
         }
     }
 }
