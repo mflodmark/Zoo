@@ -79,6 +79,7 @@
     <Compile Include="DataContext\Animal.cs" />
     <Compile Include="DataContext\CountryOfOrigin.cs" />
     <Compile Include="DataContext\Enviroment.cs" />
+    <Compile Include="DataContext\Gender.cs" />
     <Compile Include="DataContext\Species.cs" />
     <Compile Include="DataContext\Type.cs" />
     <Compile Include="DataContext\ZooContext.cs" />
@@ -105,6 +106,10 @@
     <Compile Include="Migrations\201711060905123_AddCountryAndWeight.cs" />
     <Compile Include="Migrations\201711060905123_AddCountryAndWeight.Designer.cs">
       <DependentUpon>201711060905123_AddCountryAndWeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060908549_AddGenderToAnimal.cs" />
+    <Compile Include="Migrations\201711060908549_AddGenderToAnimal.Designer.cs">
+      <DependentUpon>201711060908549_AddGenderToAnimal.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -147,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711060905123_AddCountryAndWeight.resx">
       <DependentUpon>201711060905123_AddCountryAndWeight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060908549_AddGenderToAnimal.resx">
+      <DependentUpon>201711060908549_AddGenderToAnimal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

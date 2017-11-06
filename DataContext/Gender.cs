@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace Zoo.DataContext
 {
-    public class CountryOfOrigin
+    public class Gender
     {
-        public int CountryOfOriginId { get; set; }
+        public int GenderId { get; set; }
 
         public string Name { get; set; }
 

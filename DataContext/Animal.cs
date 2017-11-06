@@ -15,5 +15,9 @@ namespace Zoo.DataContext
         public int CountryOfOriginId { get; set; }
 
         public CountryOfOrigin CountryOfOrigin { get; set; }
+
+        public int GenderId { get; set; }
+
+        public Gender Gender { get; set; }
     }
 }

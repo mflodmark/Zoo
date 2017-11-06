@@ -29,6 +29,9 @@ namespace Zoo.DataContext
             modelBuilder.Entity<Type>().Property(x => x.Name).IsRequired();
 
             modelBuilder.Entity<CountryOfOrigin>().Property(x => x.Name).IsRequired();
+
+            modelBuilder.Entity<Gender>().Property(x => x.Name).IsRequired();
+
         }
     }
 
