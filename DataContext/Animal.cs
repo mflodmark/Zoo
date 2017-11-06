@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Zoo.DataContext
 {
     public class Animal
@@ -19,5 +21,9 @@ namespace Zoo.DataContext
         public int GenderId { get; set; }
 
         public Gender Gender { get; set; }
+
+        public List<Animal> Parents { get; set; }
+
+        public List<Animal> Children { get; set; }
     }
 }

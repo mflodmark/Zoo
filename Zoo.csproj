@@ -80,6 +80,7 @@
     <Compile Include="DataContext\CountryOfOrigin.cs" />
     <Compile Include="DataContext\Enviroment.cs" />
     <Compile Include="DataContext\Gender.cs" />
+    <Compile Include="DataContext\Parent.cs" />
     <Compile Include="DataContext\Species.cs" />
     <Compile Include="DataContext\Type.cs" />
     <Compile Include="DataContext\ZooContext.cs" />
@@ -110,6 +111,18 @@
     <Compile Include="Migrations\201711060908549_AddGenderToAnimal.cs" />
     <Compile Include="Migrations\201711060908549_AddGenderToAnimal.Designer.cs">
       <DependentUpon>201711060908549_AddGenderToAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060912397_PopulateGender.cs" />
+    <Compile Include="Migrations\201711060912397_PopulateGender.Designer.cs">
+      <DependentUpon>201711060912397_PopulateGender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711060916180_PopulateCountryOfOrigin.cs" />
+    <Compile Include="Migrations\201711060916180_PopulateCountryOfOrigin.Designer.cs">
+      <DependentUpon>201711060916180_PopulateCountryOfOrigin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061005529_AddParentsTable.cs" />
+    <Compile Include="Migrations\201711061005529_AddParentsTable.Designer.cs">
+      <DependentUpon>201711061005529_AddParentsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -155,6 +168,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711060908549_AddGenderToAnimal.resx">
       <DependentUpon>201711060908549_AddGenderToAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060912397_PopulateGender.resx">
+      <DependentUpon>201711060912397_PopulateGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060916180_PopulateCountryOfOrigin.resx">
+      <DependentUpon>201711060916180_PopulateCountryOfOrigin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061005529_AddParentsTable.resx">
+      <DependentUpon>201711061005529_AddParentsTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
