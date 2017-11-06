@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo.UI"
         mc:Ignorable="d"
-        Title="AddNewAnimal" Height="350" Width="550">
+        Title="AddNewAnimal" Height="450" Width="600">
     <Grid>
         <Grid.Resources>
 
@@ -40,7 +40,7 @@
                     Height="30">
             <TextBlock Text="Namn: " VerticalAlignment="Center" Width="35"></TextBlock>
             <TextBox x:Name="AnimalName" Margin="10,0,0,5"
-                     HorizontalContentAlignment="Right" Width="100">
+                     Width="100">
             </TextBox>
         </StackPanel>
 
@@ -74,7 +74,8 @@
             <TextBlock Text="Typ: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="TypeBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
-                      HorizontalAlignment="Right" IsEnabled="False" DropDownOpened="TypeEnviromentBox_DropDownOpened">
+                      HorizontalAlignment="Right" IsEnabled="False" 
+                      DropDownOpened="TypeEnviromentBox_DropDownOpened">
             </ComboBox>
         </StackPanel>
 
@@ -83,7 +84,8 @@
             <TextBlock Text="Miljö: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="EnviromentBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
-                      HorizontalAlignment="Right" IsEnabled="False" DropDownOpened="TypeEnviromentBox_DropDownOpened">
+                      HorizontalAlignment="Right" IsEnabled="False" 
+                      DropDownOpened="TypeEnviromentBox_DropDownOpened">
             </ComboBox>
         </StackPanel>
 
@@ -95,14 +97,14 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Föräldrar" TextAlignment="Center"></TextBlock>
 
-            <DataGrid x:Name="ParentGrid" Height="60" 
+            <DataGrid x:Name="ParentGrid" Height="120" 
                       Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Välj befintligt djur: "></TextBlock>
                 <ComboBox x:Name="ParentBox" Width="100"
-                          Margin="5,0,5,0" Focusable="False" IsEditable="True" IsReadOnly="True"
-                          HorizontalAlignment="Center"/>
-                <Button x:Name="AddParents" Content="Lägg till förälder"></Button>
+                          Margin="5,0,5,0" Focusable="False" IsEditable="false" IsReadOnly="True"
+                          HorizontalAlignment="Center" IsEnabled="False"/>
+                <Button x:Name="AddParents" Content="Lägg till förälder" Click="AddParents_Click"></Button>
             </StackPanel>
         </StackPanel>
 
@@ -112,14 +114,14 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Barn" TextAlignment="Center"></TextBlock>
 
-            <DataGrid x:Name="ChildrenGrid" Height="60" 
+            <DataGrid x:Name="ChildrenGrid" Height="120" 
                       Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Välj befintligt djur: "></TextBlock>
                 <ComboBox x:Name="ChildrenBox" Width="100"
-                          Margin="5,0,5,0" Focusable="False" IsEditable="True" IsReadOnly="True"
-                          HorizontalAlignment="Center"/>
-                <Button x:Name="AddChildren" Content="Lägg till barn"></Button>
+                          Margin="5,0,5,0" Focusable="False" IsEditable="False" IsReadOnly="True"
+                          HorizontalAlignment="Center" IsEnabled="False"/>
+                <Button x:Name="AddChildren" Content="Lägg till barn" Click="AddChildren_Click"></Button>
             </StackPanel>
             
         </StackPanel>

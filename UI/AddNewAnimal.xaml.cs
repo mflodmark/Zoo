@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,13 @@ namespace Zoo.UI
     /// </summary>
     public partial class AddNewAnimal : Window
     {
+        DataContext.Animal newAnimal = new DataContext.Animal()
+        {
+            Parents = new List<Animal>(),
+            Children = new List<Animal>()
+        };
+        
+
         public AddNewAnimal()
         {
             InitializeComponent();
@@ -32,7 +40,6 @@ namespace Zoo.UI
             AddValuesToComboBoxType(context);
             AddValuesToComboBoxCountry(context);
             AddValuesToComboBoxGender(context);
-            AddValuesToComboBoxParentOrChild(context);
 
         }
 
@@ -98,13 +105,17 @@ namespace Zoo.UI
             }
         }
 
-        private void AddValuesToComboBoxParentOrChild(ZooContext dbContext)
+        private void AddValuesToComboBoxParentOrChild(string species)
         {
-            foreach (var item in dbContext.Animals)
+            var dbContext = new ZooContext();
+
+            var animals = dbContext.Animals.Where(x => x.Species.Name == species).ToList();
+
+            foreach (var item in animals)
             {
 
-                ParentBox.Items.Add(item.Name + " " + item.Gender.Name);
-                ChildrenBox.Items.Add(item.Name + " " + item.Gender.Name);
+                ParentBox.Items.Add(item.Name + "-" + item.Gender.Name);
+                ChildrenBox.Items.Add(item.Name + "-" + item.Gender.Name);
                 
             }
         }
@@ -112,14 +123,16 @@ namespace Zoo.UI
         #endregion
 
         private void SpeciesBox_DropDownClosed(object sender, EventArgs e)
-        {
-            var zooContext = new ZooContext();
-        
-            CheckSpeciesInput(zooContext, SpeciesBox.Text);
+        {   
+            CheckSpeciesInput(SpeciesBox.Text);
+            AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
+
         }
 
-        private void CheckSpeciesInput(ZooContext zooContext, string input)
+        private void CheckSpeciesInput(string input)
         {
+            var zooContext = new ZooContext();
+
             var species = zooContext.Species.SingleOrDefault(x => x.Name == input);
 
             if (species == null)
@@ -133,6 +146,8 @@ namespace Zoo.UI
 
                 TypeBox.IsEditable = true;
                 EnviromentBox.IsEditable = true;
+                ChildrenBox.IsEditable = true;
+                ParentBox.IsEditable = true;
 
                 ResultText.Text = "Ändring av typ och miljö sker på alla";
             }
@@ -140,11 +155,44 @@ namespace Zoo.UI
             ResultText.Background = Brushes.Chocolate;
             TypeBox.IsEnabled = true;
             EnviromentBox.IsEnabled = true;
+            ParentBox.IsEnabled = true;
+            ChildrenBox.IsEnabled = true;
         }
 
         private void TypeEnviromentBox_DropDownOpened(object sender, EventArgs e)
         {
             MessageBox.Show("Ändring av typ och miljö sker på alla");
+        }
+
+        private void AddParents_Click(object sender, RoutedEventArgs e)
+        {
+            var dbContext = new ZooContext();
+
+            var subString = ParentBox.Text.Split('-');
+            var firstSubString = subString[0];
+
+            var animal = dbContext.Animals.SingleOrDefault(x => x.Name == firstSubString);
+
+            newAnimal.Parents.Add(animal);
+
+            var list = new BindingList<Model.Animal>(newAnimal.Parents.Select(x => new Model.Animal()
+            {
+                Name = x.Name,
+                Enviroment = x.Species.Enviroment.Name,
+                Species = x.Species.Name,
+                Type = x.Species.Type.Name,
+                Gender = x.Gender.Name,
+                CountryOfOrigin = x.CountryOfOrigin.Name,
+                Weight = x.Weight
+
+            }).ToList());
+
+            ParentGrid.ItemsSource = list;
+        }
+
+        private void AddChildren_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Zoo.Model
 
         public string Gender { get; set; }
 
+        public double Weight { get; set; }
+
     }
 
 

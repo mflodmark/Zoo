@@ -26,7 +26,8 @@ namespace Zoo.DAL
                     Species = x.Species.Name,
                     Type = x.Species.Type.Name,
                     Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight
 
                 }).ToList();
                
