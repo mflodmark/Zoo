@@ -67,6 +67,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\AddVetVisit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,6 +131,9 @@
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
       <DependentUpon>AddNewAnimal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AddVetVisit.xaml.cs">
+      <DependentUpon>AddVetVisit.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
