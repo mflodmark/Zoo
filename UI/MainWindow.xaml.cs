@@ -143,8 +143,16 @@ namespace Zoo
 
                     if (dataAccess.CheckAnimalsParent(currentId) > 0)
                     {
-                        ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                        //ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
                     }
+
+                    if (dataAccess.CheckAnimalsVet(currentId) > 0)
+                    {
+                        VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
+                    }
+
+                    ResultText.Text = $"Valt djurId = {currentId}";
+
                 }
             }
             catch (Exception)
@@ -157,9 +165,16 @@ namespace Zoo
 
         private void AddVetVisitButton_Click(object sender, RoutedEventArgs e)
         {
-            var openForm = new AddVetVisit();
 
-            openForm.Show();
+            if (currentId != 0)
+            {
+                var openForm = new AddVetVisit();
+
+                openForm.UpdateCurrentId(currentId);
+
+                openForm.Show();
+            }
+
         }
     }
 }

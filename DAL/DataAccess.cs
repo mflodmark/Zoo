@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zoo.DataContext;
 using Animal = Zoo.Model.Animal;
+using VetVisit = Zoo.Model.VetVisit;
 
 namespace Zoo.DAL
 {
@@ -176,25 +177,91 @@ namespace Zoo.DAL
         //    return animal;
         //}
 
-        public BindingList<Animal> LoadAnimalsVet(int animalId)
+        public BindingList<VetVisit> LoadAnimalsVet(int animalId)
         {
-            BindingList<Animal> animal;
+            BindingList<VetVisit> vetVisit;
 
             using (var db = new ZooContext())
             {
                 var query = db.Animals.Where(y => y.AnimalId == animalId).SelectMany(x => x.VetVisits);
 
-                var visitList = query.Select(x => new Animal()
+                var visitList = query.Select(x => new VetVisit()
                 {
-                    Name = x.Name,
-                    Gender = x.Gender.Name
+                    Diagnosis = x.Diagnosis.Beskrivning,
+                    VetName = x.Vet.Name,
+                    Date = x.DateAndTime.ToString(),
+                    //Time = x.Time.ToString(),
+                    VetVisitId = x.VetVisitId.ToString()
+
                 }).ToList();
 
-                animal = new BindingList<Animal>(query);
+                vetVisit = new BindingList<VetVisit>(visitList);
             }
 
-            return animal;
+            return vetVisit;
         }
+
+        public int CheckAnimalsVet(int animalId)
+        {
+            int check = 0;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => x.VetVisits.Count);
+
+                check = query.Count();
+            }
+
+            return check;
+        }
+
+        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName)
+        {
+            using (var db = new ZooContext())
+            {
+
+                // Diagnosis
+                var diagnosis = db.Diagnoses.SingleOrDefault(x => x.Beskrivning == diagnosisName);
+                var diaId = 0;
+                var newDiagnosis = new Diagnosis();
+                
+                if (diagnosis.Beskrivning == null)
+                {
+                    newDiagnosis.Beskrivning = diagnosis.Beskrivning;
+                    db.Diagnoses.Add(newDiagnosis);
+
+                    db.SaveChanges();
+
+                    diaId = newDiagnosis.DiagnosisId;
+                }
+                else
+                {
+                    diaId = diagnosis.DiagnosisId;
+                }
+
+                // Vet
+                var vet = db.Vets.SingleOrDefault(x => x.Name == vetName);
+                
+
+                // Vetvisit
+                var vetVisit = new DataContext.VetVisit()
+                {
+                    AnimalId = animalId,
+                    DateAndTime = date,
+                    //Time = time,
+                    DiagnosisId = diaId,
+                    VetId = vet.VetId
+                    
+                };
+
+                db.VetVisits.Add(vetVisit);
+
+                db.SaveChanges();
+            }
+        }
+
+
+        #region Different Search Methods
 
         public BindingList<Animal> Search(string type, string enviroment, string species)
         {
@@ -236,11 +303,9 @@ namespace Zoo.DAL
             {
                 animal = LoadAnimals();
             }
-            
+
             return animal;
         }
-
-        #region Different Search Methods
 
         private BindingList<Animal> SearchType(string type)
         {

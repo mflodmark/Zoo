@@ -144,6 +144,10 @@
     <Compile Include="Migrations\201711071250174_PopulateDiagnosis.Designer.cs">
       <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711071435170_RenameDateToDateAndTIme.cs" />
+    <Compile Include="Migrations\201711071435170_RenameDateToDateAndTIme.Designer.cs">
+      <DependentUpon>201711071435170_RenameDateToDateAndTIme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\VetVisit.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -210,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711071250174_PopulateDiagnosis.resx">
       <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071435170_RenameDateToDateAndTIme.resx">
+      <DependentUpon>201711071435170_RenameDateToDateAndTIme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -6,9 +6,7 @@ namespace Zoo.DataContext
     {
         public int VetVisitId { get; set; }
 
-        public DateTime Time { get; set; }
-
-        public DateTime Date { get; set; }
+        public DateTime DateAndTime { get; set; }
 
         public int VetId { get; set; }
 

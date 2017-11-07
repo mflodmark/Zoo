@@ -6,8 +6,6 @@
 
         public string Date { get; set; }
 
-        public string Time { get; set; }
-
         public string VetName { get; set; }
 
         public string Diagnosis { get; set; }

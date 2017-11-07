@@ -21,6 +21,8 @@ namespace Zoo.UI
     /// </summary>
     public partial class AddVetVisit : Window
     {
+        private int currentId = 0;
+
         public AddVetVisit()
         {
             InitializeComponent();
@@ -150,13 +152,19 @@ namespace Zoo.UI
 
         #endregion
 
-
+        public void UpdateCurrentId(int id)
+        {
+            currentId = id;
+        }
 
         private void AddNewVetVisit_Click(object sender, RoutedEventArgs e)
         {
-            var dataAccess = new DataAccess(); 
+            var dataAccess = new DataAccess();
 
+            var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
+            //var timeConverted = Convert.ToDateTime($"{TimeBox.Text}");
 
+            dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text);
 
             Close();
         }
