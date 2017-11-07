@@ -136,6 +136,14 @@
     <Compile Include="Migrations\201711071236379_AddVetVisit.Designer.cs">
       <DependentUpon>201711071236379_AddVetVisit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711071248256_PopulateVetTable.cs" />
+    <Compile Include="Migrations\201711071248256_PopulateVetTable.Designer.cs">
+      <DependentUpon>201711071248256_PopulateVetTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711071250174_PopulateDiagnosis.cs" />
+    <Compile Include="Migrations\201711071250174_PopulateDiagnosis.Designer.cs">
+      <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
       <DependentUpon>AddNewAnimal.xaml</DependentUpon>
@@ -195,6 +203,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711071236379_AddVetVisit.resx">
       <DependentUpon>201711071236379_AddVetVisit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071248256_PopulateVetTable.resx">
+      <DependentUpon>201711071248256_PopulateVetTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071250174_PopulateDiagnosis.resx">
+      <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
