@@ -30,8 +30,8 @@ namespace Zoo.UI
         //};
         
 
-        List<DataContext.Animal> parentsList = new List<Animal>();
-        List<DataContext.Animal> childrenList = new List<Animal>();
+        List<Animal> parentsList = new List<Animal>();
+        List<Animal> childrenList = new List<Animal>();
 
         public AddNewAnimal()
         {

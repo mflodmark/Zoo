@@ -106,6 +106,7 @@ namespace Zoo.DAL
 
         #endregion
 
+        #region Parent
 
         public BindingList<Animal> LoadAnimalsParent(int animalId)
         {
@@ -133,13 +134,16 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x=>x.Parents.Count);
+                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => x.Parents.Count);
 
                 check = query.Count();
             }
 
             return check;
         }
+
+        #endregion
+
 
         public bool CheckName(string input)
         {
@@ -154,23 +158,23 @@ namespace Zoo.DAL
             return check;
         }
 
-        public BindingList<Animal> LoadAnimalsChildren(int animalId)
-        {
-            BindingList<Animal> animal;
+        //public BindingList<Animal> LoadAnimalsChildren(int animalId)
+        //{
+        //    BindingList<Animal> animal;
 
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Gender = x.Gender.Name,
-                }).ToList();
+        //    using (var db = new ZooContext())
+        //    {
+        //        var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => new Animal()
+        //        {
+        //            Name = x.Name,
+        //            Gender = x.Gender.Name,
+        //        }).ToList();
 
-                animal = new BindingList<Animal>(query);
-            }
+        //        animal = new BindingList<Animal>(query);
+        //    }
 
-            return animal;
-        }
+        //    return animal;
+        //}
 
         public BindingList<Animal> LoadAnimalsVet(int animalId)
         {
@@ -178,10 +182,12 @@ namespace Zoo.DAL
 
             using (var db = new ZooContext())
             {
-                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => new Animal()
+                var query = db.Animals.Where(y => y.AnimalId == animalId).SelectMany(x => x.VetVisits);
+
+                var visitList = query.Select(x => new Animal()
                 {
                     Name = x.Name,
-                    Gender = x.Gender.Name,
+                    Gender = x.Gender.Name
                 }).ToList();
 
                 animal = new BindingList<Animal>(query);

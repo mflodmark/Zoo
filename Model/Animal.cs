@@ -28,6 +28,4 @@ namespace Zoo.Model
         public double Weight { get; set; }
 
     }
-
-
 }

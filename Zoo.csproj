@@ -145,6 +145,7 @@
       <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
+    <Compile Include="Model\VetVisit.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
       <DependentUpon>AddNewAnimal.xaml</DependentUpon>
     </Compile>

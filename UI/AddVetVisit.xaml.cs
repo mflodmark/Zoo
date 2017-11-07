@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zoo.DataContext;
+using Zoo.DAL;
 
 namespace Zoo.UI
 {
@@ -153,6 +154,9 @@ namespace Zoo.UI
 
         private void AddNewVetVisit_Click(object sender, RoutedEventArgs e)
         {
+            var dataAccess = new DataAccess(); 
+
+
 
             Close();
         }
