@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo"
         mc:Ignorable="d" FontSize="18" FontFamily="Segui UI"
-        Title="Zoo" Height="450" Width="625">
+        Title="Zoo" Height="650" Width="660">
     <Grid>
         <Grid.Resources>
 
@@ -21,6 +21,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -61,14 +63,42 @@
                   Grid.Column="1" HorizontalAlignment="Left" Height="200" 
                   Margin="0,0,0,0" VerticalAlignment="Top" Width="580" SelectedCellsChanged="AnimalGrid_SelectedCellsChanged"/>
 
-        <Button x:Name="EditButton" Content="Ändra" Grid.Column="1" Grid.Row="7"
+        <StackPanel Grid.Column="1" Grid.Row="7"
+                    Orientation="Vertical" Margin="5,0,5,0" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Föräldrar" TextAlignment="Center"></TextBlock>
+
+            <DataGrid x:Name="ParentGrid" Height="120" 
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="185"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="7"
+                    Orientation="Vertical" Margin="5,0,5,0" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Barn" TextAlignment="Center"></TextBlock>
+
+            <DataGrid x:Name="ChildreGrid" Height="120" 
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="185"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="3" Grid.Row="7"
+                    Orientation="Vertical" Margin="5,0,5,0" 
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Veterinärbesök" TextAlignment="Center"></TextBlock>
+
+            <DataGrid x:Name="VetGrid" Height="120" 
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="185"/>
+        </StackPanel>
+
+
+        <Button x:Name="EditButton" Content="Ändra" Grid.Column="1" Grid.Row="8"
         Margin="5" Click="EditButton_Click">
         </Button>
 
-        <Button x:Name="DeleteButton" Content="Ta bort" Grid.Column="2" Grid.Row="7"
+        <Button x:Name="DeleteButton" Content="Ta bort" Grid.Column="2" Grid.Row="8"
         Margin="5" Click="DeleteButton_Click"></Button>
 
-        <Button x:Name="AddButton" Content="Lägg till ny" Grid.Column="3" Grid.Row="7"
+        <Button x:Name="AddButton" Content="Lägg till ny" Grid.Column="3" Grid.Row="8"
                 Margin="5" Click="AddButton_Click"></Button>
         
         <TextBlock x:Name="ResultText" Grid.Column="2" Grid.Row="8" TextAlignment="Center"
