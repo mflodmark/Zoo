@@ -1,0 +1,53 @@
+Krav
+
+Inlämningsuppgift 2 Alternativ 1: Skapa en Djuren på ett Zoo applikation
+Beskrivning
+
+ 
+
+Uppgiften handlar om att skapa en applikation och databas som håller reda på vilka djur som finns på ett zoo.
+
+All information skall sparas i en databas som du själv skapar. Det betyder att applikationen skall kunna läsa och skriva från denna databas.
+
+Gränssnittet till applikationen skall skapas i Windows Forms , Web eller WPF.
+
+Använd Entity Framework för kommunikationen med databasen. 
+
+Krav för att uppgiften skall bli godkänd:
+
+Applikationen ska hantera registrering av djur.
+Djuren kan tillhöra ett av 2 typer. Köttätare eller växtätare.
+Djuren kan bo i ett av 3 typer av miljöer.
+Mark
+Träd
+Vatten
+Djuren ska ha en art.
+Det skall gå att registrera ett djur och alla  djurets uppgifter skall kunna ändras. 
+Ett djur kan tas bort ur systemet. Följande uppgifter ska finnas med: Vikt, Ursprungsland och Föräldrar.
+
+Uppdatering: 
+Det ska finnas en lista med Veterinärer. 
+Man ska kunna boka veterinärbesök  för djuren. 
+Tid och datum ska registreras. 
+Ett djur ska kunna träffa veterinär en eller flera gånger. 
+Man ska kunna registrera en diagnos med beskrivning per besök och kunne ge ut en eller flera mediciner per diagnos.  
+Man ska kunna avboka ett besök.
+
+Det ska gå att söka på vilka djur som bor i olika miljöer. 
+Det måste vara en direkt träff för att sökresultatet ska returneras. 
+Allt som matchar sökvillkoret skall visas. Skrivs inget sökvillkor visas alla djur.
+Det ska gå att söka på vilka djur som är köttätare eller växtätare. 
+Det måste vara en direkt träff för att sökresultatet ska returneras. 
+Allt som matchar sökvillkoret skall visas. Skrivs inget sökvillkor visas alla djur.
+Det ska gå att söka på en art, hela eller delar av artnamnet. 
+Allt som matchar sökvillkoret skall visas. Skrivs inget sökvillkor visas alla djur.
+Om sökning sker med flera filter, t.ex. miljö och art, ska sökresultatet returnera de djur som har fått båda träffar. 
+I fallet med 3 filter så måste det vara 3 träffar för att sökresultatet ska visas.
+
+Lösningen måste göras objektorienterat. -KLAR
+Koden skall fungera och applikationen skall gå att köra utan fel. 
+
+Databasen måste vara normaliserad till 3NF.
+
+Lösningen ska vara kodgranskad och avsignerad av en studentkollega innan den lämnas in.  
+

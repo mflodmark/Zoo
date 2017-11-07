@@ -22,12 +22,16 @@ namespace Zoo.UI
     /// </summary>
     public partial class AddNewAnimal : Window
     {
-        DataContext.Animal newAnimal = new DataContext.Animal()
-        {
-            Parents = new List<Animal>(),
-            Children = new List<Animal>()
-        };
+   
+        //DataContext.Animal newAnimal = new DataContext.Animal()
+        //{
+        //    Parents = new List<Animal>(),
+        //    Children = new List<Animal>()
+        //};
         
+
+        List<DataContext.Animal> parentsList = new List<Animal>();
+        List<DataContext.Animal> childrenList = new List<Animal>();
 
         public AddNewAnimal()
         {
@@ -47,12 +51,22 @@ namespace Zoo.UI
         {
             var dataAccess = new DataAccess();
 
-            CheckComboBoxValuesForZeroValues();
+            var check = CheckComboBoxValuesForZeroValues();
 
-            //dataAccess.AddAnimal();
+            if (check) return;
+
+            if (double.TryParse(WeightBox.Text,out var weigth))
+            {
+                dataAccess.AddAnimal(AnimalName.Text, EnviromentBox.Text, SpeciesBox.Text,
+                    TypeBox.Text, weigth, CountryBox.Text, GenderBox.Text, parentsList, childrenList);
+            }
+            else
+            {
+                ResultText.Text = "Inmatning av vikt fungerade ej";
+            }
         }
 
-        private void CheckComboBoxValuesForZeroValues()
+        private bool CheckComboBoxValuesForZeroValues()
         {
             if (GenderBox.Text == "" || CountryBox.Text == "" || ChildrenBox.Text == "" || EnviromentBox.Text == ""
                 || TypeBox.Text == "")
@@ -60,7 +74,10 @@ namespace Zoo.UI
                 ResultText.Text = "Något/några fält saknar värde";
                 ResultText.Foreground = Brushes.White;
                 ResultText.Background = Brushes.DarkRed;
+                return true;
             }
+
+            return false;
         }
 
         #region AddValuesToComboBoxes
@@ -173,9 +190,9 @@ namespace Zoo.UI
 
             var animal = dbContext.Animals.SingleOrDefault(x => x.Name == firstSubString);
 
-            newAnimal.Parents.Add(animal);
+            parentsList.Add(animal);
 
-            var list = new BindingList<Model.Animal>(newAnimal.Parents.Select(x => new Model.Animal()
+            var list = new BindingList<Model.Animal>(parentsList.Select(x => new Model.Animal()
             {
                 Name = x.Name,
                 Enviroment = x.Species.Enviroment.Name,
@@ -192,7 +209,28 @@ namespace Zoo.UI
 
         private void AddChildren_Click(object sender, RoutedEventArgs e)
         {
+            var dbContext = new ZooContext();
 
+            var subString = ChildrenBox.Text.Split('-');
+            var firstSubString = subString[0];
+
+            var animal = dbContext.Animals.SingleOrDefault(x => x.Name == firstSubString);
+
+            childrenList.Add(animal);
+
+            var list = new BindingList<Model.Animal>(childrenList.Select(x => new Model.Animal()
+            {
+                Name = x.Name,
+                Enviroment = x.Species.Enviroment.Name,
+                Species = x.Species.Name,
+                Type = x.Species.Type.Name,
+                Gender = x.Gender.Name,
+                CountryOfOrigin = x.CountryOfOrigin.Name,
+                Weight = x.Weight
+
+            }).ToList());
+
+            ChildrenGrid.ItemsSource = list;
         }
     }
 }

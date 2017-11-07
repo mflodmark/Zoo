@@ -23,6 +23,8 @@ namespace Zoo
     /// </summary>
     public partial class MainWindow : Window
     {
+        int currentId = 0;
+
         public MainWindow()
         {
 
@@ -99,6 +101,51 @@ namespace Zoo
             var openForm = new AddNewAnimal();
 
             openForm.Show();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dataAccess = new DataAccess();
+
+            try
+            {
+                dataAccess.DeleteAnimal(currentId);
+
+                AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett djur i listan";
+            }
+
+
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+
+        private void AnimalGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+                object item = AnimalGrid.SelectedItem;
+
+                if (item != null)
+                {
+                    string id = (AnimalGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    currentId = int.Parse(id);
+                }
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett djur i listan";
+            }
+            
         }
     }
 }

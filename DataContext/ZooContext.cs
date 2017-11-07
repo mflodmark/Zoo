@@ -19,8 +19,6 @@ namespace Zoo.DataContext
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<CountryOfOrigin> CountryOfOrigins { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
-        //public virtual DbSet<Parent> Parents { get; set; }
-
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
