@@ -132,12 +132,19 @@ namespace Zoo
         {
             try
             {
+                var dataAccess = new DataAccess();
+
                 object item = AnimalGrid.SelectedItem;
 
                 if (item != null)
                 {
                     string id = (AnimalGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                     currentId = int.Parse(id);
+
+                    if (dataAccess.CheckAnimalsParent(currentId) > 0)
+                    {
+                        ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                    }
                 }
             }
             catch (Exception)

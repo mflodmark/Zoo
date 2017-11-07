@@ -10,8 +10,8 @@ namespace Zoo.DataContext
 
         public int AnimalId { get; set; }
 
-        public Animal Animal { get; set; }
+        public virtual Animal Animal { get; set; }
 
-        public List<Animal> Children { get; set; }
+        public virtual List<Animal> Children { get; set; }
     }
 }

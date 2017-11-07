@@ -22,8 +22,8 @@ namespace Zoo.DataContext
 
         public virtual Gender Gender { get; set; }
 
-        public List<Animal> Parents { get; set; }
+        public virtual List<Animal> Parents { get; set; }
 
-        public List<Animal> Children { get; set; }
+        public virtual List<Animal> Children { get; set; }
     }
 }

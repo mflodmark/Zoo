@@ -8,7 +8,7 @@ namespace Zoo.DataContext
 
         public string Name { get; set; }
 
-        public List<Species> Species { get; set; }
+        public virtual List<Species> Species { get; set; }
 
     }
 }

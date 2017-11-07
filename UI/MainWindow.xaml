@@ -101,7 +101,7 @@
         <Button x:Name="AddButton" Content="Lägg till ny" Grid.Column="3" Grid.Row="8"
                 Margin="5" Click="AddButton_Click"></Button>
         
-        <TextBlock x:Name="ResultText" Grid.Column="2" Grid.Row="8" TextAlignment="Center"
+        <TextBlock x:Name="ResultText" Grid.Column="2" Grid.Row="9" TextAlignment="Center"
                    ></TextBlock>
 
     </Grid>

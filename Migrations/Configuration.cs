@@ -29,7 +29,7 @@ namespace Zoo.Migrations
                 Weight = 160.5,
                 GenderId = 1,
                 CountryOfOriginId = 1,
-                SpeciesId = 16
+                SpeciesId = 16,
             };
 
             var elephant2Animal = new DataContext.Animal()
@@ -82,6 +82,7 @@ namespace Zoo.Migrations
                 EnviromentId = 26
             };
 
+            
             context.Species.AddOrUpdate(x => x.Name, speciesElephant, speciesShark);
             context.Animals.AddOrUpdate(x => x.Name, elephant1Animal, elephant2Animal, elephant3Animal
                 ,shark1Animal, shark2Animal);

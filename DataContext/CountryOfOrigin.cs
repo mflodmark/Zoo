@@ -8,6 +8,6 @@ namespace Zoo.DataContext
 
         public string Name { get; set; }
 
-        public List<Animal> Animals { get; set; }
+        public virtual List<Animal> Animals { get; set; }
     }
 }

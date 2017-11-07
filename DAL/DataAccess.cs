@@ -13,6 +13,8 @@ namespace Zoo.DAL
 {
     public class DataAccess
     {
+        #region Animal-Load,Delete,Add
+
         public BindingList<Animal> LoadAnimals()
         {
             BindingList<Animal> animal;
@@ -31,7 +33,7 @@ namespace Zoo.DAL
                     AnimalId = x.AnimalId
 
                 }).ToList();
-               
+
                 animal = new BindingList<Animal>(query);
             }
 
@@ -48,7 +50,7 @@ namespace Zoo.DAL
             }
         }
 
-        public void AddAnimal(string animalName,string enviromentName, string speciesName, string typeName, double weigth, string countryName,
+        public void AddAnimal(string animalName, string enviromentName, string speciesName, string typeName, double weigth, string countryName,
             string genderName, List<DataContext.Animal> parentList, List<DataContext.Animal> childList)
         {
             using (var db = new ZooContext())
@@ -101,7 +103,80 @@ namespace Zoo.DAL
             }
         }
 
-        
+
+        #endregion
+
+
+        public BindingList<Animal> LoadAnimalsParent(int animalId)
+        {
+            BindingList<Animal> animal;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Where(y => y.AnimalId == animalId).SelectMany(x => x.Parents);
+
+                var parentList = query.Select(x => new Animal()
+                {
+                    Name = x.Name,
+                    Gender = x.Gender.Name
+                }).ToList();
+
+                animal = new BindingList<Animal>(parentList);
+            }
+
+            return animal;
+        }
+
+        public int CheckAnimalsParent(int animalId)
+        {
+            int check = 0;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x=>x.Parents.Count);
+
+                check = query.Count();
+            }
+
+            return check;
+        }
+
+        public BindingList<Animal> LoadAnimalsChildren(int animalId)
+        {
+            BindingList<Animal> animal;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => new Animal()
+                {
+                    Name = x.Name,
+                    Gender = x.Gender.Name,
+                }).ToList();
+
+                animal = new BindingList<Animal>(query);
+            }
+
+            return animal;
+        }
+
+        public BindingList<Animal> LoadAnimalsVet(int animalId)
+        {
+            BindingList<Animal> animal;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => new Animal()
+                {
+                    Name = x.Name,
+                    Gender = x.Gender.Name,
+                }).ToList();
+
+                animal = new BindingList<Animal>(query);
+            }
+
+            return animal;
+        }
+
         public BindingList<Animal> Search(string type, string enviroment, string species)
         {
             BindingList<Animal> animal;
