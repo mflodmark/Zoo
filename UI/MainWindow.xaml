@@ -61,7 +61,9 @@
 
         <DataGrid x:Name="AnimalGrid" Grid.Row="4" Grid.RowSpan="3" Grid.ColumnSpan="3" 
                   Grid.Column="1" HorizontalAlignment="Left" Height="200" 
-                  Margin="0,0,0,0" VerticalAlignment="Top" Width="580" SelectedCellsChanged="AnimalGrid_SelectedCellsChanged"/>
+                  Margin="0,0,0,0" VerticalAlignment="Top" Width="580" 
+                  SelectedCellsChanged="AnimalGrid_SelectedCellsChanged"
+                  IsManipulationEnabled="False"/>
 
         <StackPanel Grid.Column="1" Grid.Row="7"
                     Orientation="Vertical" Margin="5,0,5,0" 
@@ -98,10 +100,14 @@
         <Button x:Name="DeleteButton" Content="Ta bort" Grid.Column="2" Grid.Row="8"
         Margin="5" Click="DeleteButton_Click"></Button>
 
-        <Button x:Name="AddButton" Content="Lägg till ny" Grid.Column="3" Grid.Row="8"
+        <Button x:Name="AddButton" Content="Lägg till nytt djur" Grid.Column="3" Grid.Row="8"
                 Margin="5" Click="AddButton_Click"></Button>
-        
-        <TextBlock x:Name="ResultText" Grid.Column="2" Grid.Row="9" TextAlignment="Center"
+
+        <Button x:Name="AddVetVisitButton" Content="Lägg till nytt besök" 
+                Grid.Column="3" Grid.Row="9"
+                Margin="5" Click="AddVetVisitButton_Click" ></Button>
+
+        <TextBlock x:Name="ResultText" Grid.Column="2" Grid.Row="10" TextAlignment="Center"
                    ></TextBlock>
 
     </Grid>

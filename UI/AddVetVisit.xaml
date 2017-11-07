@@ -15,6 +15,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
@@ -42,7 +43,7 @@
             <TextBlock Text="År" Width="40" TextAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
             <ComboBox x:Name ="YearBox" Width="70"
-                      Focusable="False" IsEditable="True" IsReadOnly="True"
+                      Focusable="False" IsEditable="True" IsReadOnly="True" DropDownClosed="YearBox_DropDownClosed"
                       ></ComboBox>
         </StackPanel>
 
@@ -52,7 +53,7 @@
             <TextBlock Text="Månad" Width="40" TextAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
             <ComboBox x:Name ="MonthBox" Width="70" Focusable="False" 
-                      IsEditable="False" IsReadOnly="True"
+                      IsEditable="False" IsReadOnly="True" DropDownClosed="MonthBox_DropDownClosed"
                       ></ComboBox>
         </StackPanel>
 
@@ -85,7 +86,17 @@
                       Focusable="False" IsEditable="True" IsReadOnly="True"
             ></ComboBox>
         </StackPanel>
-        
+
+        <StackPanel Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
+                    Orientation="Horizontal" Width="130" Height="30"
+                    Margin="5">
+            <TextBlock Text="Diagnos" Width="50" TextAlignment="Center"
+                       VerticalAlignment="Center"></TextBlock>
+            <ComboBox x:Name ="DiagnosisBox" Width="80"
+                      Focusable="True" IsEditable="True" IsReadOnly="False"
+            ></ComboBox>
+        </StackPanel>
+
         <Button x:Name="AddNewVetVisit" Grid.Row="6" Grid.Column="1"
                 Content="Lägg till nytt besök" Margin="10" Click="AddNewVetVisit_Click"
                 ></Button>

@@ -154,5 +154,12 @@ namespace Zoo
             }
             
         }
+
+        private void AddVetVisitButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openForm = new AddVetVisit();
+
+            openForm.Show();
+        }
     }
 }
