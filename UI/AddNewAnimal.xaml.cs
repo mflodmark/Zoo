@@ -22,14 +22,7 @@ namespace Zoo.UI
     /// </summary>
     public partial class AddNewAnimal : Window
     {
-   
-        //DataContext.Animal newAnimal = new DataContext.Animal()
-        //{
-        //    Parents = new List<Animal>(),
-        //    Children = new List<Animal>()
-        //};
-        
-
+         
         List<Animal> parentsList = new List<Animal>();
         List<Animal> childrenList = new List<Animal>();
 
@@ -213,7 +206,8 @@ namespace Zoo.UI
                 Type = x.Species.Type.Name,
                 Gender = x.Gender.Name,
                 CountryOfOrigin = x.CountryOfOrigin.Name,
-                Weight = x.Weight
+                Weight = x.Weight,
+                AnimalId = x.AnimalId
 
             }).ToList());
 
@@ -239,7 +233,9 @@ namespace Zoo.UI
                 Type = x.Species.Type.Name,
                 Gender = x.Gender.Name,
                 CountryOfOrigin = x.CountryOfOrigin.Name,
-                Weight = x.Weight
+                Weight = x.Weight,
+                AnimalId = x.AnimalId
+
 
             }).ToList());
 

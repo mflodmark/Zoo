@@ -148,6 +148,14 @@
     <Compile Include="Migrations\201711071435170_RenameDateToDateAndTIme.Designer.cs">
       <DependentUpon>201711071435170_RenameDateToDateAndTIme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711071635322_RemoveTableParentChildrenLink.cs" />
+    <Compile Include="Migrations\201711071635322_RemoveTableParentChildrenLink.Designer.cs">
+      <DependentUpon>201711071635322_RemoveTableParentChildrenLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711071640568_FamilyMembers.cs" />
+    <Compile Include="Migrations\201711071640568_FamilyMembers.Designer.cs">
+      <DependentUpon>201711071640568_FamilyMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\VetVisit.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -217,6 +225,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711071435170_RenameDateToDateAndTIme.resx">
       <DependentUpon>201711071435170_RenameDateToDateAndTIme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071635322_RemoveTableParentChildrenLink.resx">
+      <DependentUpon>201711071635322_RemoveTableParentChildrenLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071640568_FamilyMembers.resx">
+      <DependentUpon>201711071640568_FamilyMembers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

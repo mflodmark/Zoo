@@ -22,6 +22,8 @@ namespace Zoo.DataContext
         public virtual DbSet<Diagnosis> Diagnoses { get; set; }
         public virtual DbSet<Vet> Vets { get; set; }
         public virtual DbSet<VetVisit> VetVisits { get; set; }
+        public virtual DbSet<FamilyMembersLink> FamilyMembersLinks { get; set; }
+
 
 
 
@@ -42,7 +44,6 @@ namespace Zoo.DataContext
             modelBuilder.Entity<Vet>().Property(x => x.Name).IsRequired();
 
             modelBuilder.Entity<Diagnosis>().Property(x => x.Beskrivning).IsRequired();
-
 
         }
     }

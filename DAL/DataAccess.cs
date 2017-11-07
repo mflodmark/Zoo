@@ -90,8 +90,8 @@ namespace Zoo.DAL
                     CountryOfOriginId = countryId,
                     GenderId = gender.GenderId,
 
-                    Parents = new List<DataContext.Animal>(),
-                    Children = new List<DataContext.Animal>(),
+                    //Parents = new List<DataContext.Animal>(),
+                    //Children = new List<DataContext.Animal>(),
                 };
 
                 //animal.Parents = parentList;
@@ -100,8 +100,22 @@ namespace Zoo.DAL
                 db.Animals.Add(animal);
 
                 db.SaveChanges();
+                
+                // Link
 
+                foreach (var item in parentList)
+                {
+                    //var link = new ParentChildrenLink()
+                    //{
+                    //    ChildId = animal.AnimalId,
+                    //    ParentId = item.AnimalId
+                    //};
 
+                    //animal.Parents.Add(item);
+                    db.SaveChanges();
+                }
+
+                
             }
         }
 
@@ -110,39 +124,39 @@ namespace Zoo.DAL
 
         #region Parent
 
-        public BindingList<Animal> LoadAnimalsParent(int animalId)
-        {
-            BindingList<Animal> animal;
+        //public BindingList<Animal> LoadAnimalsParent(int animalId)
+        //{
+        //    BindingList<Animal> animal;
 
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.AnimalId == animalId).SelectMany(x => x.Parents);
+        //    using (var db = new ZooContext())
+        //    {
+        //        var query = db.Animals.Where(y => y.AnimalId == animalId).SelectMany(x => x.Parents);
 
-                var parentList = query.Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Gender = x.Gender.Name
-                }).ToList();
+        //        var parentList = query.Select(x => new Animal()
+        //        {
+        //            Name = x.Name,
+        //            Gender = x.Gender.Name
+        //        }).ToList();
 
-                animal = new BindingList<Animal>(parentList);
-            }
+        //        animal = new BindingList<Animal>(parentList);
+        //    }
 
-            return animal;
-        }
+        //    return animal;
+        //}
 
-        public int CheckAnimalsParent(int animalId)
-        {
-            int check = 0;
+        //public int CheckAnimalsParent(int animalId)
+        //{
+        //    int check = 0;
 
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => x.Parents.Count);
+        //    using (var db = new ZooContext())
+        //    {
+        //        var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x => x.Parents.Count);
 
-                check = query.Count();
-            }
+        //        check = query.Count();
+        //    }
 
-            return check;
-        }
+        //    return check;
+        //}
 
         #endregion
 
@@ -248,7 +262,6 @@ namespace Zoo.DAL
                 {
                     AnimalId = animalId,
                     DateAndTime = date,
-                    //Time = time,
                     DiagnosisId = diaId,
                     VetId = vet.VetId
                     

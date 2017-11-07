@@ -141,10 +141,10 @@ namespace Zoo
                     string id = (AnimalGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                     currentId = int.Parse(id);
 
-                    if (dataAccess.CheckAnimalsParent(currentId) > 0)
-                    {
-                        //ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
-                    }
+                    //if (dataAccess.CheckAnimalsParent(currentId) > 0)
+                    //{
+                    //    //ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                    //}
 
                     if (dataAccess.CheckAnimalsVet(currentId) > 0)
                     {
