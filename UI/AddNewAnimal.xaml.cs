@@ -193,6 +193,11 @@ namespace Zoo.UI
         {
             var dbContext = new ZooContext();
 
+            if (ParentGrid.Items.Count >= 2)
+            {
+                AddParents.IsEnabled = false;
+            }
+
             var subString = ParentBox.Text.Split('-');
             var firstSubString = subString[0];
 

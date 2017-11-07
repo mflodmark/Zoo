@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo.UI"
         mc:Ignorable="d"
-        Title="AddVetVisit" Height="300" Width="300">
+        Title="AddVetVisit" Height="300" Width="400">
     <Grid>
         <Grid.Resources>
 
         </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
@@ -88,11 +89,11 @@
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" 
-                    Orientation="Horizontal" Width="130" Height="30"
+                    Orientation="Horizontal" Width="230" Height="30"
                     Margin="5">
             <TextBlock Text="Diagnos" Width="50" TextAlignment="Center"
                        VerticalAlignment="Center"></TextBlock>
-            <ComboBox x:Name ="DiagnosisBox" Width="80"
+            <ComboBox x:Name ="DiagnosisBox" Width="180"
                       Focusable="True" IsEditable="True" IsReadOnly="False"
             ></ComboBox>
         </StackPanel>
