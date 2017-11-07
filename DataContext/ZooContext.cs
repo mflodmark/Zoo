@@ -19,6 +19,10 @@ namespace Zoo.DataContext
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<CountryOfOrigin> CountryOfOrigins { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
+        public virtual DbSet<Diagnosis> Diagnoses { get; set; }
+        public virtual DbSet<Vet> Vets { get; set; }
+        public virtual DbSet<VetVisit> VetVisits { get; set; }
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -34,6 +38,11 @@ namespace Zoo.DataContext
             modelBuilder.Entity<CountryOfOrigin>().Property(x => x.Name).IsRequired();
 
             modelBuilder.Entity<Gender>().Property(x => x.Name).IsRequired();
+
+            modelBuilder.Entity<Vet>().Property(x => x.Name).IsRequired();
+
+            modelBuilder.Entity<Diagnosis>().Property(x => x.Beskrivning).IsRequired();
+
 
         }
     }

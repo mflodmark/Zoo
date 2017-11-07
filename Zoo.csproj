@@ -82,11 +82,15 @@
     <Compile Include="DAL\DataAccess.cs" />
     <Compile Include="DataContext\Animal.cs" />
     <Compile Include="DataContext\CountryOfOrigin.cs" />
+    <Compile Include="DataContext\Diagnosis.cs" />
     <Compile Include="DataContext\Enviroment.cs" />
     <Compile Include="DataContext\Gender.cs" />
+    <Compile Include="DataContext\Medicin.cs" />
     <Compile Include="DataContext\Parent.cs" />
     <Compile Include="DataContext\Species.cs" />
     <Compile Include="DataContext\Type.cs" />
+    <Compile Include="DataContext\Vet.cs" />
+    <Compile Include="DataContext\VetVisit.cs" />
     <Compile Include="DataContext\ZooContext.cs" />
     <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.cs" />
     <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.Designer.cs">
@@ -127,6 +131,10 @@
     <Compile Include="Migrations\201711061005529_AddParentsTable.cs" />
     <Compile Include="Migrations\201711061005529_AddParentsTable.Designer.cs">
       <DependentUpon>201711061005529_AddParentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711071236379_AddVetVisit.cs" />
+    <Compile Include="Migrations\201711071236379_AddVetVisit.Designer.cs">
+      <DependentUpon>201711071236379_AddVetVisit.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -184,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711061005529_AddParentsTable.resx">
       <DependentUpon>201711061005529_AddParentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711071236379_AddVetVisit.resx">
+      <DependentUpon>201711071236379_AddVetVisit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

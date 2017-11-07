@@ -25,5 +25,7 @@ namespace Zoo.DataContext
         public virtual List<Animal> Parents { get; set; }
 
         public virtual List<Animal> Children { get; set; }
+
+        public virtual List<VetVisit> VetVisits { get; set; }
     }
 }
