@@ -83,7 +83,7 @@
             <ComboBox x:Name="TypeBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
                       HorizontalAlignment="Right" IsEnabled="False" 
-                      DropDownOpened="TypeEnviromentBox_DropDownOpened">
+                      >
             </ComboBox>
         </StackPanel>
 
@@ -93,7 +93,7 @@
             <ComboBox x:Name="EnviromentBox" Width="100"
                       Margin="10,0,0,5" Focusable="False" IsEditable="False" IsReadOnly="True"
                       HorizontalAlignment="Right" IsEnabled="False" 
-                      DropDownOpened="TypeEnviromentBox_DropDownOpened">
+                      >
             </ComboBox>
         </StackPanel>
 

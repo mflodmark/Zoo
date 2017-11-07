@@ -51,14 +51,19 @@ namespace Zoo.UI
         {
             var dataAccess = new DataAccess();
 
-            var check = CheckComboBoxValuesForZeroValues();
-
-            if (check) return;
+            if (CheckComboBoxValuesForZeroValues()) return;
+            if (CheckName(AnimalName.Text))
+            {
+                ResultText.Text = "Namn är ej unikt";
+                return;
+            }
 
             if (double.TryParse(WeightBox.Text,out var weigth))
             {
                 dataAccess.AddAnimal(AnimalName.Text, EnviromentBox.Text, SpeciesBox.Text,
                     TypeBox.Text, weigth, CountryBox.Text, GenderBox.Text, parentsList, childrenList);
+
+                Close();
             }
             else
             {
@@ -66,10 +71,17 @@ namespace Zoo.UI
             }
         }
 
+        private bool CheckName(string input)
+        {
+            var dataAccess = new DataAccess();
+
+            return dataAccess.CheckName(input);
+        }
+
         private bool CheckComboBoxValuesForZeroValues()
         {
-            if (GenderBox.Text == "" || CountryBox.Text == "" || ChildrenBox.Text == "" || EnviromentBox.Text == ""
-                || TypeBox.Text == "")
+            if (GenderBox.Text == "" || CountryBox.Text == "" || WeightBox.Text == "" || EnviromentBox.Text == ""
+                || TypeBox.Text == "" || SpeciesBox.Text == "")
             {
                 ResultText.Text = "Något/några fält saknar värde";
                 ResultText.Foreground = Brushes.White;
@@ -176,10 +188,6 @@ namespace Zoo.UI
             ChildrenBox.IsEnabled = true;
         }
 
-        private void TypeEnviromentBox_DropDownOpened(object sender, EventArgs e)
-        {
-            MessageBox.Show("Ändring av typ och miljö sker på alla");
-        }
 
         private void AddParents_Click(object sender, RoutedEventArgs e)
         {

@@ -92,8 +92,8 @@ namespace Zoo.DAL
                     Children = new List<DataContext.Animal>(),
                 };
 
-                animal.Parents = parentList;
-                animal.Children = childList;
+                //animal.Parents = parentList;
+                //animal.Children = childList;
 
                 db.Animals.Add(animal);
 
@@ -136,6 +136,19 @@ namespace Zoo.DAL
                 var query = db.Animals.Where(y => y.AnimalId == animalId).Select(x=>x.Parents.Count);
 
                 check = query.Count();
+            }
+
+            return check;
+        }
+
+        public bool CheckName(string input)
+        {
+            bool check;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Any(x => x.Name == input);
+                check = query;
             }
 
             return check;
