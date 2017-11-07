@@ -24,6 +24,7 @@ namespace Zoo.DAL
             {
                 var query = db.Animals.Select(x => new Animal()
                 {
+
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
@@ -190,7 +191,6 @@ namespace Zoo.DAL
                     Diagnosis = x.Diagnosis.Beskrivning,
                     VetName = x.Vet.Name,
                     Date = x.DateAndTime.ToString(),
-                    //Time = x.Time.ToString(),
                     VetVisitId = x.VetVisitId.ToString()
 
                 }).ToList();
@@ -318,7 +318,11 @@ namespace Zoo.DAL
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
 
                 }).ToList();
 
@@ -339,7 +343,11 @@ namespace Zoo.DAL
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
 
                 }).ToList();
 
@@ -360,7 +368,11 @@ namespace Zoo.DAL
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
 
                 }).ToList();
 
@@ -381,8 +393,11 @@ namespace Zoo.DAL
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
-
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
                 }).ToList();
 
                 animal = new BindingList<Animal>(query);
@@ -402,7 +417,11 @@ namespace Zoo.DAL
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
 
                 }).ToList();
 
@@ -423,7 +442,11 @@ namespace Zoo.DAL
                     Name = x.Name,
                     Enviroment = x.Species.Enviroment.Name,
                     Species = x.Species.Name,
-                    Type = x.Species.Type.Name
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
 
                 }).ToList();
 
@@ -445,7 +468,11 @@ namespace Zoo.DAL
                         Name = x.Name,
                         Enviroment = x.Species.Enviroment.Name,
                         Species = x.Species.Name,
-                        Type = x.Species.Type.Name
+                        Type = x.Species.Type.Name,
+                        Gender = x.Gender.Name,
+                        CountryOfOrigin = x.CountryOfOrigin.Name,
+                        Weight = x.Weight,
+                        AnimalId = x.AnimalId
 
                     }).ToList();
 
