@@ -64,7 +64,8 @@ namespace Zoo.Migrations
                 Name = "Sharky",
                 Weight = 300.1,
                 GenderId = 1,
-                CountryOfOriginId = 3
+                CountryOfOriginId = 3,
+                SpeciesId = 17
             };
 
             var shark2Animal = new DataContext.Animal()
@@ -72,7 +73,8 @@ namespace Zoo.Migrations
                 Name = "Mr.Shark",
                 Weight = 10.1,
                 GenderId = 1,
-                CountryOfOriginId = 4
+                CountryOfOriginId = 4,
+                SpeciesId = 17
             };
 
             var speciesShark = new Species()
@@ -82,11 +84,11 @@ namespace Zoo.Migrations
                 EnviromentId = 26
             };
 
-            
+
             context.Species.AddOrUpdate(x => x.Name, speciesElephant, speciesShark);
             context.Animals.AddOrUpdate(x => x.Name, elephant1Animal, elephant2Animal, elephant3Animal
-                ,shark1Animal, shark2Animal);
-            
+                , shark1Animal, shark2Animal);
+
         }
     }
 }

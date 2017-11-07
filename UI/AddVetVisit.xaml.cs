@@ -26,11 +26,37 @@ namespace Zoo.UI
 
             AddValuesToComboBoxYear();
             AddValuesToComboBoxTime();
+            AddValuesToComboBoxDiagnosis();
+            AddValuesToComboBoxVet();
         }
+
+        #region AddToComboboxes
 
         private void AddValuesToComboBoxTime()
         {
+            for (int i = 0; i <= 23; i++)
+            {
+                for (int j = 1; j <= 59; j++)
+                {
+                    if (i <= 9 && j <= 9)
+                    {
+                        TimeBox.Items.Add("0" + i + ":" + "0" + j);
 
+                    } else if (i <= 9)
+                    {
+                        TimeBox.Items.Add("0" + i + ":" + j);
+
+                    }
+                    else if (j <= 9)
+                    {
+                        TimeBox.Items.Add(i + ":" + "0" + j);
+                    }
+                    else
+                    {
+                        TimeBox.Items.Add(i + ":" + j);
+                    }
+                }
+            }
         }
 
         private void AddValuesToComboBoxDay()
@@ -101,24 +127,37 @@ namespace Zoo.UI
 
         }
 
+        private void AddValuesToComboBoxDiagnosis()
+        {
+            var dbContext = new ZooContext();
+
+            foreach (var item in dbContext.Diagnoses)
+            {
+                DiagnosisBox.Items.Add(item.Beskrivning);
+            }
+        }
+
+        private void AddValuesToComboBoxVet()
+        {
+            var dbContext = new ZooContext();
+
+            foreach (var item in dbContext.Vets)
+            {
+                VetBox.Items.Add(item.Name);
+            }
+        }
+
+        #endregion
+
+
+
         private void AddNewVetVisit_Click(object sender, RoutedEventArgs e)
         {
 
             Close();
         }
 
-
-
-        private void AddValuesToComboBoxSpecies()
-        {
-            var dbContext = new ZooContext();
-
-            foreach (var item in dbContext.Species)
-            {
-                DiagnosisBox.Items.Add(item.Name);
-            }
-        }
-
+        
         private void YearBox_DropDownClosed(object sender, EventArgs e)
         {
             if (YearBox.Text == "") return;
