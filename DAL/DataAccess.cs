@@ -105,13 +105,13 @@ namespace Zoo.DAL
 
                 foreach (var item in parentList)
                 {
-                    //var link = new ParentChildrenLink()
-                    //{
-                    //    ChildId = animal.AnimalId,
-                    //    ParentId = item.AnimalId
-                    //};
+                    var link = new FamilyMembersLink()
+                    {
+                        //Child = animal,
+                        //Parent = item
+                    };
 
-                    //animal.Parents.Add(item);
+                    db.FamilyMembersLinks.Add(link);
                     db.SaveChanges();
                 }
 

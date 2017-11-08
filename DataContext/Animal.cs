@@ -35,7 +35,12 @@ namespace Zoo.DataContext
     {
         public int Id { get; set; }
 
-        public virtual Animal Parent { get; set; }
-        public virtual Animal Child { get; set; }
+        public int ParentId { get; set; }
+
+        public int ChildId { get; set; }
+
+        //public virtual Animal Parent { get; set; }
+
+        //public virtual Animal Child { get; set; }
     }
 }

@@ -45,6 +45,8 @@ namespace Zoo.DataContext
 
             modelBuilder.Entity<Diagnosis>().Property(x => x.Beskrivning).IsRequired();
 
+            //modelBuilder.Entity<FamilyMembersLink>()
+
         }
     }
 

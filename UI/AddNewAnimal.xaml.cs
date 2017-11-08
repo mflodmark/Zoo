@@ -45,6 +45,7 @@ namespace Zoo.UI
             var dataAccess = new DataAccess();
 
             if (CheckComboBoxValuesForZeroValues()) return;
+
             if (CheckName(AnimalName.Text))
             {
                 ResultText.Text = "Namn är ej unikt";

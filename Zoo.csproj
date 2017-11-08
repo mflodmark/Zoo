@@ -85,8 +85,7 @@
     <Compile Include="DataContext\Diagnosis.cs" />
     <Compile Include="DataContext\Enviroment.cs" />
     <Compile Include="DataContext\Gender.cs" />
-    <Compile Include="DataContext\Medicin.cs" />
-    <Compile Include="DataContext\Parent.cs" />
+    <Compile Include="DataContext\Medication.cs" />
     <Compile Include="DataContext\Species.cs" />
     <Compile Include="DataContext\Type.cs" />
     <Compile Include="DataContext\Vet.cs" />
@@ -159,6 +158,18 @@
     <Compile Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.cs" />
     <Compile Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.Designer.cs">
       <DependentUpon>201711080746536_RemoveLinkToFamilyUnderAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080759564_IdOnLink.cs" />
+    <Compile Include="Migrations\201711080759564_IdOnLink.Designer.cs">
+      <DependentUpon>201711080759564_IdOnLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080809294_AddTableMedication.cs" />
+    <Compile Include="Migrations\201711080809294_AddTableMedication.Designer.cs">
+      <DependentUpon>201711080809294_AddTableMedication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711080813585_PopulateMedication.cs" />
+    <Compile Include="Migrations\201711080813585_PopulateMedication.Designer.cs">
+      <DependentUpon>201711080813585_PopulateMedication.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\VetVisit.cs" />
@@ -238,6 +249,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.resx">
       <DependentUpon>201711080746536_RemoveLinkToFamilyUnderAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080759564_IdOnLink.resx">
+      <DependentUpon>201711080759564_IdOnLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080809294_AddTableMedication.resx">
+      <DependentUpon>201711080809294_AddTableMedication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080813585_PopulateMedication.resx">
+      <DependentUpon>201711080813585_PopulateMedication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
