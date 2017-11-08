@@ -22,25 +22,10 @@ namespace Zoo.DataContext
 
         public virtual Gender Gender { get; set; }
 
-        //public virtual List<Animal> FamilyMembersLink { get; set; }
+        public virtual List<Animal> Parents { get; set; }
 
-        //public virtual List<Animal> Parents { get; set; }
-
-        //public virtual List<Animal> Children { get; set; }
+        public virtual List<Animal> Children{ get; set; }
 
         public virtual List<VetVisit> VetVisits { get; set; }
-    }
-
-    public class FamilyMembersLink
-    {
-        public int Id { get; set; }
-
-        public int ParentId { get; set; }
-
-        public int ChildId { get; set; }
-
-        //public virtual Animal Parent { get; set; }
-
-        //public virtual Animal Child { get; set; }
     }
 }

@@ -63,7 +63,7 @@
                   Grid.Column="1" HorizontalAlignment="Left" Height="200" 
                   Margin="0,0,0,0" VerticalAlignment="Top" Width="780" 
                   SelectedCellsChanged="AnimalGrid_SelectedCellsChanged"
-                  IsManipulationEnabled="False"/>
+                  IsManipulationEnabled="False" IsReadOnly="True"/>
 
         <StackPanel Grid.Column="1" Grid.Row="7"
                     Orientation="Vertical" Margin="5,0,5,0" 
@@ -71,7 +71,8 @@
             <TextBlock Text="Föräldrar" TextAlignment="Center"></TextBlock>
 
             <DataGrid x:Name="ParentGrid" Height="160" 
-                      Margin="0,0,0,5" VerticalAlignment="Top" Width="250"/>
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="250"
+                      IsReadOnly="True"/>
         </StackPanel>
 
         <StackPanel Grid.Column="2" Grid.Row="7"
@@ -79,8 +80,9 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Barn" TextAlignment="Center"></TextBlock>
 
-            <DataGrid x:Name="ChildreGrid" Height="160" 
-                      Margin="0,0,0,5" VerticalAlignment="Top" Width="250"/>
+            <DataGrid x:Name="ChildrenGrid" Height="160" 
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="250"
+                      IsReadOnly="True"/>
         </StackPanel>
 
         <StackPanel Grid.Column="3" Grid.Row="7"
@@ -89,7 +91,8 @@
             <TextBlock Text="Veterinärbesök" TextAlignment="Center"></TextBlock>
 
             <DataGrid x:Name="VetGrid" Height="160" 
-                      Margin="0,0,0,5" VerticalAlignment="Top" Width="250"/>
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="250"
+                      IsReadOnly="True"/>
         </StackPanel>
 
 

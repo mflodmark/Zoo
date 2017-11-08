@@ -175,7 +175,28 @@
     <Compile Include="Migrations\201711080847342_UpdateToMedicationTable.Designer.cs">
       <DependentUpon>201711080847342_UpdateToMedicationTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711081000053_DropLinkClassParents.cs" />
+    <Compile Include="Migrations\201711081000053_DropLinkClassParents.Designer.cs">
+      <DependentUpon>201711081000053_DropLinkClassParents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711081158295_updateDiagnosis.cs" />
+    <Compile Include="Migrations\201711081158295_updateDiagnosis.Designer.cs">
+      <DependentUpon>201711081158295_updateDiagnosis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711081202494_updateNameInDiagnosisTable.cs" />
+    <Compile Include="Migrations\201711081202494_updateNameInDiagnosisTable.Designer.cs">
+      <DependentUpon>201711081202494_updateNameInDiagnosisTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711081205572_populateDiagnosisAfterDropCol.cs" />
+    <Compile Include="Migrations\201711081205572_populateDiagnosisAfterDropCol.Designer.cs">
+      <DependentUpon>201711081205572_populateDiagnosisAfterDropCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711081227066_AddLinkFamily.cs" />
+    <Compile Include="Migrations\201711081227066_AddLinkFamily.Designer.cs">
+      <DependentUpon>201711081227066_AddLinkFamily.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
+    <Compile Include="Model\Family.cs" />
     <Compile Include="Model\Medication.cs" />
     <Compile Include="Model\VetVisit.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -266,6 +287,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711080847342_UpdateToMedicationTable.resx">
       <DependentUpon>201711080847342_UpdateToMedicationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081000053_DropLinkClassParents.resx">
+      <DependentUpon>201711081000053_DropLinkClassParents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081158295_updateDiagnosis.resx">
+      <DependentUpon>201711081158295_updateDiagnosis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081202494_updateNameInDiagnosisTable.resx">
+      <DependentUpon>201711081202494_updateNameInDiagnosisTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081205572_populateDiagnosisAfterDropCol.resx">
+      <DependentUpon>201711081205572_populateDiagnosisAfterDropCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081227066_AddLinkFamily.resx">
+      <DependentUpon>201711081227066_AddLinkFamily.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

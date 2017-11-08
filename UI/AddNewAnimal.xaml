@@ -106,7 +106,8 @@
             <TextBlock Text="Föräldrar" TextAlignment="Center"></TextBlock>
 
             <DataGrid x:Name="ParentGrid" Height="120" 
-                      Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="300"
+                      IsReadOnly="True"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Välj befintligt djur: "></TextBlock>
                 <ComboBox x:Name="ParentBox" Width="100"
@@ -123,7 +124,8 @@
             <TextBlock Text="Barn" TextAlignment="Center"></TextBlock>
 
             <DataGrid x:Name="ChildrenGrid" Height="120" 
-                      Margin="0,0,0,5" VerticalAlignment="Top" Width="300"/>
+                      Margin="0,0,0,5" VerticalAlignment="Top" Width="300"
+                      IsReadOnly="True"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Välj befintligt djur: "></TextBlock>
                 <ComboBox x:Name="ChildrenBox" Width="100"

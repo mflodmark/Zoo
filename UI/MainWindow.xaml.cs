@@ -81,7 +81,15 @@ namespace Zoo
             var dataAccess = new DataAccess();
 
             AnimalGrid.ItemsSource = dataAccess.Search(SearchTypeBox.Text, SearchEnviromentBox.Text, SearchSpeciesBox.Text);
-            
+
+            VetGrid.ItemsSource = null;
+            ParentGrid.ItemsSource = null;
+            ChildrenGrid.ItemsSource = null;
+
+            VetGrid.Items.Refresh();
+            ParentGrid.Items.Refresh();
+            ChildrenGrid.Items.Refresh();
+
         }
 
         #endregion
@@ -141,10 +149,10 @@ namespace Zoo
                     string id = (AnimalGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                     currentId = int.Parse(id);
 
-                    //if (dataAccess.CheckAnimalsParent(currentId) > 0)
-                    //{
-                    //    //ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
-                    //}
+                    if (dataAccess.CheckAnimalsParent(currentId) > 0)
+                    {
+                        ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                    }
 
                     if (dataAccess.CheckAnimalsVet(currentId) > 0)
                     {

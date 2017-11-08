@@ -144,7 +144,7 @@ namespace Zoo.UI
 
             foreach (var item in dbContext.Diagnoses)
             {
-                DiagnosisBox.Items.Add(item.Beskrivning);
+                DiagnosisBox.Items.Add(item.Name);
             }
         }
 

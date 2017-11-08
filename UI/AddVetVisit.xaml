@@ -111,7 +111,7 @@
         </StackPanel>
         
         <DataGrid x:Name="MedicationGrid" Grid.Column="3" Grid.ColumnSpan="2"
-                  Grid.Row="4" Grid.RowSpan="4"></DataGrid>
+                  Grid.Row="4" Grid.RowSpan="4" IsReadOnly="True"></DataGrid>
 
         <Button x:Name="AddNewVetVisit" Grid.Row="7" Grid.Column="1"
                 Content="Lägg till nytt besök" Margin="10" Click="AddNewVetVisit_Click"

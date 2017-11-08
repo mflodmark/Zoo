@@ -9,5 +9,7 @@
         public string VetName { get; set; }
 
         public string Diagnosis { get; set; }
+
+        public string Medications { get; set; }
     }
 }

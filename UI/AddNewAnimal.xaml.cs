@@ -23,8 +23,8 @@ namespace Zoo.UI
     public partial class AddNewAnimal : Window
     {
          
-        List<Animal> parentsList = new List<Animal>();
-        List<Animal> childrenList = new List<Animal>();
+        List<Model.Family> parentsList = new List<Model.Family>();
+        List<Model.Family> childrenList = new List<Model.Family>();
 
         public AddNewAnimal()
         {
@@ -188,7 +188,6 @@ namespace Zoo.UI
 
         private void AddParents_Click(object sender, RoutedEventArgs e)
         {
-            var dbContext = new ZooContext();
 
             if (ParentGrid.Items.Count >= 2)
             {
@@ -196,56 +195,41 @@ namespace Zoo.UI
             }
 
             var subString = ParentBox.Text.Split('-');
-            var firstSubString = subString[0];
+            var name = subString[0];
+            var gender = subString[1];
 
-            var animal = dbContext.Animals.SingleOrDefault(x => x.Name == firstSubString);
+            var animal = new Model.Family()
+            {
+                Name = name,
+                Gender = gender
+
+            };
 
             parentsList.Add(animal);
 
-            var list = new BindingList<Model.Animal>(parentsList.Select(x => new Model.Animal()
-            {
-                Name = x.Name,
-                Enviroment = x.Species.Enviroment.Name,
-                Species = x.Species.Name,
-                Type = x.Species.Type.Name,
-                Gender = x.Gender.Name,
-                CountryOfOrigin = x.CountryOfOrigin.Name,
-                Weight = x.Weight,
-                AnimalId = x.AnimalId
-
-            }).ToList());
-
-            ParentGrid.ItemsSource = list;
-
-
+            ParentGrid.ItemsSource = null;
+            ParentGrid.ItemsSource = parentsList;
+            
         }
 
         private void AddChildren_Click(object sender, RoutedEventArgs e)
         {
-            var dbContext = new ZooContext();
-
             var subString = ChildrenBox.Text.Split('-');
-            var firstSubString = subString[0];
+            var name = subString[0];
+            var gender = subString[1];
 
-            var animal = dbContext.Animals.SingleOrDefault(x => x.Name == firstSubString);
+            var animal = new Model.Family()
+            {
+                Name = name,
+                Gender = gender
+
+            };
 
             childrenList.Add(animal);
 
-            var list = new BindingList<Model.Animal>(childrenList.Select(x => new Model.Animal()
-            {
-                Name = x.Name,
-                Enviroment = x.Species.Enviroment.Name,
-                Species = x.Species.Name,
-                Type = x.Species.Type.Name,
-                Gender = x.Gender.Name,
-                CountryOfOrigin = x.CountryOfOrigin.Name,
-                Weight = x.Weight,
-                AnimalId = x.AnimalId
+            ChildrenGrid.ItemsSource = null;
+            ChildrenGrid.ItemsSource = childrenList;
 
-
-            }).ToList());
-
-            ChildrenGrid.ItemsSource = list;
         }
     }
 }
