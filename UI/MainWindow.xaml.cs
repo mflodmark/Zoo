@@ -113,7 +113,7 @@ namespace Zoo
 
             openForm.ChangeToFromEditMode(false);
 
-            openForm.Show();
+            openForm.ShowDialog();
         }
 
 
@@ -126,7 +126,7 @@ namespace Zoo
             openForm.ChangeCurrent(currentId);
             openForm.AddEditDetailsIfTrue();
 
-            openForm.Show();
+            openForm.ShowDialog();
         }
 
 
@@ -141,7 +141,7 @@ namespace Zoo
 
                 openForm.UpdateCurrentId(currentId);
 
-                openForm.Show();
+                openForm.ShowDialog();
             }
 
         }

@@ -63,11 +63,16 @@ namespace Zoo.UI
 
         }
 
+        #region EditMode
+
         public void AddEditDetailsIfTrue()
         {
             if (inEditMode)
             {
                 AddValuesFromAnimal(currentId);
+
+                ChildrenBox.IsEditable = true;
+                ParentBox.IsEditable = true;
 
                 AddAnimal.Content = "Genomför ändring!";
             }
@@ -83,13 +88,17 @@ namespace Zoo.UI
             currentId = animalId;
         }
 
+        #endregion
+
+
+
         private void AddAnimal_Click(object sender, RoutedEventArgs e)
         {
             var dataAccess = new DataAccess();
 
             if (CheckComboBoxValuesForZeroValues()) return;
 
-            if (CheckName(AnimalName.Text))
+            if (CheckName(AnimalName.Text) && inEditMode == false)
             {
                 ResultText.Text = "Namn är ej unikt";
                 return;
