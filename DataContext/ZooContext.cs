@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace Zoo.DataContext
 {
     using System;
@@ -50,6 +52,10 @@ namespace Zoo.DataContext
             //.Map(y => y.MapLeftKey("ParentId")).Map(z => z.MapRightKey("ChildId"));
             //m.MapKey(a => a.Id, "BillingAddressId");   
             //modelBuilder.Entity<Animal>().HasMany(x => x.Children).WithMany();
+
+            modelBuilder.Entity<Description>().Property(x => x.Name).IsRequired();
+
+            modelBuilder.Entity<Description>().HasRequired(v => v.VetVisit).WithRequiredDependent(d => d.Description);
 
         }
     }

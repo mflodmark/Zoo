@@ -83,6 +83,7 @@
     <Compile Include="DataContext\Animal.cs" />
     <Compile Include="DataContext\CountryOfOrigin.cs" />
     <Compile Include="DataContext\Diagnosis.cs" />
+    <Compile Include="DataContext\Description.cs" />
     <Compile Include="DataContext\Enviroment.cs" />
     <Compile Include="DataContext\Gender.cs" />
     <Compile Include="DataContext\Medication.cs" />
@@ -195,6 +196,18 @@
     <Compile Include="Migrations\201711081227066_AddLinkFamily.Designer.cs">
       <DependentUpon>201711081227066_AddLinkFamily.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711081352102_AddTableDiagnosisDescription.cs" />
+    <Compile Include="Migrations\201711081352102_AddTableDiagnosisDescription.Designer.cs">
+      <DependentUpon>201711081352102_AddTableDiagnosisDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711081406075_MoveDescriptionToOwnTable.cs" />
+    <Compile Include="Migrations\201711081406075_MoveDescriptionToOwnTable.Designer.cs">
+      <DependentUpon>201711081406075_MoveDescriptionToOwnTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711081424467_addDescriptionToVetVisit.cs" />
+    <Compile Include="Migrations\201711081424467_addDescriptionToVetVisit.Designer.cs">
+      <DependentUpon>201711081424467_addDescriptionToVetVisit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\Family.cs" />
     <Compile Include="Model\Medication.cs" />
@@ -302,6 +315,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711081227066_AddLinkFamily.resx">
       <DependentUpon>201711081227066_AddLinkFamily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081352102_AddTableDiagnosisDescription.resx">
+      <DependentUpon>201711081352102_AddTableDiagnosisDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081406075_MoveDescriptionToOwnTable.resx">
+      <DependentUpon>201711081406075_MoveDescriptionToOwnTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711081424467_addDescriptionToVetVisit.resx">
+      <DependentUpon>201711081424467_addDescriptionToVetVisit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

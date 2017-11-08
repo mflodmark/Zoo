@@ -111,24 +111,6 @@ namespace Zoo
             openForm.Show();
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            var dataAccess = new DataAccess();
-
-            try
-            {
-                dataAccess.DeleteAnimal(currentId);
-
-                AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
-            }
-            catch (Exception)
-            {
-
-                ResultText.Text = "Välj ett djur i listan";
-            }
-
-
-        }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
@@ -190,9 +172,42 @@ namespace Zoo
 
         }
 
+        #region Delete
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dataAccess = new DataAccess();
+
+            try
+            {
+                dataAccess.DeleteAnimal(currentId);
+
+                AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett djur i listan";
+            }
+
+
+        }
+
         private void DeleteParentsBtn_Click(object sender, RoutedEventArgs e)
         {
+            var dataAccess = new DataAccess();
 
+            try
+            {
+                dataAccess.DeleteAnimal(currentId);
+
+                ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj en förälder i listan";
+            }
         }
 
         private void DeleteChildrenBtn_Click(object sender, RoutedEventArgs e)
@@ -209,5 +224,8 @@ namespace Zoo
         {
 
         }
+
+        #endregion
+
     }
 }

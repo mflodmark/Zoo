@@ -215,7 +215,8 @@ namespace Zoo.DAL
 
                 var visitList = query.Select(x => new VetVisit()
                 {
-                    Diagnosis = x.Diagnosis.Name,
+                    //Diagnosis = x.Description.Diagnosis.Name,
+                    //Description = x.Description.Name,
                     VetName = x.Vet.Name,
                     Date = x.DateAndTime.ToString(),
                     VetVisitId = x.VetVisitId.ToString(),
@@ -244,7 +245,8 @@ namespace Zoo.DAL
             return check;
         }
 
-        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, List<Model.Medication> medicationsList)
+        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, 
+            List<Model.Medication> medicationsList, string descriptionText)
         {
             using (var db = new ZooContext())
             {
@@ -268,6 +270,16 @@ namespace Zoo.DAL
                     diaId = diagnosis.DiagnosisId;
                 }
 
+                // Description
+                var newDiagnosisDescription = new Description()
+                {
+                    Name = descriptionText,
+                    DiagnosisId = diaId
+                };
+
+                db.SaveChanges();
+                
+
                 // Vet
                 var vet = db.Vets.SingleOrDefault(x => x.Name == vetName);
                 
@@ -277,10 +289,12 @@ namespace Zoo.DAL
                 {
                     AnimalId = animalId,
                     DateAndTime = date,
-                    DiagnosisId = diaId,
+                    //DescriptionId = newDiagnosisDescription.DescriptionId,
                     VetId = vet.VetId,
-                    Medications = new List<Medication>()
+                    Medications = new List<Medication>(),
+                    
                 };
+
 
                 foreach (var item in medicationsList)
                 {
@@ -288,7 +302,7 @@ namespace Zoo.DAL
                     vetVisit.Medications.Add(q);
 
                 }
-                
+
                 db.VetVisits.Add(vetVisit);
 
                 db.SaveChanges();
