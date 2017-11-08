@@ -171,7 +171,12 @@
     <Compile Include="Migrations\201711080813585_PopulateMedication.Designer.cs">
       <DependentUpon>201711080813585_PopulateMedication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711080847342_UpdateToMedicationTable.cs" />
+    <Compile Include="Migrations\201711080847342_UpdateToMedicationTable.Designer.cs">
+      <DependentUpon>201711080847342_UpdateToMedicationTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
+    <Compile Include="Model\Medication.cs" />
     <Compile Include="Model\VetVisit.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
       <DependentUpon>AddNewAnimal.xaml</DependentUpon>
@@ -258,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711080813585_PopulateMedication.resx">
       <DependentUpon>201711080813585_PopulateMedication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080847342_UpdateToMedicationTable.resx">
+      <DependentUpon>201711080847342_UpdateToMedicationTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

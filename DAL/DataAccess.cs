@@ -229,7 +229,7 @@ namespace Zoo.DAL
             return check;
         }
 
-        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName)
+        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, List<Medication> medicationsList)
         {
             using (var db = new ZooContext())
             {
@@ -263,14 +263,45 @@ namespace Zoo.DAL
                     AnimalId = animalId,
                     DateAndTime = date,
                     DiagnosisId = diaId,
-                    VetId = vet.VetId
-                    
+                    VetId = vet.VetId,
+                    Medications = new List<Medication>()
                 };
+
+                foreach (var item in medicationsList)
+                {
+                    vetVisit.Medications.Add(item);
+
+                }
+
 
                 db.VetVisits.Add(vetVisit);
 
                 db.SaveChanges();
+
             }
+        }
+
+        public BindingList<Model.Medication> GetMedications(int vetVisitId)
+        {
+            BindingList<Model.Medication> list;
+
+            using (var db = new ZooContext())
+            {
+                var query = db.VetVisits.Where(x => x.VetVisitId == vetVisitId).SelectMany(y => y.Medications);
+                
+                var meds = query.Select(x => new Model.Medication()
+                {
+                    Name = x.Name,
+                    MedicationId = x.MedicationId.ToString()
+
+                }).ToList();
+
+                list = new BindingList<Model.Medication>(meds);
+
+            }
+
+            return list;
+
         }
 
 

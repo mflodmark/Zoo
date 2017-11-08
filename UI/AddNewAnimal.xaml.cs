@@ -216,6 +216,8 @@ namespace Zoo.UI
             }).ToList());
 
             ParentGrid.ItemsSource = list;
+
+
         }
 
         private void AddChildren_Click(object sender, RoutedEventArgs e)

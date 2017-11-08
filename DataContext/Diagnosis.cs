@@ -10,7 +10,7 @@ namespace Zoo.DataContext
 
         public virtual List<VetVisit> VetVisits { get; set; }
 
-        public virtual List<Medication> Medications { get; set; }
+        //public virtual List<Medication> Medications { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Zoo.DataContext
 {
@@ -19,5 +20,8 @@ namespace Zoo.DataContext
         public int DiagnosisId { get; set; }
 
         public virtual Diagnosis Diagnosis { get; set; }
+
+        public virtual List<Medication> Medications { get; set; }
+        
     }
 }

@@ -153,7 +153,7 @@ namespace Zoo.UI
 
             foreach (var item in dbContext.Medications)
             {
-                DiagnosisBox.Items.Add(item.Name);
+                MedicationBox.Items.Add(item.Name);
             }
         }
 
@@ -180,7 +180,7 @@ namespace Zoo.UI
 
             var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
 
-            dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text);
+            dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, medicationsList);
 
             Close();
         }
@@ -205,18 +205,13 @@ namespace Zoo.UI
 
         private void AddMedicationButton_Click(object sender, RoutedEventArgs e)
         {
-            var dbContext = new ZooContext();
+            var dataAccess = new DataAccess();
 
-            var medication = dbContext.Medications.SingleOrDefault(x => x.Name == MedicationBox.Text);
+            var medicationsList = new List<Medication>();
 
             medicationsList.Add(medication);
 
-            var list = new BindingList<Medication>(medicationsList.Select(x => new Medication()
-            {
-                Name = x.Name,
-                MedicationId = x.MedicationId
 
-            }).ToList());
 
             MedicationGrid.ItemsSource = list;
         }
