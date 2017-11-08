@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Zoo.UI
     public partial class AddVetVisit : Window
     {
         private int currentId = 0;
+        private List<Medication> medicationsList = new List<Medication>();
 
         public AddVetVisit()
         {
@@ -31,6 +33,7 @@ namespace Zoo.UI
             AddValuesToComboBoxTime();
             AddValuesToComboBoxDiagnosis();
             AddValuesToComboBoxVet();
+            AddValuesToComboBoxMedication();
         }
 
         #region AddToComboboxes
@@ -144,6 +147,16 @@ namespace Zoo.UI
             }
         }
 
+        private void AddValuesToComboBoxMedication()
+        {
+            var dbContext = new ZooContext();
+
+            foreach (var item in dbContext.Medications)
+            {
+                DiagnosisBox.Items.Add(item.Name);
+            }
+        }
+
         private void AddValuesToComboBoxVet()
         {
             var dbContext = new ZooContext();
@@ -166,7 +179,6 @@ namespace Zoo.UI
             var dataAccess = new DataAccess();
 
             var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
-            //var timeConverted = Convert.ToDateTime($"{TimeBox.Text}");
 
             dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text);
 
@@ -189,6 +201,24 @@ namespace Zoo.UI
             AddValuesToComboBoxDay();
             DayBox.IsEditable = true;
 
+        }
+
+        private void AddMedicationButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dbContext = new ZooContext();
+
+            var medication = dbContext.Medications.SingleOrDefault(x => x.Name == MedicationBox.Text);
+
+            medicationsList.Add(medication);
+
+            var list = new BindingList<Medication>(medicationsList.Select(x => new Medication()
+            {
+                Name = x.Name,
+                MedicationId = x.MedicationId
+
+            }).ToList());
+
+            MedicationGrid.ItemsSource = list;
         }
     }
 }

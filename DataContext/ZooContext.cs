@@ -22,6 +22,7 @@ namespace Zoo.DataContext
         public virtual DbSet<Diagnosis> Diagnoses { get; set; }
         public virtual DbSet<Vet> Vets { get; set; }
         public virtual DbSet<VetVisit> VetVisits { get; set; }
+        public virtual DbSet<Medication> Medications { get; set; }
         public virtual DbSet<FamilyMembersLink> FamilyMembersLinks { get; set; }
 
 
