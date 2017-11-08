@@ -37,7 +37,7 @@ namespace Zoo.UI
 
         private void AddValuesToComboBoxTime()
         {
-            for (int i = 0; i <= 23; i++)
+            for (int i = 7; i <= 19; i++)
             {
                 for (int j = 0; j <= 59; j++)
                 {
@@ -64,6 +64,8 @@ namespace Zoo.UI
 
         private void AddValuesToComboBoxDay()
         {
+            DayBox.Items.Clear();
+
             int daysInMonth = 0;
 
             switch (int.Parse(MonthBox.Text))
@@ -115,6 +117,8 @@ namespace Zoo.UI
 
         private void AddValuesToComboBoxMonth()
         {
+            MonthBox.Items.Clear();
+
             for (int i = 1; i <= 12; i++)
             {
                 MonthBox.Items.Add(i);

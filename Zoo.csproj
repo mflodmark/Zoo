@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201711071640568_FamilyMembers.Designer.cs">
       <DependentUpon>201711071640568_FamilyMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.cs" />
+    <Compile Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.Designer.cs">
+      <DependentUpon>201711080746536_RemoveLinkToFamilyUnderAnimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\VetVisit.cs" />
     <Compile Include="UI\AddNewAnimal.xaml.cs">
@@ -231,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711071640568_FamilyMembers.resx">
       <DependentUpon>201711071640568_FamilyMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.resx">
+      <DependentUpon>201711080746536_RemoveLinkToFamilyUnderAnimal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

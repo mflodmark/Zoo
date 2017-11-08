@@ -131,6 +131,9 @@ namespace Zoo.UI
         {
             var dbContext = new ZooContext();
 
+            ParentBox.Items.Clear();
+            ChildrenBox.Items.Clear();
+
             var animals = dbContext.Animals.Where(x => x.Species.Name == species).ToList();
 
             foreach (var item in animals)
