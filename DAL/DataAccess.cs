@@ -44,29 +44,6 @@ namespace Zoo.DAL
             return animal;
         }
 
-        public void DeleteAnimal(int animalId)
-        {
-            using (var db = new ZooContext())
-            {
-                db.Animals.Remove(db.Animals.Find(animalId));
-
-                db.SaveChanges();
-            }
-        }
-
-        public void DeleteParent(int animalId, string parentName)
-        {
-            using (var db = new ZooContext())
-            {
-                var animal = db.Animals.Find(animalId);
-
-                var parent = animal.Parents.SingleOrDefault(y => y.Name == parentName);
-
-                animal.Parents.Remove(parent);
-
-                db.SaveChanges();
-            }
-        }
 
         public void AddAnimal(string animalName, string enviromentName, string speciesName, string typeName, double weigth, string countryName,
             string genderName, List<Model.Family> parentList, List<Model.Family> childList)
@@ -121,6 +98,62 @@ namespace Zoo.DAL
             }
         }
 
+
+        #endregion
+
+        #region Delete
+
+        public void DeleteAnimal(int animalId)
+        {
+            using (var db = new ZooContext())
+            {
+                db.Animals.Remove(db.Animals.Find(animalId));
+
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteParent(int animalId, string parentName)
+        {
+            using (var db = new ZooContext())
+            {
+                var animal = db.Animals.Find(animalId);
+
+                var parent = animal.Parents.SingleOrDefault(y => y.Name == parentName);
+
+                animal.Parents.Remove(parent);
+
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteChild(int animalId, string childName)
+        {
+            using (var db = new ZooContext())
+            {
+                var animal = db.Animals.Find(animalId);
+
+                var child = animal.Children.SingleOrDefault(y => y.Name == childName);
+
+                animal.Children.Remove(child);
+
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteVetBooking(int animalId, int vetBookingId)
+        {
+            using (var db = new ZooContext())
+            {
+                var animal = db.Animals.Find(animalId);
+
+                var vetBooking = db.VetVisits.Find(vetBookingId);
+
+                animal.VetVisits.Remove(vetBooking);
+
+                db.SaveChanges();
+            }
+        }
 
         #endregion
 

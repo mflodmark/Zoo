@@ -96,7 +96,7 @@
 
             <DataGrid x:Name="ChildrenGrid" Height="160" 
                       Margin="0,0,0,5" VerticalAlignment="Top" Width="250"
-                      IsReadOnly="True"/>
+                      IsReadOnly="True" SelectedCellsChanged="ChildrenGrid_SelectedCellsChanged"/>
         </StackPanel>
 
         <StackPanel Grid.Column="3" Grid.Row="8"
@@ -106,7 +106,7 @@
 
             <DataGrid x:Name="VetGrid" Height="160" 
                       Margin="0,0,0,5" VerticalAlignment="Top" Width="250"
-                      IsReadOnly="True"/>
+                      IsReadOnly="True" SelectedCellsChanged="VetGrid_SelectedCellsChanged"/>
         </StackPanel>
 
 

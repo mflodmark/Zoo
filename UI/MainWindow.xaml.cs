@@ -181,9 +181,9 @@ namespace Zoo
 
             try
             {
-                dataAccess.DeleteParent(currentId, parentName);
+                dataAccess.DeleteChild(currentId, childName);
 
-                ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                ChildrenGrid.ItemsSource = dataAccess.LoadAnimalsChildren(currentId);
             }
             catch (Exception)
             {
@@ -198,9 +198,9 @@ namespace Zoo
 
             try
             {
-                dataAccess.DeleteParent(currentId, parentName);
+                dataAccess.DeleteVetBooking(currentId, visitId);
 
-                ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
             }
             catch (Exception)
             {
@@ -282,6 +282,56 @@ namespace Zoo
             }
 
         }
+
+        private void ChildrenGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+                var dataAccess = new DataAccess();
+
+                object item = ChildrenGrid.SelectedItem;
+
+                if (item != null)
+                {
+                    string id = (ChildrenGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    childName = id;
+
+                    ResultText.Text = $"Valt barn = {childName}";
+
+                }
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett barn i listan";
+            }
+
+        }
+
+        private void VetGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+                var dataAccess = new DataAccess();
+
+                object item = VetGrid.SelectedItem;
+
+                if (item != null)
+                {
+                    string id = (VetGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    visitId = int.Parse(id);
+
+                    ResultText.Text = $"Valt besöksId = {visitId}";
+
+                }
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett besök i listan";
+            }
+        }
+
         #endregion
 
 
