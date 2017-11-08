@@ -189,5 +189,25 @@ namespace Zoo
             }
 
         }
+
+        private void DeleteParentsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteChildrenBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteVetBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoToVetBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

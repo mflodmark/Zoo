@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zoo"
         mc:Ignorable="d" FontSize="18" FontFamily="Segui UI"
-        Title="Zoo" Height="650" Width="860">
+        Title="Zoo" Height="700" Width="860">
     <Grid>
         <Grid.Resources>
 
@@ -21,6 +21,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -64,8 +66,20 @@
                   Margin="0,0,0,0" VerticalAlignment="Top" Width="780" 
                   SelectedCellsChanged="AnimalGrid_SelectedCellsChanged"
                   IsManipulationEnabled="False" IsReadOnly="True"/>
+        
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="7" Orientation="Horizontal">
+            <Button x:Name="EditButton" Content="Ändra" 
+                    Margin="5" Click="EditButton_Click" Width="250">
+            </Button>
 
-        <StackPanel Grid.Column="1" Grid.Row="7"
+            <Button x:Name="DeleteButton" Content="Ta bort" Width="250"
+                    Margin="5" Click="DeleteButton_Click"></Button>
+            <Button x:Name="AddButton" Content="Lägg till nytt djur" Width="250"
+                    Margin="5" Click="AddButton_Click"></Button>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="8"
                     Orientation="Vertical" Margin="5,0,5,0" 
                     HorizontalAlignment="Center">
             <TextBlock Text="Föräldrar" TextAlignment="Center"></TextBlock>
@@ -75,7 +89,7 @@
                       IsReadOnly="True"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="7"
+        <StackPanel Grid.Column="2" Grid.Row="8"
                     Orientation="Vertical" Margin="5,0,5,0" 
                     HorizontalAlignment="Center">
             <TextBlock Text="Barn" TextAlignment="Center"></TextBlock>
@@ -85,7 +99,7 @@
                       IsReadOnly="True"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="3" Grid.Row="7"
+        <StackPanel Grid.Column="3" Grid.Row="8"
                     Orientation="Vertical" Margin="5,0,5,0" 
                     HorizontalAlignment="Center">
             <TextBlock Text="Veterinärbesök" TextAlignment="Center"></TextBlock>
@@ -96,19 +110,23 @@
         </StackPanel>
 
 
-        <Button x:Name="EditButton" Content="Ändra" Grid.Column="1" Grid.Row="8"
-        Margin="5" Click="EditButton_Click">
-        </Button>
-
-        <Button x:Name="DeleteButton" Content="Ta bort" Grid.Column="2" Grid.Row="8"
-        Margin="5" Click="DeleteButton_Click"></Button>
-
-        <Button x:Name="AddButton" Content="Lägg till nytt djur" Grid.Column="3" Grid.Row="8"
-                Margin="5" Click="AddButton_Click"></Button>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="9" Orientation="Horizontal">
+            <Button x:Name="DeleteParentsBtn" Content="Ta bort förälder" 
+                    Margin="5" Width="250" Click="DeleteParentsBtn_Click"></Button>
+            <Button x:Name="DeleteChildrenBtn" Content="Ta bort barn" Width="250"
+                    Margin="5" Click="DeleteChildrenBtn_Click" ></Button>
+            <Button x:Name="DeleteVetBtn" Content="Avboka besök" Width="250"
+                    Margin="5" Click="DeleteVetBtn_Click" ></Button>
+        </StackPanel>
 
         <Button x:Name="AddVetVisitButton" Content="Lägg till nytt besök" 
-                Grid.Column="3" Grid.Row="9"
+                Grid.Column="3" Grid.Row="10"
                 Margin="5" Click="AddVetVisitButton_Click" ></Button>
+
+
+        <Button x:Name="GoToVetBtn" Content="Gå på besök" 
+                Grid.Column="3" Grid.Row="11"
+                Margin="5" Click="GoToVetBtn_Click"></Button>
 
         <TextBlock x:Name="ResultText" Grid.Column="2" Grid.Row="10" TextAlignment="Center"
                    ></TextBlock>
