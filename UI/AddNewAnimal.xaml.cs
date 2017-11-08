@@ -90,7 +90,53 @@ namespace Zoo.UI
 
         #endregion
 
+        #region Clicks
 
+        private void AddParents_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (ParentGrid.Items.Count >= 2)
+            {
+                AddParents.IsEnabled = false;
+            }
+
+            var subString = ParentBox.Text.Split('-');
+            var name = subString[0];
+            var gender = subString[1];
+
+            var animal = new Model.Family()
+            {
+                Name = name,
+                Gender = gender
+
+            };
+
+            parentsList.Add(animal);
+
+            ParentGrid.ItemsSource = null;
+            ParentGrid.ItemsSource = parentsList;
+
+        }
+
+        private void AddChildren_Click(object sender, RoutedEventArgs e)
+        {
+            var subString = ChildrenBox.Text.Split('-');
+            var name = subString[0];
+            var gender = subString[1];
+
+            var animal = new Model.Family()
+            {
+                Name = name,
+                Gender = gender
+
+            };
+
+            childrenList.Add(animal);
+
+            ChildrenGrid.ItemsSource = null;
+            ChildrenGrid.ItemsSource = childrenList;
+
+        }
 
         private void AddAnimal_Click(object sender, RoutedEventArgs e)
         {
@@ -127,27 +173,7 @@ namespace Zoo.UI
 
         }
 
-
-        private bool CheckName(string input)
-        {
-            var dataAccess = new DataAccess();
-
-            return dataAccess.CheckName(input);
-        }
-
-        private bool CheckComboBoxValuesForZeroValues()
-        {
-            if (GenderBox.Text == "" || CountryBox.Text == "" || WeightBox.Text == "" || EnviromentBox.Text == ""
-                || TypeBox.Text == "" || SpeciesBox.Text == "")
-            {
-                ResultText.Text = "Något/några fält saknar värde";
-                ResultText.Foreground = Brushes.White;
-                ResultText.Background = Brushes.DarkRed;
-                return true;
-            }
-
-            return false;
-        }
+        #endregion
 
         #region AddValuesToComboBoxes
 
@@ -211,12 +237,18 @@ namespace Zoo.UI
 
         #endregion
 
+        #region DropDown
+
         private void SpeciesBox_DropDownClosed(object sender, EventArgs e)
-        {   
+        {
             CheckSpeciesInput(SpeciesBox.Text);
             AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
 
         }
+
+        #endregion
+
+        #region CheckInput
 
         private void CheckSpeciesInput(string input)
         {
@@ -248,51 +280,32 @@ namespace Zoo.UI
             ChildrenBox.IsEnabled = true;
         }
 
-
-        private void AddParents_Click(object sender, RoutedEventArgs e)
+        private bool CheckName(string input)
         {
+            var dataAccess = new DataAccess();
 
-            if (ParentGrid.Items.Count >= 2)
+            return dataAccess.CheckName(input);
+        }
+
+        private bool CheckComboBoxValuesForZeroValues()
+        {
+            if (GenderBox.Text == "" || CountryBox.Text == "" || WeightBox.Text == "" || EnviromentBox.Text == ""
+                || TypeBox.Text == "" || SpeciesBox.Text == "")
             {
-                AddParents.IsEnabled = false;
+                ResultText.Text = "Något/några fält saknar värde";
+                ResultText.Foreground = Brushes.White;
+                ResultText.Background = Brushes.DarkRed;
+                return true;
             }
 
-            var subString = ParentBox.Text.Split('-');
-            var name = subString[0];
-            var gender = subString[1];
-
-            var animal = new Model.Family()
-            {
-                Name = name,
-                Gender = gender
-
-            };
-
-            parentsList.Add(animal);
-
-            ParentGrid.ItemsSource = null;
-            ParentGrid.ItemsSource = parentsList;
-            
+            return false;
         }
 
-        private void AddChildren_Click(object sender, RoutedEventArgs e)
-        {
-            var subString = ChildrenBox.Text.Split('-');
-            var name = subString[0];
-            var gender = subString[1];
+        #endregion
 
-            var animal = new Model.Family()
-            {
-                Name = name,
-                Gender = gender
 
-            };
 
-            childrenList.Add(animal);
 
-            ChildrenGrid.ItemsSource = null;
-            ChildrenGrid.ItemsSource = childrenList;
 
-        }
     }
 }

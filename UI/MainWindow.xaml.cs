@@ -99,14 +99,14 @@ namespace Zoo
 
         #endregion
 
-
+        #region ButtonClicks
 
         private void LoadInitialDataToDataGrid()
         {
             var dataAccess = new DataAccess();
 
             AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
-            
+
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -135,9 +135,6 @@ namespace Zoo
             LoadInitialDataToDataGrid();
         }
 
-
-
-
         private void AddVetVisitButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -153,6 +150,7 @@ namespace Zoo
             }
 
         }
+        #endregion
 
         #region Delete
 

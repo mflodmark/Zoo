@@ -42,22 +42,6 @@ namespace Zoo.DAL
 
                 var q = query.SingleOrDefault(y => y.AnimalId == animalId);
 
-                //var q = db.Animals.Where(y => y.AnimalId == animalId).ToList();
-
-                //var value = q.Select(x => new Animal()
-                //{
-
-                //    Name = x.Name,
-                //    Enviroment = x.Species.Enviroment.Name,
-                //    Species = x.Species.Name,
-                //    Type = x.Species.Type.Name,
-                //    Gender = x.Gender.Name,
-                //    CountryOfOrigin = x.CountryOfOrigin.Name,
-                //    Weight = x.Weight,
-                //    AnimalId = x.AnimalId
-
-                //});
-
                 animal = q;
             }
 
@@ -291,6 +275,7 @@ namespace Zoo.DAL
 
         #endregion
 
+        #region Checks
 
         public bool CheckName(string input)
         {
@@ -305,6 +290,8 @@ namespace Zoo.DAL
             return check;
         }
 
+        #endregion
+        
         #region Children
 
 
@@ -344,8 +331,7 @@ namespace Zoo.DAL
         }
 
         #endregion
-
-
+        
         #region BookVetVisit
 
         public BindingList<VetVisit> LoadAnimalsVet(int animalId)
@@ -455,7 +441,7 @@ namespace Zoo.DAL
 
         #endregion
 
-
+        #region Medications
 
         public BindingList<Model.Medication> GetMedications(int vetVisitId)
         {
@@ -464,7 +450,7 @@ namespace Zoo.DAL
             using (var db = new ZooContext())
             {
                 var query = db.VetVisits.Where(x => x.VetVisitId == vetVisitId).SelectMany(y => y.Medications);
-                
+
                 var meds = query.Select(x => new Model.Medication()
                 {
                     Name = x.Name
@@ -478,6 +464,7 @@ namespace Zoo.DAL
             return list;
         }
 
+        #endregion
 
         #region Different Search Methods
 

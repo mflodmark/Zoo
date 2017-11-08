@@ -37,6 +37,11 @@ namespace Zoo.UI
             AddValuesToComboBoxMedication();
         }
 
+        public void UpdateCurrentId(int id)
+        {
+            currentId = id;
+        }
+        
         #region AddToComboboxes
 
         private void AddValuesToComboBoxTime()
@@ -169,24 +174,9 @@ namespace Zoo.UI
         }
 
         #endregion
-
-        public void UpdateCurrentId(int id)
-        {
-            currentId = id;
-        }
-
-        private void AddNewVetVisit_Click(object sender, RoutedEventArgs e)
-        {
-            var dataAccess = new DataAccess();
-
-            var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
-
-            dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, medicationsList, DescriptionText.Text);
-
-            Close();
-        }
-
         
+        #region DropDown
+
         private void YearBox_DropDownClosed(object sender, EventArgs e)
         {
             if (YearBox.Text == "") return;
@@ -204,6 +194,21 @@ namespace Zoo.UI
 
         }
 
+        #endregion
+
+        #region Clicks
+
+        private void AddNewVetVisit_Click(object sender, RoutedEventArgs e)
+        {
+            var dataAccess = new DataAccess();
+
+            var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
+
+            dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, medicationsList, DescriptionText.Text);
+
+            Close();
+        }
+
         private void AddMedicationButton_Click(object sender, RoutedEventArgs e)
         {
             var med = new Model.Medication()
@@ -216,5 +221,8 @@ namespace Zoo.UI
             MedicationGrid.ItemsSource = null;
             MedicationGrid.ItemsSource = medicationsList;
         }
+        #endregion
+
+
     }
 }
