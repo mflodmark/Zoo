@@ -54,6 +54,20 @@ namespace Zoo.DAL
             }
         }
 
+        public void DeleteParent(int animalId, string parentName)
+        {
+            using (var db = new ZooContext())
+            {
+                var animal = db.Animals.Find(animalId);
+
+                var parent = animal.Parents.SingleOrDefault(y => y.Name == parentName);
+
+                animal.Parents.Remove(parent);
+
+                db.SaveChanges();
+            }
+        }
+
         public void AddAnimal(string animalName, string enviromentName, string speciesName, string typeName, double weigth, string countryName,
             string genderName, List<Model.Family> parentList, List<Model.Family> childList)
         {
@@ -215,8 +229,8 @@ namespace Zoo.DAL
 
                 var visitList = query.Select(x => new VetVisit()
                 {
-                    //Diagnosis = x.Description.Diagnosis.Name,
-                    //Description = x.Description.Name,
+                    Diagnosis = x.Description.Diagnosis.Name,
+                    Description = x.Description.Name,
                     VetName = x.Vet.Name,
                     Date = x.DateAndTime.ToString(),
                     VetVisitId = x.VetVisitId.ToString(),
@@ -289,7 +303,7 @@ namespace Zoo.DAL
                 {
                     AnimalId = animalId,
                     DateAndTime = date,
-                    //DescriptionId = newDiagnosisDescription.DescriptionId,
+                    DescriptionId = newDiagnosisDescription.DescriptionId,
                     VetId = vet.VetId,
                     Medications = new List<Medication>(),
                     

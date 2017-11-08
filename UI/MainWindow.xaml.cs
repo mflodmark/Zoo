@@ -24,6 +24,9 @@ namespace Zoo
     public partial class MainWindow : Window
     {
         int currentId = 0;
+        string parentName;
+        string childName;
+        int visitId = 0;
 
         public MainWindow()
         {
@@ -118,45 +121,7 @@ namespace Zoo
         }
 
 
-        private void AnimalGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            try
-            {
-                var dataAccess = new DataAccess();
 
-                object item = AnimalGrid.SelectedItem;
-
-                if (item != null)
-                {
-                    string id = (AnimalGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-                    currentId = int.Parse(id);
-
-                    if (dataAccess.CheckAnimalsParent(currentId) > 0)
-                    {
-                        ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
-                    }
-
-                    if (dataAccess.CheckAnimalsChildren(currentId) > 0)
-                    {
-                        ChildrenGrid.ItemsSource = dataAccess.LoadAnimalsChildren(currentId);
-                    }
-
-                    if (dataAccess.CheckAnimalsVet(currentId) > 0)
-                    {
-                        VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
-                    }
-
-                    ResultText.Text = $"Valt djurId = {currentId}";
-
-                }
-            }
-            catch (Exception)
-            {
-
-                ResultText.Text = "Välj ett djur i listan";
-            }
-            
-        }
 
         private void AddVetVisitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -199,7 +164,7 @@ namespace Zoo
 
             try
             {
-                dataAccess.DeleteAnimal(currentId);
+                dataAccess.DeleteParent(currentId, parentName);
 
                 ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
             }
@@ -212,12 +177,36 @@ namespace Zoo
 
         private void DeleteChildrenBtn_Click(object sender, RoutedEventArgs e)
         {
+            var dataAccess = new DataAccess();
 
+            try
+            {
+                dataAccess.DeleteParent(currentId, parentName);
+
+                ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett barn i listan";
+            }
         }
 
         private void DeleteVetBtn_Click(object sender, RoutedEventArgs e)
         {
+            var dataAccess = new DataAccess();
 
+            try
+            {
+                dataAccess.DeleteParent(currentId, parentName);
+
+                ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett besök i listan";
+            }
         }
 
         private void GoToVetBtn_Click(object sender, RoutedEventArgs e)
@@ -226,6 +215,75 @@ namespace Zoo
         }
 
         #endregion
+
+        #region CellsChanged
+
+        private void ParentGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+                var dataAccess = new DataAccess();
+
+                object item = ParentGrid.SelectedItem;
+
+                if (item != null)
+                {
+                    string id = (ParentGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    parentName = id;
+
+                    ResultText.Text = $"Vald förälder = {currentId}";
+
+                }
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj en förälder i listan";
+            }
+
+        }
+
+        private void AnimalGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            try
+            {
+                var dataAccess = new DataAccess();
+
+                object item = AnimalGrid.SelectedItem;
+
+                if (item != null)
+                {
+                    string id = (AnimalGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    currentId = int.Parse(id);
+
+                    if (dataAccess.CheckAnimalsParent(currentId) > 0)
+                    {
+                        ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
+                    }
+
+                    if (dataAccess.CheckAnimalsChildren(currentId) > 0)
+                    {
+                        ChildrenGrid.ItemsSource = dataAccess.LoadAnimalsChildren(currentId);
+                    }
+
+                    if (dataAccess.CheckAnimalsVet(currentId) > 0)
+                    {
+                        VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
+                    }
+
+                    ResultText.Text = $"Valt djurId = {currentId}";
+
+                }
+            }
+            catch (Exception)
+            {
+
+                ResultText.Text = "Välj ett djur i listan";
+            }
+
+        }
+        #endregion
+
 
     }
 }
