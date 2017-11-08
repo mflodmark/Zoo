@@ -90,12 +90,8 @@ namespace Zoo.DAL
                     CountryOfOriginId = countryId,
                     GenderId = gender.GenderId,
 
-                    //Parents = new List<DataContext.Animal>(),
-                    //Children = new List<DataContext.Animal>(),
                 };
 
-                //animal.Parents = parentList;
-                //animal.Children = childList;
 
                 db.Animals.Add(animal);
 
@@ -229,7 +225,7 @@ namespace Zoo.DAL
             return check;
         }
 
-        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, List<Medication> medicationsList)
+        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, List<Model.Medication> medicationsList)
         {
             using (var db = new ZooContext())
             {
@@ -269,11 +265,11 @@ namespace Zoo.DAL
 
                 foreach (var item in medicationsList)
                 {
-                    vetVisit.Medications.Add(item);
+                    var q = db.Medications.SingleOrDefault(x => x.Name == item.Name);
+                    vetVisit.Medications.Add(q);
 
                 }
-
-
+                
                 db.VetVisits.Add(vetVisit);
 
                 db.SaveChanges();
@@ -301,7 +297,6 @@ namespace Zoo.DAL
             }
 
             return list;
-
         }
 
 

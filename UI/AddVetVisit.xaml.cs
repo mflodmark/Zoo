@@ -23,7 +23,8 @@ namespace Zoo.UI
     public partial class AddVetVisit : Window
     {
         private int currentId = 0;
-        private List<Medication> medicationsList = new List<Medication>();
+        //private List<Medication> medicationsList = new List<Medication>();
+        private List<Model.Medication> medicationsList = new List<Model.Medication>();
 
         public AddVetVisit()
         {
@@ -205,15 +206,14 @@ namespace Zoo.UI
 
         private void AddMedicationButton_Click(object sender, RoutedEventArgs e)
         {
-            var dataAccess = new DataAccess();
+            var med = new Model.Medication()
+            {
+                Name = MedicationBox.Text
+            };
 
-            var medicationsList = new List<Medication>();
-
-            medicationsList.Add(medication);
-
-
-
-            MedicationGrid.ItemsSource = list;
+            medicationsList.Add(med);
+            
+            MedicationGrid.ItemsSource = medicationsList;
         }
     }
 }
