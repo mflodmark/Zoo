@@ -154,6 +154,11 @@ namespace Zoo
                         ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(currentId);
                     }
 
+                    if (dataAccess.CheckAnimalsChildren(currentId) > 0)
+                    {
+                        ChildrenGrid.ItemsSource = dataAccess.LoadAnimalsChildren(currentId);
+                    }
+
                     if (dataAccess.CheckAnimalsVet(currentId) > 0)
                     {
                         VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
