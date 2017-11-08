@@ -187,7 +187,23 @@ namespace Zoo.DAL
         {
             using (var db = new ZooContext())
             {
-                db.Animals.Remove(db.Animals.Find(animalId));
+                var animal = db.Animals.Find(animalId);
+
+                var count = animal.Parents.Count;
+
+                for (int i = 0; i < count; i++)
+                {
+                    animal.Parents.Remove(animal.Parents[i]);
+                }
+
+                var countC = animal.Children.Count;
+
+                for (int i = 0; i < countC; i++)
+                {
+                    animal.Children.Remove(animal.Children[i]);
+                }
+
+                db.Animals.Remove(animal);
 
                 db.SaveChanges();
             }

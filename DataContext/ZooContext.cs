@@ -52,6 +52,20 @@ namespace Zoo.DataContext
 
             modelBuilder.Entity<Description>().HasRequired(v => v.VetVisit).WithRequiredDependent(d => d.Description);
 
+            //modelBuilder.Entity<AnimalAnimals>()
+            //    .HasRequired(t => t.)
+            //    .WithMany(t => t.Parents)
+            //    .HasForeignKey(d => d.Animal_AnimalId)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<AnimalAnimals>()
+            //    .HasKey(c => c.Animal_AnimalId)
+            //    .HasRequired(c => c.Animal_AnimalId1)
+            //    .WithRequiredDependent(c => c.).wi
+            //    .WillCascadeOnDelete(true);
+
+            //modelBuilder.Entity<AnimalAnimals>().HasKey(x=>x.Animal_AnimalId)
+
         }
     }
 

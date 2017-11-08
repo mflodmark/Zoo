@@ -87,6 +87,12 @@ namespace Zoo
 
             AnimalGrid.ItemsSource = dataAccess.Search(SearchTypeBox.Text, SearchEnviromentBox.Text, SearchSpeciesBox.Text);
 
+            SetGridToNullAndRefresh();
+
+        }
+
+        private void SetGridToNullAndRefresh()
+        {
             VetGrid.ItemsSource = null;
             ParentGrid.ItemsSource = null;
             ChildrenGrid.ItemsSource = null;
@@ -94,7 +100,6 @@ namespace Zoo
             VetGrid.Items.Refresh();
             ParentGrid.Items.Refresh();
             ChildrenGrid.Items.Refresh();
-
         }
 
         #endregion
@@ -107,6 +112,8 @@ namespace Zoo
 
             AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
 
+            SetGridToNullAndRefresh();
+            
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -163,6 +170,8 @@ namespace Zoo
                 dataAccess.DeleteAnimal(currentId);
 
                 AnimalGrid.ItemsSource = dataAccess.LoadAnimals();
+
+                SetGridToNullAndRefresh();
             }
             catch (Exception)
             {

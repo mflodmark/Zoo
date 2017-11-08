@@ -71,8 +71,12 @@ namespace Zoo.UI
             {
                 AddValuesFromAnimal(currentId);
 
+                ChildrenBox.IsEnabled = true;
+                ParentBox.IsEnabled = true;
                 ChildrenBox.IsEditable = true;
                 ParentBox.IsEditable = true;
+
+                AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
 
                 AddAnimal.Content = "Genomför ändring!";
             }

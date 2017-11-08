@@ -23,7 +23,6 @@ namespace Zoo.UI
     public partial class AddVetVisit : Window
     {
         private int currentId = 0;
-        //private List<Medication> medicationsList = new List<Medication>();
         private List<Model.Medication> medicationsList = new List<Model.Medication>();
 
         public AddVetVisit()
