@@ -22,9 +22,12 @@ namespace Zoo.UI
     /// </summary>
     public partial class AddNewAnimal : Window
     {
-         
+        private bool inEditMode;
+        private int currentId = 0;
+
         List<Model.Family> parentsList = new List<Model.Family>();
         List<Model.Family> childrenList = new List<Model.Family>();
+
 
         public AddNewAnimal()
         {
@@ -40,6 +43,46 @@ namespace Zoo.UI
 
         }
 
+        private void AddValuesFromAnimal(int animalId)
+        {
+            var dataAccess = new DataAccess();
+
+            var animal = dataAccess.LoadAnimal(animalId);
+
+            CountryBox.Text = animal.CountryOfOrigin;
+            EnviromentBox.Text = animal.Enviroment;
+            GenderBox.Text = animal.Gender;
+            TypeBox.Text = animal.Type;
+            AnimalName.Text = animal.Name;
+            WeightBox.Text = animal.Weight.ToString();
+            SpeciesBox.Text = animal.Species;
+
+            ParentGrid.ItemsSource = dataAccess.LoadAnimalsParent(animalId);
+
+            ChildrenGrid.ItemsSource = dataAccess.LoadAnimalsChildren(animalId);
+
+        }
+
+        public void AddEditDetailsIfTrue()
+        {
+            if (inEditMode)
+            {
+                AddValuesFromAnimal(currentId);
+
+                AddAnimal.Content = "Genomför ändring!";
+            }
+        }
+
+        public void ChangeToFromEditMode(bool value)
+        {
+            inEditMode = value;
+        }
+
+        public void ChangeCurrent(int animalId)
+        {
+            currentId = animalId;
+        }
+
         private void AddAnimal_Click(object sender, RoutedEventArgs e)
         {
             var dataAccess = new DataAccess();
@@ -52,10 +95,19 @@ namespace Zoo.UI
                 return;
             }
 
-            if (double.TryParse(WeightBox.Text,out var weigth))
+            if (double.TryParse(WeightBox.Text, out var weigth))
             {
-                dataAccess.AddAnimal(AnimalName.Text, EnviromentBox.Text, SpeciesBox.Text,
-                    TypeBox.Text, weigth, CountryBox.Text, GenderBox.Text, parentsList, childrenList);
+                if (inEditMode)
+                {
+                    dataAccess.EditAnimal(AnimalName.Text, EnviromentBox.Text, SpeciesBox.Text,
+                        TypeBox.Text, weigth, CountryBox.Text, GenderBox.Text, parentsList, childrenList, currentId);
+                }
+                else
+                {
+                    dataAccess.AddAnimal(AnimalName.Text, EnviromentBox.Text, SpeciesBox.Text,
+                        TypeBox.Text, weigth, CountryBox.Text, GenderBox.Text, parentsList, childrenList);
+                }
+
 
                 Close();
             }
@@ -63,7 +115,9 @@ namespace Zoo.UI
             {
                 ResultText.Text = "Inmatning av vikt fungerade ej";
             }
+
         }
+
 
         private bool CheckName(string input)
         {

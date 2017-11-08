@@ -111,13 +111,22 @@ namespace Zoo
         {
             var openForm = new AddNewAnimal();
 
+            openForm.ChangeToFromEditMode(false);
+
             openForm.Show();
         }
 
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            var openForm = new AddNewAnimal();
+
+
+            openForm.ChangeToFromEditMode(true);
+            openForm.ChangeCurrent(currentId);
+            openForm.AddEditDetailsIfTrue();
+
+            openForm.Show();
         }
 
 
@@ -231,7 +240,7 @@ namespace Zoo
                     string id = (ParentGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                     parentName = id;
 
-                    ResultText.Text = $"Vald förälder = {currentId}";
+                    ResultText.Text = $"Vald förälder = {parentName}";
 
                 }
             }

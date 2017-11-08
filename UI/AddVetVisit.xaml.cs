@@ -212,7 +212,8 @@ namespace Zoo.UI
             };
 
             medicationsList.Add(med);
-            
+
+            MedicationGrid.ItemsSource = null;
             MedicationGrid.ItemsSource = medicationsList;
         }
     }

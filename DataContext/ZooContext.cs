@@ -25,6 +25,7 @@ namespace Zoo.DataContext
         public virtual DbSet<Vet> Vets { get; set; }
         public virtual DbSet<VetVisit> VetVisits { get; set; }
         public virtual DbSet<Medication> Medications { get; set; }
+        public virtual DbSet<Description> Descriptions { get; set; }
 
 
 
@@ -46,12 +47,6 @@ namespace Zoo.DataContext
             modelBuilder.Entity<Vet>().Property(x => x.Name).IsRequired();
 
             modelBuilder.Entity<Diagnosis>().Property(x => x.Name).IsRequired();
-
-            //modelBuilder.Entity<Animal>().HasMany(x => x.Parents).WithMany().Map(m => m.ToTable("ParentChildLink"));
-
-            //.Map(y => y.MapLeftKey("ParentId")).Map(z => z.MapRightKey("ChildId"));
-            //m.MapKey(a => a.Id, "BillingAddressId");   
-            //modelBuilder.Entity<Animal>().HasMany(x => x.Children).WithMany();
 
             modelBuilder.Entity<Description>().Property(x => x.Name).IsRequired();
 

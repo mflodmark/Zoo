@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Zoo.DataContext
 {
@@ -14,6 +15,7 @@ namespace Zoo.DataContext
 
         //public virtual List<VetVisit> VetVisits { get; set; }
 
+        //[ForeignKey("VetVisit")]
         public int VetVisitId { get; set; }
 
         public VetVisit VetVisit { get; set; }

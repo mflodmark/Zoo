@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Zoo.DataContext;
@@ -17,6 +18,51 @@ namespace Zoo.DAL
     public class DataAccess
     {
         #region Animal-Load,Delete,Add
+
+        public Model.Animal LoadAnimal(int animalId)
+        {
+            var animal = new Model.Animal();
+
+            using (var db = new ZooContext())
+            {
+                var query = db.Animals.Select(x => new Animal()
+                {
+
+                    Name = x.Name,
+                    Enviroment = x.Species.Enviroment.Name,
+                    Species = x.Species.Name,
+                    Type = x.Species.Type.Name,
+                    Gender = x.Gender.Name,
+                    CountryOfOrigin = x.CountryOfOrigin.Name,
+                    Weight = x.Weight,
+                    AnimalId = x.AnimalId
+
+                }).ToList();
+
+
+                var q = query.SingleOrDefault(y => y.AnimalId == animalId);
+
+                //var q = db.Animals.Where(y => y.AnimalId == animalId).ToList();
+
+                //var value = q.Select(x => new Animal()
+                //{
+
+                //    Name = x.Name,
+                //    Enviroment = x.Species.Enviroment.Name,
+                //    Species = x.Species.Name,
+                //    Type = x.Species.Type.Name,
+                //    Gender = x.Gender.Name,
+                //    CountryOfOrigin = x.CountryOfOrigin.Name,
+                //    Weight = x.Weight,
+                //    AnimalId = x.AnimalId
+
+                //});
+
+                animal = q;
+            }
+
+            return animal;
+        }
 
         public BindingList<Animal> LoadAnimals()
         {
@@ -93,6 +139,56 @@ namespace Zoo.DAL
                 }
 
                 db.Animals.Add(animal);
+
+                db.SaveChanges();
+            }
+        }
+
+        public void EditAnimal(string animalName, string enviromentName, string speciesName, string typeName, double weigth, string countryName,
+            string genderName, List<Model.Family> parentList, List<Model.Family> childList, int animalId)
+        {
+            using (var db = new ZooContext())
+            {
+                var currentAnimal = db.Animals.Find(animalId);
+
+                // Species
+                var type = db.Types.SingleOrDefault(x => x.Name == typeName);
+                var enviroment = db.Enviroments.SingleOrDefault(x => x.Name == enviromentName);
+
+                var species = new Species()
+                {
+                    Name = speciesName,
+                    TypeId = type.TypeId,
+                    EnviromentId = enviroment.EnviromentId
+                };
+
+                db.Species.AddOrUpdate(x => x.Name, species);
+
+                db.SaveChanges();
+
+                var speciesId = species.SpeciesId;
+
+                // Country
+                var country = db.CountryOfOrigins.SingleOrDefault(x => x.Name == countryName);
+
+                var countryId = country.CountryOfOriginId;
+
+                // Animal
+                var gender = db.Genders.SingleOrDefault(x => x.Name == genderName);
+
+                currentAnimal.Name = animalName;
+                currentAnimal.SpeciesId = speciesId;
+                currentAnimal.Weight = weigth;
+                currentAnimal.CountryOfOriginId = countryId;
+                currentAnimal.GenderId = gender.GenderId;
+                currentAnimal.Parents = new List<DataContext.Animal>();
+
+                //Link
+                foreach (var item in parentList)
+                {
+                    var q = db.Animals.SingleOrDefault(x => x.Name == item.Name);
+                    currentAnimal.Parents.Add(q);
+                }
 
                 db.SaveChanges();
             }
@@ -212,22 +308,22 @@ namespace Zoo.DAL
         #region Children
 
 
-        public BindingList<Animal> LoadAnimalsChildren(int animalId)
+        public BindingList<Model.Family> LoadAnimalsChildren(int animalId)
         {
-            BindingList<Animal> animal;
+            BindingList<Model.Family> animal;
 
             using (var db = new ZooContext())
             {
                 var query = db.Animals.Where(y => y.AnimalId == animalId).SelectMany(x => x.Children);
 
-                var list = query.Select(x => new Animal()
+                var list = query.Select(x => new Family()
                 {
                     Name = x.Name,
                     Gender = x.Gender.Name,
 
                 }).ToList();
 
-                animal = new BindingList<Animal>(list);
+                animal = new BindingList<Model.Family>(list);
             }
 
             return animal;
@@ -317,16 +413,6 @@ namespace Zoo.DAL
                     diaId = diagnosis.DiagnosisId;
                 }
 
-                // Description
-                var newDiagnosisDescription = new Description()
-                {
-                    Name = descriptionText,
-                    DiagnosisId = diaId
-                };
-
-                db.SaveChanges();
-                
-
                 // Vet
                 var vet = db.Vets.SingleOrDefault(x => x.Name == vetName);
                 
@@ -336,13 +422,11 @@ namespace Zoo.DAL
                 {
                     AnimalId = animalId,
                     DateAndTime = date,
-                    DescriptionId = newDiagnosisDescription.DescriptionId,
                     VetId = vet.VetId,
                     Medications = new List<Medication>(),
-                    
                 };
 
-
+                // Medication
                 foreach (var item in medicationsList)
                 {
                     var q = db.Medications.SingleOrDefault(x => x.Name == item.Name);
@@ -354,6 +438,18 @@ namespace Zoo.DAL
 
                 db.SaveChanges();
 
+
+                // Description
+                var newDiagnosisDescription = new Description()
+                {
+                    Name = descriptionText,
+                    DiagnosisId = diaId,
+                    VetVisitId = vetVisit.VetVisitId
+                };
+
+                db.Descriptions.Add(newDiagnosisDescription);
+
+                db.SaveChanges();
             }
         }
 
