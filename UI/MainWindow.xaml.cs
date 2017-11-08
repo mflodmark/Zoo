@@ -39,6 +39,8 @@ namespace Zoo
             AddValuesToComboBoxEnviroment();
             AddValuesToComboBoxSpecies();
 
+            ChangeButtonState();
+
         }
 
 
@@ -114,6 +116,8 @@ namespace Zoo
             openForm.ChangeToFromEditMode(false);
 
             openForm.ShowDialog();
+
+            LoadInitialDataToDataGrid();
         }
 
 
@@ -127,6 +131,8 @@ namespace Zoo
             openForm.AddEditDetailsIfTrue();
 
             openForm.ShowDialog();
+
+            LoadInitialDataToDataGrid();
         }
 
 
@@ -142,6 +148,8 @@ namespace Zoo
                 openForm.UpdateCurrentId(currentId);
 
                 openForm.ShowDialog();
+
+                LoadInitialDataToDataGrid();
             }
 
         }
@@ -227,6 +235,18 @@ namespace Zoo
 
         #region CellsChanged
 
+        private void ChangeButtonState()
+        {
+            AddButton.IsEnabled = false;
+            DeleteButton.IsEnabled = false;
+            EditButton.IsEnabled = false;
+            DeleteChildrenBtn.IsEnabled = false;
+            DeleteParentsBtn.IsEnabled = false;
+            DeleteVetBtn.IsEnabled = false;
+            AddVetVisitButton.IsEnabled = false;
+            GoToVetBtn.IsEnabled = false;
+        }
+
         private void ParentGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             try
@@ -242,6 +262,10 @@ namespace Zoo
 
                     ResultText.Text = $"Vald förälder = {parentName}";
 
+                    ChangeButtonState();
+
+                    DeleteParentsBtn.IsEnabled = true;
+                    
                 }
             }
             catch (Exception)
@@ -282,6 +306,13 @@ namespace Zoo
 
                     ResultText.Text = $"Valt djurId = {currentId}";
 
+                    ChangeButtonState();
+
+                    AddButton.IsEnabled = true;
+                    DeleteButton.IsEnabled = true;
+                    EditButton.IsEnabled = true;
+                    AddVetVisitButton.IsEnabled = true;
+                    
                 }
             }
             catch (Exception)
@@ -307,6 +338,9 @@ namespace Zoo
 
                     ResultText.Text = $"Valt barn = {childName}";
 
+                    ChangeButtonState();
+
+                    DeleteChildrenBtn.IsEnabled = true;
                 }
             }
             catch (Exception)
@@ -332,6 +366,10 @@ namespace Zoo
 
                     ResultText.Text = $"Valt besöksId = {visitId}";
 
+                    ChangeButtonState();
+
+                    DeleteVetBtn.IsEnabled = true;
+                    GoToVetBtn.IsEnabled = true;
                 }
             }
             catch (Exception)
