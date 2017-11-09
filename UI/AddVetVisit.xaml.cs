@@ -103,7 +103,7 @@ namespace Zoo.UI
         {
             for (int i = 7; i <= 19; i++)
             {
-                for (int j = 0; j <= 59; j++)
+                for (int j = 0; j <= 59; j+=15)
                 {
                     if (i <= 9 && j <= 9)
                     {

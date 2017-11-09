@@ -120,6 +120,8 @@ namespace Zoo.UI
             ParentGrid.ItemsSource = null;
             ParentGrid.ItemsSource = parentsList;
 
+            AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
+
         }
 
         private void AddChildren_Click(object sender, RoutedEventArgs e)
@@ -140,6 +142,8 @@ namespace Zoo.UI
             ChildrenGrid.ItemsSource = null;
             ChildrenGrid.ItemsSource = childrenList;
 
+            AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
+            
         }
 
         private void AddAnimal_Click(object sender, RoutedEventArgs e)
@@ -232,16 +236,46 @@ namespace Zoo.UI
 
             foreach (var item in animals)
             {
-                ParentBox.Items.Add(item.Name + "-" + item.Gender.Name);
-                ChildrenBox.Items.Add(item.Name + "-" + item.Gender.Name);
+                if (inEditMode)
+                {
+                    if (item.AnimalId != currentId)
+                    {
+                        ParentBox.Items.Add(item.Name + "-" + item.Gender.Name);
+                        ChildrenBox.Items.Add(item.Name + "-" + item.Gender.Name);
 
-                //if (inEditMode)
-                //{
-                //    ParentBox.Items.Remove();
-                //}
+                        foreach (var box in parentsList)
+                        {
+                            if (box.Name == item.Name)
+                            {
+                                ParentBox.Items.Remove(item.Name + "-" + item.Gender.Name);
+                                ChildrenBox.Items.Remove(item.Name + "-" + item.Gender.Name);
+                            }
+                        }
 
-                
+                        foreach (var box in childrenList)
+                        {
+                            if (box.Name == item.Name)
+                            {
+                                ParentBox.Items.Remove(item.Name + "-" + item.Gender.Name);
+                                ChildrenBox.Items.Remove(item.Name + "-" + item.Gender.Name);
+                            }
+                        }
+
+                    }
+                }
+                else
+                {
+                    ParentBox.Items.Add(item.Name + "-" + item.Gender.Name);
+                    ChildrenBox.Items.Add(item.Name + "-" + item.Gender.Name);
+                }
             }
+
+            var countP = ParentBox.Items.Count;
+            var countC = ChildrenBox.Items.Count;
+
+            if (countP == 0) AddParents.IsEnabled = false;
+            if (countC == 0) AddChildren.IsEnabled = false;
+
         }
 
         #endregion

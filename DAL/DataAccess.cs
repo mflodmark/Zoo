@@ -401,8 +401,8 @@ namespace Zoo.DAL
                     VetName = x.Vet.Name,
                     Date = x.DateAndTime.ToString(),
                     VetVisitId = x.VetVisitId.ToString(),
-                    Medications = x.Medications.Count.ToString()
-
+                    Medications = x.Medications.Count.ToString(),
+                    IsUsed = x.IsUsed.ToString()
                 }).ToList();
 
 

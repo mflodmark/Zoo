@@ -65,7 +65,7 @@ namespace Zoo.Migrations
                 Weight = 300.1,
                 GenderId = 3,
                 CountryOfOriginId = 7,
-                SpeciesId = 1
+                SpeciesId = 2
             };
 
             var shark2Animal = new DataContext.Animal()
@@ -74,7 +74,7 @@ namespace Zoo.Migrations
                 Weight = 10.1,
                 GenderId = 3,
                 CountryOfOriginId = 6,
-                SpeciesId = 1
+                SpeciesId = 2
             };
 
             var speciesShark = new Species()

@@ -160,6 +160,7 @@ namespace Zoo
 
         private void GoToVetBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             var openForm = new AddVetVisit();
 
             openForm.UpdateCurrentId(currentId);
