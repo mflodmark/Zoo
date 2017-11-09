@@ -417,7 +417,7 @@ namespace Zoo.DAL
         }
 
         public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, 
-            List<Model.Medication> medicationsList, string descriptionText)
+            List<Model.Medication> medicationsList, string descriptionText, bool isUsed)
         {
             using (var db = new ZooContext())
             {
@@ -464,7 +464,8 @@ namespace Zoo.DAL
                     VetId = vet.VetId,
                     Medications = new List<Medication>(),
                     DiagnosisId = diaId,
-                    DescriptionId = descId
+                    DescriptionId = descId,
+                    IsUsed = isUsed
                 };
 
                 // Medication

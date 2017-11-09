@@ -264,7 +264,8 @@ namespace Zoo.UI
             {
                 var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
 
-                dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, medicationsList, DescriptionText.Text);
+                dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, 
+                    medicationsList, DescriptionText.Text, false);
             }
 
 
