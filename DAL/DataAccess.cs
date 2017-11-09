@@ -386,8 +386,8 @@ namespace Zoo.DAL
 
                 var visitList = query.Select(x => new VetVisit()
                 {
-                    //Diagnosis = x.Description.Diagnosis.Name,
-                    //Description = x.Description.Name,
+                    Diagnosis = x.Diagnosis.Name,
+                    Description = x.Description.Name,
                     VetName = x.Vet.Name,
                     Date = x.DateAndTime.ToString(),
                     VetVisitId = x.VetVisitId.ToString(),
@@ -441,6 +441,17 @@ namespace Zoo.DAL
                     diaId = diagnosis.DiagnosisId;
                 }
 
+                // Description
+                var newDiagnosisDescription = new Description()
+                {
+                    Name = descriptionText,
+                };
+
+
+                db.Descriptions.Add(newDiagnosisDescription);
+
+                var descId = newDiagnosisDescription.DescriptionId;
+
                 // Vet
                 var vet = db.Vets.SingleOrDefault(x => x.Name == vetName);
                 
@@ -452,6 +463,8 @@ namespace Zoo.DAL
                     DateAndTime = date,
                     VetId = vet.VetId,
                     Medications = new List<Medication>(),
+                    DiagnosisId = diaId,
+                    DescriptionId = descId
                 };
 
                 // Medication
@@ -466,20 +479,6 @@ namespace Zoo.DAL
 
                 db.SaveChanges();
 
-
-                // Description
-                var newDiagnosisDescription = new Description()
-                {
-                    Name = descriptionText,
-                    //DiagnosisId = diaId,
-                    DescriptionId = vetVisit.VetVisitId
-                };
-
-                //vetVisit.Description = newDiagnosisDescription;
-
-                //db.Descriptions.Add(newDiagnosisDescription);
-
-                db.SaveChanges();
             }
         }
 

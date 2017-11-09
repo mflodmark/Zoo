@@ -92,141 +92,17 @@
     <Compile Include="DataContext\Vet.cs" />
     <Compile Include="DataContext\VetVisit.cs" />
     <Compile Include="DataContext\ZooContext.cs" />
-    <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.cs" />
-    <Compile Include="Migrations\201711012210130_InitialMigrationWithEntities.Designer.cs">
-      <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
+    <Compile Include="Migrations\201711091036124_CreateDatabase.cs" />
+    <Compile Include="Migrations\201711091036124_CreateDatabase.Designer.cs">
+      <DependentUpon>201711091036124_CreateDatabase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.cs" />
-    <Compile Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.Designer.cs">
-      <DependentUpon>201711021136503_AddNameAndRemoveQuantityOnAnimal.cs</DependentUpon>
+    <Compile Include="Migrations\201711091036451_populateData.cs" />
+    <Compile Include="Migrations\201711091036451_populateData.Designer.cs">
+      <DependentUpon>201711091036451_populateData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711060836565_PopulateTypes.cs" />
-    <Compile Include="Migrations\201711060836565_PopulateTypes.Designer.cs">
-      <DependentUpon>201711060836565_PopulateTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711060846582_PopulateEnviroments.cs" />
-    <Compile Include="Migrations\201711060846582_PopulateEnviroments.Designer.cs">
-      <DependentUpon>201711060846582_PopulateEnviroments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711060855071_MovedEnviromentToSpecies.cs" />
-    <Compile Include="Migrations\201711060855071_MovedEnviromentToSpecies.Designer.cs">
-      <DependentUpon>201711060855071_MovedEnviromentToSpecies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711060905123_AddCountryAndWeight.cs" />
-    <Compile Include="Migrations\201711060905123_AddCountryAndWeight.Designer.cs">
-      <DependentUpon>201711060905123_AddCountryAndWeight.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711060908549_AddGenderToAnimal.cs" />
-    <Compile Include="Migrations\201711060908549_AddGenderToAnimal.Designer.cs">
-      <DependentUpon>201711060908549_AddGenderToAnimal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711060912397_PopulateGender.cs" />
-    <Compile Include="Migrations\201711060912397_PopulateGender.Designer.cs">
-      <DependentUpon>201711060912397_PopulateGender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711060916180_PopulateCountryOfOrigin.cs" />
-    <Compile Include="Migrations\201711060916180_PopulateCountryOfOrigin.Designer.cs">
-      <DependentUpon>201711060916180_PopulateCountryOfOrigin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711061005529_AddParentsTable.cs" />
-    <Compile Include="Migrations\201711061005529_AddParentsTable.Designer.cs">
-      <DependentUpon>201711061005529_AddParentsTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071236379_AddVetVisit.cs" />
-    <Compile Include="Migrations\201711071236379_AddVetVisit.Designer.cs">
-      <DependentUpon>201711071236379_AddVetVisit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071248256_PopulateVetTable.cs" />
-    <Compile Include="Migrations\201711071248256_PopulateVetTable.Designer.cs">
-      <DependentUpon>201711071248256_PopulateVetTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071250174_PopulateDiagnosis.cs" />
-    <Compile Include="Migrations\201711071250174_PopulateDiagnosis.Designer.cs">
-      <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071435170_RenameDateToDateAndTIme.cs" />
-    <Compile Include="Migrations\201711071435170_RenameDateToDateAndTIme.Designer.cs">
-      <DependentUpon>201711071435170_RenameDateToDateAndTIme.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071635322_RemoveTableParentChildrenLink.cs" />
-    <Compile Include="Migrations\201711071635322_RemoveTableParentChildrenLink.Designer.cs">
-      <DependentUpon>201711071635322_RemoveTableParentChildrenLink.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711071640568_FamilyMembers.cs" />
-    <Compile Include="Migrations\201711071640568_FamilyMembers.Designer.cs">
-      <DependentUpon>201711071640568_FamilyMembers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.cs" />
-    <Compile Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.Designer.cs">
-      <DependentUpon>201711080746536_RemoveLinkToFamilyUnderAnimal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711080759564_IdOnLink.cs" />
-    <Compile Include="Migrations\201711080759564_IdOnLink.Designer.cs">
-      <DependentUpon>201711080759564_IdOnLink.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711080809294_AddTableMedication.cs" />
-    <Compile Include="Migrations\201711080809294_AddTableMedication.Designer.cs">
-      <DependentUpon>201711080809294_AddTableMedication.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711080813585_PopulateMedication.cs" />
-    <Compile Include="Migrations\201711080813585_PopulateMedication.Designer.cs">
-      <DependentUpon>201711080813585_PopulateMedication.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711080847342_UpdateToMedicationTable.cs" />
-    <Compile Include="Migrations\201711080847342_UpdateToMedicationTable.Designer.cs">
-      <DependentUpon>201711080847342_UpdateToMedicationTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081000053_DropLinkClassParents.cs" />
-    <Compile Include="Migrations\201711081000053_DropLinkClassParents.Designer.cs">
-      <DependentUpon>201711081000053_DropLinkClassParents.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081158295_updateDiagnosis.cs" />
-    <Compile Include="Migrations\201711081158295_updateDiagnosis.Designer.cs">
-      <DependentUpon>201711081158295_updateDiagnosis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081202494_updateNameInDiagnosisTable.cs" />
-    <Compile Include="Migrations\201711081202494_updateNameInDiagnosisTable.Designer.cs">
-      <DependentUpon>201711081202494_updateNameInDiagnosisTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081205572_populateDiagnosisAfterDropCol.cs" />
-    <Compile Include="Migrations\201711081205572_populateDiagnosisAfterDropCol.Designer.cs">
-      <DependentUpon>201711081205572_populateDiagnosisAfterDropCol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081227066_AddLinkFamily.cs" />
-    <Compile Include="Migrations\201711081227066_AddLinkFamily.Designer.cs">
-      <DependentUpon>201711081227066_AddLinkFamily.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081352102_AddTableDiagnosisDescription.cs" />
-    <Compile Include="Migrations\201711081352102_AddTableDiagnosisDescription.Designer.cs">
-      <DependentUpon>201711081352102_AddTableDiagnosisDescription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081406075_MoveDescriptionToOwnTable.cs" />
-    <Compile Include="Migrations\201711081406075_MoveDescriptionToOwnTable.Designer.cs">
-      <DependentUpon>201711081406075_MoveDescriptionToOwnTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711081424467_addDescriptionToVetVisit.cs" />
-    <Compile Include="Migrations\201711081424467_addDescriptionToVetVisit.Designer.cs">
-      <DependentUpon>201711081424467_addDescriptionToVetVisit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711090637348_FixFKOnDescriptionId.cs" />
-    <Compile Include="Migrations\201711090637348_FixFKOnDescriptionId.Designer.cs">
-      <DependentUpon>201711090637348_FixFKOnDescriptionId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711090839046_updateFluentAPIDesc.cs" />
-    <Compile Include="Migrations\201711090839046_updateFluentAPIDesc.Designer.cs">
-      <DependentUpon>201711090839046_updateFluentAPIDesc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711090906336_addIsUsedToVetVisit.cs" />
-    <Compile Include="Migrations\201711090906336_addIsUsedToVetVisit.Designer.cs">
-      <DependentUpon>201711090906336_addIsUsedToVetVisit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711090946511_updateVetVisit.cs" />
-    <Compile Include="Migrations\201711090946511_updateVetVisit.Designer.cs">
-      <DependentUpon>201711090946511_updateVetVisit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711091002371_addDiagnosis.cs" />
-    <Compile Include="Migrations\201711091002371_addDiagnosis.Designer.cs">
-      <DependentUpon>201711091002371_addDiagnosis.cs</DependentUpon>
+    <Compile Include="Migrations\201711091047335_addDesc.cs" />
+    <Compile Include="Migrations\201711091047335_addDesc.Designer.cs">
+      <DependentUpon>201711091047335_addDesc.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\Family.cs" />
@@ -258,107 +134,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201711012210130_InitialMigrationWithEntities.resx">
-      <DependentUpon>201711012210130_InitialMigrationWithEntities.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711091036124_CreateDatabase.resx">
+      <DependentUpon>201711091036124_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711021136503_AddNameAndRemoveQuantityOnAnimal.resx">
-      <DependentUpon>201711021136503_AddNameAndRemoveQuantityOnAnimal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711091036451_populateData.resx">
+      <DependentUpon>201711091036451_populateData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060836565_PopulateTypes.resx">
-      <DependentUpon>201711060836565_PopulateTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060846582_PopulateEnviroments.resx">
-      <DependentUpon>201711060846582_PopulateEnviroments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060855071_MovedEnviromentToSpecies.resx">
-      <DependentUpon>201711060855071_MovedEnviromentToSpecies.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060905123_AddCountryAndWeight.resx">
-      <DependentUpon>201711060905123_AddCountryAndWeight.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060908549_AddGenderToAnimal.resx">
-      <DependentUpon>201711060908549_AddGenderToAnimal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060912397_PopulateGender.resx">
-      <DependentUpon>201711060912397_PopulateGender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711060916180_PopulateCountryOfOrigin.resx">
-      <DependentUpon>201711060916180_PopulateCountryOfOrigin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711061005529_AddParentsTable.resx">
-      <DependentUpon>201711061005529_AddParentsTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071236379_AddVetVisit.resx">
-      <DependentUpon>201711071236379_AddVetVisit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071248256_PopulateVetTable.resx">
-      <DependentUpon>201711071248256_PopulateVetTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071250174_PopulateDiagnosis.resx">
-      <DependentUpon>201711071250174_PopulateDiagnosis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071435170_RenameDateToDateAndTIme.resx">
-      <DependentUpon>201711071435170_RenameDateToDateAndTIme.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071635322_RemoveTableParentChildrenLink.resx">
-      <DependentUpon>201711071635322_RemoveTableParentChildrenLink.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711071640568_FamilyMembers.resx">
-      <DependentUpon>201711071640568_FamilyMembers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711080746536_RemoveLinkToFamilyUnderAnimal.resx">
-      <DependentUpon>201711080746536_RemoveLinkToFamilyUnderAnimal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711080759564_IdOnLink.resx">
-      <DependentUpon>201711080759564_IdOnLink.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711080809294_AddTableMedication.resx">
-      <DependentUpon>201711080809294_AddTableMedication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711080813585_PopulateMedication.resx">
-      <DependentUpon>201711080813585_PopulateMedication.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711080847342_UpdateToMedicationTable.resx">
-      <DependentUpon>201711080847342_UpdateToMedicationTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081000053_DropLinkClassParents.resx">
-      <DependentUpon>201711081000053_DropLinkClassParents.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081158295_updateDiagnosis.resx">
-      <DependentUpon>201711081158295_updateDiagnosis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081202494_updateNameInDiagnosisTable.resx">
-      <DependentUpon>201711081202494_updateNameInDiagnosisTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081205572_populateDiagnosisAfterDropCol.resx">
-      <DependentUpon>201711081205572_populateDiagnosisAfterDropCol.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081227066_AddLinkFamily.resx">
-      <DependentUpon>201711081227066_AddLinkFamily.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081352102_AddTableDiagnosisDescription.resx">
-      <DependentUpon>201711081352102_AddTableDiagnosisDescription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081406075_MoveDescriptionToOwnTable.resx">
-      <DependentUpon>201711081406075_MoveDescriptionToOwnTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711081424467_addDescriptionToVetVisit.resx">
-      <DependentUpon>201711081424467_addDescriptionToVetVisit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711090637348_FixFKOnDescriptionId.resx">
-      <DependentUpon>201711090637348_FixFKOnDescriptionId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711090839046_updateFluentAPIDesc.resx">
-      <DependentUpon>201711090839046_updateFluentAPIDesc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711090906336_addIsUsedToVetVisit.resx">
-      <DependentUpon>201711090906336_addIsUsedToVetVisit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711090946511_updateVetVisit.resx">
-      <DependentUpon>201711090946511_updateVetVisit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711091002371_addDiagnosis.resx">
-      <DependentUpon>201711091002371_addDiagnosis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711091047335_addDesc.resx">
+      <DependentUpon>201711091047335_addDesc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

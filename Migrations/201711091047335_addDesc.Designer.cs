@@ -7,13 +7,13 @@ namespace Zoo.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class updateVetVisit : IMigrationMetadata
+    public sealed partial class addDesc : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateVetVisit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addDesc));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711090946511_updateVetVisit"; }
+            get { return "201711091047335_addDesc"; }
         }
         
         string IMigrationMetadata.Source

@@ -27,9 +27,9 @@ namespace Zoo.Migrations
             {
                 Name = "Markus",
                 Weight = 160.5,
-                GenderId = 1,
-                CountryOfOriginId = 1,
-                SpeciesId = 16,
+                GenderId = 3,
+                CountryOfOriginId = 10,
+                SpeciesId = 1,
             };
 
             var elephant2Animal = new DataContext.Animal()
@@ -37,9 +37,9 @@ namespace Zoo.Migrations
 
                 Name = "Gustav",
                 Weight = 260.0,
-                GenderId = 1,
-                CountryOfOriginId = 1,
-                SpeciesId = 16
+                GenderId = 3,
+                CountryOfOriginId = 6,
+                SpeciesId = 1
             };
 
             var elephant3Animal = new DataContext.Animal()
@@ -47,45 +47,46 @@ namespace Zoo.Migrations
 
                 Name = "Sandra",
                 Weight = 98.5,
-                GenderId = 2,
-                CountryOfOriginId = 2,
-                SpeciesId = 16
+                GenderId = 4,
+                CountryOfOriginId = 8,
+                SpeciesId = 1
             };
 
             var speciesElephant = new Species
             {
                 Name = "Elefant",
-                TypeId = 18,
-                EnviromentId = 24
+                TypeId = 4,
+                EnviromentId = 4
             };
 
             var shark1Animal = new DataContext.Animal()
             {
                 Name = "Sharky",
                 Weight = 300.1,
-                GenderId = 1,
-                CountryOfOriginId = 3,
-                SpeciesId = 17
+                GenderId = 3,
+                CountryOfOriginId = 7,
+                SpeciesId = 1
             };
 
             var shark2Animal = new DataContext.Animal()
             {
                 Name = "Mr.Shark",
                 Weight = 10.1,
-                GenderId = 1,
-                CountryOfOriginId = 4,
-                SpeciesId = 17
+                GenderId = 3,
+                CountryOfOriginId = 6,
+                SpeciesId = 1
             };
 
             var speciesShark = new Species()
             {
                 Name = "Haj",
-                TypeId = 17,
-                EnviromentId = 26
+                TypeId = 3,
+                EnviromentId = 6
             };
 
 
             context.Species.AddOrUpdate(x => x.Name, speciesElephant, speciesShark);
+
             context.Animals.AddOrUpdate(x => x.Name, elephant1Animal, elephant2Animal, elephant3Animal
                 , shark1Animal, shark2Animal);
 

@@ -7,13 +7,13 @@ namespace Zoo.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class MovedEnviromentToSpecies : IMigrationMetadata
+    public sealed partial class CreateDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MovedEnviromentToSpecies));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711060855071_MovedEnviromentToSpecies"; }
+            get { return "201711091036124_CreateDatabase"; }
         }
         
         string IMigrationMetadata.Source
