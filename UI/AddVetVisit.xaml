@@ -126,6 +126,8 @@
         <Button x:Name="AddNewVetVisit" Grid.Row="7" Grid.Column="1"
                 Content="Lägg till nytt besök" Margin="10" Click="AddNewVetVisit_Click"
                 ></Button>
+        
+        <TextBlock x:Name="DateText" Grid.Row="8" Grid.Column="1"></TextBlock>
 
 
     </Grid>

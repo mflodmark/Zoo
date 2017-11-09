@@ -17,7 +17,7 @@ namespace Zoo.DataContext
 
         public virtual Animal Animal { get; set; }
 
-        public int DescriptionId { get; set; }
+        public int? DescriptionId { get; set; }
 
         public virtual Description Description { get; set; }
 
@@ -25,7 +25,7 @@ namespace Zoo.DataContext
 
         public bool IsUsed { get; set; }
 
-        public int DiagnosisId { get; set; }
+        public int? DiagnosisId { get; set; }
 
         public virtual Diagnosis Diagnosis { get; set; }
 

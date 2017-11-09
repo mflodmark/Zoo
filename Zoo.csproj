@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201711091047335_addDesc.Designer.cs">
       <DependentUpon>201711091047335_addDesc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711091111052_nullableDescAndDiagnos.cs" />
+    <Compile Include="Migrations\201711091111052_nullableDescAndDiagnos.Designer.cs">
+      <DependentUpon>201711091111052_nullableDescAndDiagnos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\Family.cs" />
     <Compile Include="Model\Medication.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711091047335_addDesc.resx">
       <DependentUpon>201711091047335_addDesc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711091111052_nullableDescAndDiagnos.resx">
+      <DependentUpon>201711091111052_nullableDescAndDiagnos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

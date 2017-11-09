@@ -58,7 +58,8 @@ namespace Zoo.DAL
                 {
 
                     Date = x.DateAndTime.ToString(),
-                    VetName = x.Vet.Name
+                    VetName = x.Vet.Name,
+                    VetVisitId = x.VetVisitId.ToString()
 
                 }).ToList();
 
