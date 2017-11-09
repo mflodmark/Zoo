@@ -27,6 +27,7 @@ namespace Zoo
         string parentName;
         string childName;
         int visitId = 0;
+        private string isUsed;
 
         public MainWindow()
         {
@@ -160,17 +161,24 @@ namespace Zoo
 
         private void GoToVetBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            var openForm = new AddVetVisit();
+            if (isUsed == "False")
+            {
+                var openForm = new AddVetVisit();
 
-            openForm.UpdateCurrentId(currentId);
-            openForm.ChangeVisitId(visitId);
-            openForm.ChangeToFromEditMode(true);
-            openForm.AddEditDetailsIfTrue();
+                openForm.UpdateCurrentId(currentId);
+                openForm.ChangeVisitId(visitId);
+                openForm.ChangeToFromEditMode(true);
+                openForm.AddEditDetailsIfTrue();
 
-            openForm.ShowDialog();
+                openForm.ShowDialog();
 
-            LoadInitialDataToDataGrid();
+                LoadInitialDataToDataGrid();
+            }
+            else
+            {
+                ResultText.Text = "Kan inte gå på samma besök igen";
+            }
+
         }
         #endregion
 
@@ -233,19 +241,28 @@ namespace Zoo
 
         private void DeleteVetBtn_Click(object sender, RoutedEventArgs e)
         {
-            var dataAccess = new DataAccess();
-
-            try
+            if (isUsed == "False")
             {
-                dataAccess.DeleteVetBooking(currentId, visitId);
+                var dataAccess = new DataAccess();
 
-                VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
+                try
+                {
+                    dataAccess.DeleteVetBooking(currentId, visitId);
+
+                    VetGrid.ItemsSource = dataAccess.LoadAnimalsVet(currentId);
+                }
+                catch (Exception)
+                {
+
+                    ResultText.Text = "Välj ett besök i listan";
+                }
             }
-            catch (Exception)
+            else
             {
-
-                ResultText.Text = "Välj ett besök i listan";
+                ResultText.Text = "Kan inte avboka om redan besökt";
             }
+
+
         }
 
 
@@ -270,7 +287,7 @@ namespace Zoo
         {
             try
             {
-                var dataAccess = new DataAccess();
+                //var dataAccess = new DataAccess();
 
                 object item = ParentGrid.SelectedItem;
 
@@ -346,7 +363,7 @@ namespace Zoo
         {
             try
             {
-                var dataAccess = new DataAccess();
+                //var dataAccess = new DataAccess();
 
                 object item = ChildrenGrid.SelectedItem;
 
@@ -374,13 +391,15 @@ namespace Zoo
         {
             try
             {
-                var dataAccess = new DataAccess();
+                //var dataAccess = new DataAccess();
 
                 object item = VetGrid.SelectedItem;
 
                 if (item != null)
                 {
                     string id = (VetGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    isUsed = (VetGrid.SelectedCells[6].Column.GetCellContent(item) as TextBlock).Text;
+
                     visitId = int.Parse(id);
 
                     ResultText.Text = $"Valt besöksId = {visitId}";
