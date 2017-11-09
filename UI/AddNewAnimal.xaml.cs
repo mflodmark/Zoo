@@ -41,6 +41,9 @@ namespace Zoo.UI
             AddValuesToComboBoxCountry(context);
             AddValuesToComboBoxGender(context);
 
+            AddChildren.IsEnabled = false;
+            AddParents.IsEnabled = false;
+
         }
 
         private void AddValuesFromAnimal(int animalId)
@@ -313,7 +316,13 @@ namespace Zoo.UI
                 ParentBox.IsEnabled = true;
                 ChildrenBox.IsEnabled = true;
 
-                ResultText.Text = "Ändring av typ och miljö sker på alla";
+                //ResultText.Text = "Ändring av typ och miljö sker på alla";
+
+                TypeBox.IsEnabled = false;
+                EnviromentBox.IsEnabled = false;
+                TypeBox.IsEditable = false;
+                EnviromentBox.IsEditable = false;
+
             }
 
             ResultText.Background = Brushes.Chocolate;
@@ -358,6 +367,31 @@ namespace Zoo.UI
         {
             CheckSpeciesInput(SpeciesBox.Text);
             AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
+        }
+
+        private void ParentBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (ParentBox.Text == "")
+            {
+                AddParents.IsEnabled = false;
+            }
+            else
+            {
+                AddParents.IsEnabled = true;
+            }
+
+        }
+
+        private void ChildrenBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (ChildrenBox.Text == "")
+            {
+                AddChildren.IsEnabled = false;
+            }
+            else
+            {
+                AddChildren.IsEnabled = true;
+            }
         }
     }
 }

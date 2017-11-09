@@ -112,7 +112,7 @@
                 <TextBlock Text="Välj befintligt djur: "></TextBlock>
                 <ComboBox x:Name="ParentBox" Width="100"
                           Margin="5,0,5,0" Focusable="False" IsEditable="false" IsReadOnly="True"
-                          HorizontalAlignment="Center" IsEnabled="False"/>
+                          HorizontalAlignment="Center" IsEnabled="False" DropDownClosed="ParentBox_DropDownClosed"/>
                 <Button x:Name="AddParents" Content="Lägg till förälder" Click="AddParents_Click"></Button>
             </StackPanel>
         </StackPanel>
@@ -130,7 +130,7 @@
                 <TextBlock Text="Välj befintligt djur: "></TextBlock>
                 <ComboBox x:Name="ChildrenBox" Width="100"
                           Margin="5,0,5,0" Focusable="False" IsEditable="False" IsReadOnly="True"
-                          HorizontalAlignment="Center" IsEnabled="False"/>
+                          HorizontalAlignment="Center" IsEnabled="False" DropDownClosed="ChildrenBox_DropDownClosed"/>
                 <Button x:Name="AddChildren" Content="Lägg till barn" Click="AddChildren_Click"></Button>
             </StackPanel>
             

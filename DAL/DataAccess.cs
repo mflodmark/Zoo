@@ -544,222 +544,104 @@ namespace Zoo.DAL
 
         public BindingList<Animal> Search(string type, string enviroment, string species)
         {
-            BindingList<Animal> animal;
+            BindingList<Animal> animal = new BindingList<Animal>();
             var typeString = "";
             var enviromentString = "";
             var speciesString = "";
 
+            animal = LoadAnimals();
 
-            if (type != typeString && enviroment == enviromentString && species == speciesString)
+          
+            if (type != "")
             {
-                animal = SearchType(type);
-            }
-            else if (type == typeString && enviroment != enviromentString && species == speciesString)
-            {
-                animal = SearchEnviroment(enviroment);
-            }
-            else if (type == typeString && enviroment == enviromentString && species != speciesString)
-            {
-                animal = SearchSpecies(species);
-            }
-            else if (type != typeString && enviroment != enviromentString && species == speciesString)
-            {
-                animal = SearchTypeAndEnviroment(type, enviroment);
-            }
-            else if (type == typeString && enviroment != enviromentString && species != speciesString)
-            {
-                animal = SearchEnviromentAndSpecies(enviroment, species);
-            }
-            else if (type != typeString && enviroment == enviromentString && species != speciesString)
-            {
-                animal = SearchTypeAndSpecies(type, species);
-            }
-            else if (type != typeString && enviroment != enviromentString && species != speciesString)
-            {
-                animal = SearchTypeAndSpeciesAndEnviroment(type, species, enviroment);
-            }
-            else
-            {
-                animal = LoadAnimals();
+                animal = SearchType(type, animal);
+
             }
 
+            if (enviroment != "")
+            {
+                animal = SearchEnviroment(enviroment, animal);
+
+            }
+
+            if (species != "")
+            {
+                animal = SearchSpecies(species, animal);
+
+            }
+
+            
             return animal;
-        }
 
-        private BindingList<Animal> SearchType(string type)
+            }
+
+        private BindingList<Animal> SearchType(string type, BindingList<Animal> ani)
         {
             BindingList<Animal> animal;
 
-            using (var db = new ZooContext())
+            var query = ani.Where(y => y.Type == type).Select(x => new Animal()
             {
-                var query = db.Animals.Where(y => y.Species.Type.Name == type).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Species.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name,
-                    Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name,
-                    Weight = x.Weight,
-                    AnimalId = x.AnimalId
+                Name = x.Name,
+                Enviroment = x.Enviroment,
+                Species = x.Species,
+                Type = x.Type,
+                Gender = x.Gender,
+                CountryOfOrigin = x.CountryOfOrigin,
+                Weight = x.Weight,
+                AnimalId = x.AnimalId
 
-                }).ToList();
+            }).ToList();
 
-                animal = new BindingList<Animal>(query);
-            }
+            animal = new BindingList<Animal>(query);
 
             return animal;
         }
 
-        private BindingList<Animal> SearchEnviroment(string enviroment)
+        private BindingList<Animal> SearchEnviroment(string enviroment, BindingList<Animal> ani)
         {
             BindingList<Animal> animal;
 
-            using (var db = new ZooContext())
+            var query = ani.Where(y => y.Enviroment == enviroment).Select(x => new Animal()
             {
-                var query = db.Animals.Where(y => y.Species.Enviroment.Name == enviroment).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Species.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name,
-                    Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name,
-                    Weight = x.Weight,
-                    AnimalId = x.AnimalId
+                Name = x.Name,
+                Enviroment = x.Enviroment,
+                Species = x.Species,
+                Type = x.Type,
+                Gender = x.Gender,
+                CountryOfOrigin = x.CountryOfOrigin,
+                Weight = x.Weight,
+                AnimalId = x.AnimalId
 
-                }).ToList();
+            }).ToList();
 
-                animal = new BindingList<Animal>(query);
-            }
+            animal = new BindingList<Animal>(query);
 
             return animal;
         }
 
-        private BindingList<Animal> SearchSpecies(string species)
+        private BindingList<Animal> SearchSpecies(string species, BindingList<Animal> ani)
         {
             BindingList<Animal> animal;
 
-            using (var db = new ZooContext())
+            var query = ani.Where(y => y.Species.ToLower().Contains(species.ToLower())).Select(x => new Animal()
             {
-                var query = db.Animals.Where(y => y.Species.Name.Contains(species)).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Species.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name,
-                    Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name,
-                    Weight = x.Weight,
-                    AnimalId = x.AnimalId
+                Name = x.Name,
+                Enviroment = x.Enviroment,
+                Species = x.Species,
+                Type = x.Type,
+                Gender = x.Gender,
+                CountryOfOrigin = x.CountryOfOrigin,
+                Weight = x.Weight,
+                AnimalId = x.AnimalId
 
-                }).ToList();
+            }).ToList();
 
-                animal = new BindingList<Animal>(query);
-            }
+            animal = new BindingList<Animal>(query);
 
             return animal;
         }
 
-        private BindingList<Animal> SearchTypeAndEnviroment(string type, string enviroment)
-        {
-            BindingList<Animal> animal;
-
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Enviroment.Name == enviroment).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Species.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name,
-                    Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name,
-                    Weight = x.Weight,
-                    AnimalId = x.AnimalId
-                }).ToList();
-
-                animal = new BindingList<Animal>(query);
-            }
-
-            return animal;
-        }
-
-        private BindingList<Animal> SearchTypeAndSpecies(string type, string species)
-        {
-            BindingList<Animal> animal;
-
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Name == species).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Species.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name,
-                    Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name,
-                    Weight = x.Weight,
-                    AnimalId = x.AnimalId
-
-                }).ToList();
-
-                animal = new BindingList<Animal>(query);
-            }
-
-            return animal;
-        }
-
-        private BindingList<Animal> SearchEnviromentAndSpecies(string enviroment, string species)
-        {
-            BindingList<Animal> animal;
-
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.Species.Enviroment.Name == enviroment && y.Species.Name == species).Select(x => new Animal()
-                {
-                    Name = x.Name,
-                    Enviroment = x.Species.Enviroment.Name,
-                    Species = x.Species.Name,
-                    Type = x.Species.Type.Name,
-                    Gender = x.Gender.Name,
-                    CountryOfOrigin = x.CountryOfOrigin.Name,
-                    Weight = x.Weight,
-                    AnimalId = x.AnimalId
-
-                }).ToList();
-
-                animal = new BindingList<Animal>(query);
-            }
-
-            return animal;
-        }
-
-        private BindingList<Animal> SearchTypeAndSpeciesAndEnviroment(string type, string species, string enviroment)
-        {
-            BindingList<Animal> animal;
-
-            using (var db = new ZooContext())
-            {
-                var query = db.Animals.Where(y => y.Species.Type.Name == type && y.Species.Name == species && y.Species.Enviroment.Name == enviroment)
-                    .Select(x => new Animal()
-                    {
-                        Name = x.Name,
-                        Enviroment = x.Species.Enviroment.Name,
-                        Species = x.Species.Name,
-                        Type = x.Species.Type.Name,
-                        Gender = x.Gender.Name,
-                        CountryOfOrigin = x.CountryOfOrigin.Name,
-                        Weight = x.Weight,
-                        AnimalId = x.AnimalId
-
-                    }).ToList();
-
-                animal = new BindingList<Animal>(query);
-            }
-
-            return animal;
-        }
+        
 
         #endregion
 

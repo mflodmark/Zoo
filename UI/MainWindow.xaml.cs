@@ -126,6 +126,8 @@ namespace Zoo
             openForm.ShowDialog();
 
             LoadInitialDataToDataGrid();
+            AddValuesToComboBoxSpecies();
+
         }
 
 
