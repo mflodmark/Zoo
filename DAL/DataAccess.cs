@@ -417,17 +417,18 @@ namespace Zoo.DAL
             return check;
         }
 
-        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, 
-            List<Model.Medication> medicationsList, string descriptionText, bool isUsed)
+        public void AddAnimalVetDetails(int animalId, string diagnosisName, 
+            List<Model.Medication> medicationsList, string descriptionText, bool isUsed, int vetVisitId)
         {
             using (var db = new ZooContext())
             {
+                
 
                 // Diagnosis
                 var diagnosis = db.Diagnoses.SingleOrDefault(x => x.Name == diagnosisName);
                 var diaId = 0;
                 var newDiagnosis = new Diagnosis();
-                
+
                 if (diagnosis.Name == null)
                 {
                     newDiagnosis.Name = diagnosis.Name;
@@ -453,6 +454,63 @@ namespace Zoo.DAL
 
                 var descId = newDiagnosisDescription.DescriptionId;
 
+                // Vetvisit
+                var vetVisit = db.VetVisits.Find(vetVisitId);
+                vetVisit.Medications = new List<Medication>();
+                vetVisit.DiagnosisId = diaId;
+                vetVisit.DescriptionId = descId;
+                vetVisit.IsUsed = isUsed;
+                
+
+                // Medication
+                foreach (var item in medicationsList)
+                {
+                    var q = db.Medications.SingleOrDefault(x => x.Name == item.Name);
+                    vetVisit.Medications.Add(q);
+
+                }
+
+                db.SaveChanges();
+
+            }
+        }
+
+        public void AddAnimalVetVisit(int animalId, DateTime date, string diagnosisName, string vetName, 
+            List<Model.Medication> medicationsList, string descriptionText, bool isUsed)
+        {
+            using (var db = new ZooContext())
+            {
+
+                //// Diagnosis
+                //var diagnosis = db.Diagnoses.SingleOrDefault(x => x.Name == diagnosisName);
+                //var diaId = 0;
+                //var newDiagnosis = new Diagnosis();
+                
+                //if (diagnosis.Name == null)
+                //{
+                //    newDiagnosis.Name = diagnosis.Name;
+                //    db.Diagnoses.Add(newDiagnosis);
+
+                //    db.SaveChanges();
+
+                //    diaId = newDiagnosis.DiagnosisId;
+                //}
+                //else
+                //{
+                //    diaId = diagnosis.DiagnosisId;
+                //}
+
+                //// Description
+                //var newDiagnosisDescription = new Description()
+                //{
+                //    Name = descriptionText,
+                //};
+
+
+                //db.Descriptions.Add(newDiagnosisDescription);
+
+                //var descId = newDiagnosisDescription.DescriptionId;
+
                 // Vet
                 var vet = db.Vets.SingleOrDefault(x => x.Name == vetName);
                 
@@ -464,18 +522,18 @@ namespace Zoo.DAL
                     DateAndTime = date,
                     VetId = vet.VetId,
                     Medications = new List<Medication>(),
-                    DiagnosisId = diaId,
-                    DescriptionId = descId,
+                    DiagnosisId = null,
+                    DescriptionId = null,
                     IsUsed = isUsed
                 };
 
-                // Medication
-                foreach (var item in medicationsList)
-                {
-                    var q = db.Medications.SingleOrDefault(x => x.Name == item.Name);
-                    vetVisit.Medications.Add(q);
+                //// Medication
+                //foreach (var item in medicationsList)
+                //{
+                //    var q = db.Medications.SingleOrDefault(x => x.Name == item.Name);
+                //    vetVisit.Medications.Add(q);
 
-                }
+                //}
 
                 db.VetVisits.Add(vetVisit);
 

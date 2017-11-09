@@ -259,7 +259,7 @@ namespace Zoo.UI
 
             if (inEditMode)
             {
-
+                dataAccess.AddAnimalVetDetails(currentId, DiagnosisBox.Text, medicationsList, DescriptionText.Text, true, vetVisitId);
             }
             else
             {
