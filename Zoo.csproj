@@ -220,6 +220,14 @@
     <Compile Include="Migrations\201711090906336_addIsUsedToVetVisit.Designer.cs">
       <DependentUpon>201711090906336_addIsUsedToVetVisit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711090946511_updateVetVisit.cs" />
+    <Compile Include="Migrations\201711090946511_updateVetVisit.Designer.cs">
+      <DependentUpon>201711090946511_updateVetVisit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711091002371_addDiagnosis.cs" />
+    <Compile Include="Migrations\201711091002371_addDiagnosis.Designer.cs">
+      <DependentUpon>201711091002371_addDiagnosis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\Family.cs" />
     <Compile Include="Model\Medication.cs" />
@@ -345,6 +353,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711090906336_addIsUsedToVetVisit.resx">
       <DependentUpon>201711090906336_addIsUsedToVetVisit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711090946511_updateVetVisit.resx">
+      <DependentUpon>201711090946511_updateVetVisit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711091002371_addDiagnosis.resx">
+      <DependentUpon>201711091002371_addDiagnosis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

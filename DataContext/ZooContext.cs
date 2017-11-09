@@ -49,12 +49,12 @@ namespace Zoo.DataContext
 
             modelBuilder.Entity<Diagnosis>().Property(x => x.Name).IsRequired();
 
-            modelBuilder.Entity<Description>().Property(x => x.Name).IsRequired();
+            //modelBuilder.Entity<Description>().Property(x => x.Name).IsRequired();
 
-            modelBuilder.Entity<Description>().HasKey(x => x.DescriptionId)
-                .Property(x=>x.DescriptionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            //modelBuilder.Entity<Description>().HasKey(x => x.DescriptionId)
+            //    .Property(x=>x.DescriptionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            modelBuilder.Entity<Description>().HasRequired(x => x.VetVisit).WithOptional(y => y.Description);
+            //modelBuilder.Entity<Description>().HasRequired(x => x.VetVisit).WithOptional(y => y.Description);
 
         }
     }

@@ -163,9 +163,9 @@ namespace Zoo
             var openForm = new AddVetVisit();
 
             openForm.UpdateCurrentId(currentId);
+            openForm.ChangeVisitId(visitId);
             openForm.ChangeToFromEditMode(true);
             openForm.AddEditDetailsIfTrue();
-            openForm.ChangeVisitId(visitId);
 
             openForm.ShowDialog();
 

@@ -38,10 +38,10 @@ namespace Zoo.UI
             AddValuesToComboBoxVet();
             AddValuesToComboBoxMedication();
 
-            DiagnosisBox.IsEnabled = false;
-            MedicationBox.IsEnabled = false;
-            DescriptionText.IsEnabled = false;
-            AddMedicationButton.IsEnabled = false;
+            //DiagnosisBox.IsEnabled = false;
+            //MedicationBox.IsEnabled = false;
+            //DescriptionText.IsEnabled = false;
+            //AddMedicationButton.IsEnabled = false;
 
         }
 

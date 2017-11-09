@@ -386,8 +386,8 @@ namespace Zoo.DAL
 
                 var visitList = query.Select(x => new VetVisit()
                 {
-                    Diagnosis = x.Description.Diagnosis.Name,
-                    Description = x.Description.Name,
+                    //Diagnosis = x.Description.Diagnosis.Name,
+                    //Description = x.Description.Name,
                     VetName = x.Vet.Name,
                     Date = x.DateAndTime.ToString(),
                     VetVisitId = x.VetVisitId.ToString(),
@@ -471,11 +471,11 @@ namespace Zoo.DAL
                 var newDiagnosisDescription = new Description()
                 {
                     Name = descriptionText,
-                    DiagnosisId = diaId,
+                    //DiagnosisId = diaId,
                     DescriptionId = vetVisit.VetVisitId
                 };
 
-                vetVisit.Description = newDiagnosisDescription;
+                //vetVisit.Description = newDiagnosisDescription;
 
                 //db.Descriptions.Add(newDiagnosisDescription);
 

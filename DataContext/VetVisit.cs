@@ -19,11 +19,15 @@ namespace Zoo.DataContext
 
         //public int DescriptionId { get; set; }
 
-        public virtual Description Description { get; set; }
+        //public virtual Description Description { get; set; }
 
         public virtual List<Medication> Medications { get; set; }
 
         public bool IsUsed { get; set; }
-        
+
+        public int DiagnosisId { get; set; }
+
+        public virtual Diagnosis Diagnosis { get; set; }
+
     }
 }
