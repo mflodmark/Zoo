@@ -305,6 +305,12 @@ namespace Zoo.UI
             if (species == null)
             {
                 ResultText.Text = "Välj även typ och miljö";
+
+                TypeBox.IsEditable = true;
+                EnviromentBox.IsEditable = true;
+
+                TypeBox.IsEnabled = true;
+                EnviromentBox.IsEnabled = true;
             }
             else
             {
@@ -316,8 +322,6 @@ namespace Zoo.UI
                 ParentBox.IsEnabled = true;
                 ChildrenBox.IsEnabled = true;
 
-                //ResultText.Text = "Ändring av typ och miljö sker på alla";
-
                 TypeBox.IsEnabled = false;
                 EnviromentBox.IsEnabled = false;
                 TypeBox.IsEditable = false;
@@ -327,11 +331,7 @@ namespace Zoo.UI
 
             ResultText.Background = Brushes.Chocolate;
 
-            TypeBox.IsEditable = true;
-            EnviromentBox.IsEditable = true;
 
-            TypeBox.IsEnabled = true;
-            EnviromentBox.IsEnabled = true;
 
         }
 
@@ -365,8 +365,11 @@ namespace Zoo.UI
 
         private void SpeciesBox_KeyDown(object sender, KeyEventArgs e)
         {
-            CheckSpeciesInput(SpeciesBox.Text);
-            AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
+            TypeBox.IsEditable = true;
+            EnviromentBox.IsEditable = true;
+
+            TypeBox.IsEnabled = true;
+            EnviromentBox.IsEnabled = true;
         }
 
         private void ParentBox_DropDownClosed(object sender, EventArgs e)

@@ -51,6 +51,8 @@ namespace Zoo
         {
             var dbContext = new ZooContext();
 
+            SearchSpeciesBox.Items.Clear();
+
             foreach (var item in dbContext.Species)
             {
                 SearchSpeciesBox.Items.Add(item.Name);

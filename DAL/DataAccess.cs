@@ -337,6 +337,8 @@ namespace Zoo.DAL
             {
                 var query = db.Animals.Any(x => x.Name == input);
                 check = query;
+                
+                if (input == "") check = true;
             }
 
             return check;
@@ -545,13 +547,9 @@ namespace Zoo.DAL
         public BindingList<Animal> Search(string type, string enviroment, string species)
         {
             BindingList<Animal> animal = new BindingList<Animal>();
-            var typeString = "";
-            var enviromentString = "";
-            var speciesString = "";
 
             animal = LoadAnimals();
-
-          
+            
             if (type != "")
             {
                 animal = SearchType(type, animal);
