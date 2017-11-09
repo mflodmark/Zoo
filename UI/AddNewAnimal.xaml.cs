@@ -232,9 +232,14 @@ namespace Zoo.UI
 
             foreach (var item in animals)
             {
-
                 ParentBox.Items.Add(item.Name + "-" + item.Gender.Name);
                 ChildrenBox.Items.Add(item.Name + "-" + item.Gender.Name);
+
+                //if (inEditMode)
+                //{
+                //    ParentBox.Items.Remove();
+                //}
+
                 
             }
         }

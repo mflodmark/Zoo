@@ -29,11 +29,11 @@ namespace Zoo.DataContext
         public virtual List<VetVisit> VetVisits { get; set; }
     }
 
-    public class AnimalAnimals
-    {
-        public Animal Animal_AnimalId { get; set; }
+    //public class AnimalAnimals
+    //{
+    //    public Animal Animal_AnimalId { get; set; }
 
-        public Animal Animal_AnimalId1 { get; set; }
+    //    public Animal Animal_AnimalId1 { get; set; }
 
-    }
+    //}
 }

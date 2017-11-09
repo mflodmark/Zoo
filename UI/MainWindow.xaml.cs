@@ -157,6 +157,20 @@ namespace Zoo
             }
 
         }
+
+        private void GoToVetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var openForm = new AddVetVisit();
+
+            openForm.UpdateCurrentId(currentId);
+            openForm.ChangeToFromEditMode(true);
+            openForm.AddEditDetailsIfTrue();
+            openForm.ChangeVisitId(visitId);
+
+            openForm.ShowDialog();
+
+            LoadInitialDataToDataGrid();
+        }
         #endregion
 
         #region Delete
@@ -233,10 +247,7 @@ namespace Zoo
             }
         }
 
-        private void GoToVetBtn_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         #endregion
 

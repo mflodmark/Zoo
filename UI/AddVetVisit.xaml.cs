@@ -23,7 +23,10 @@ namespace Zoo.UI
     public partial class AddVetVisit : Window
     {
         private int currentId = 0;
+        private int vetVisitId = 0;
         private List<Model.Medication> medicationsList = new List<Model.Medication>();
+        private bool inEditMode;
+
 
         public AddVetVisit()
         {
@@ -34,13 +37,65 @@ namespace Zoo.UI
             AddValuesToComboBoxDiagnosis();
             AddValuesToComboBoxVet();
             AddValuesToComboBoxMedication();
+
+            DiagnosisBox.IsEnabled = false;
+            MedicationBox.IsEnabled = false;
+            DescriptionText.IsEnabled = false;
+            AddMedicationButton.IsEnabled = false;
+
         }
 
         public void UpdateCurrentId(int id)
         {
             currentId = id;
         }
-        
+
+        #region EditMode
+
+        public void AddEditDetailsIfTrue()
+        {
+            if (inEditMode)
+            {
+                DiagnosisBox.IsEnabled = true;
+                MedicationBox.IsEnabled = true;
+                DescriptionText.IsEnabled = true;
+                AddMedicationButton.IsEnabled = true;
+
+                YearBox.IsEnabled = false;
+                MonthBox.IsEnabled = false;
+                DayBox.IsEnabled = false;
+                TimeBox.IsEnabled = false;
+                VetBox.IsEnabled = false;
+                
+                AddNewVetVisit.Content = "Avsluta besök!";
+
+                AddValuesFromVetVisit(vetVisitId);
+            }
+        }
+
+        public void ChangeToFromEditMode(bool value)
+        {
+            inEditMode = value;
+        }
+
+        public void ChangeVisitId(int visitId)
+        {
+            vetVisitId = visitId;
+        }
+
+        private void AddValuesFromVetVisit(int id)
+        {
+            var dataAccess = new DataAccess();
+
+            var vetVisit = dataAccess.LoadVetVisit(id);
+
+            VetBox.Text = vetVisit.VetName;
+
+        }
+
+
+        #endregion
+
         #region AddToComboboxes
 
         private void AddValuesToComboBoxTime()
@@ -201,9 +256,17 @@ namespace Zoo.UI
         {
             var dataAccess = new DataAccess();
 
-            var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
+            if (inEditMode)
+            {
 
-            dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, medicationsList, DescriptionText.Text);
+            }
+            else
+            {
+                var dateConverted = Convert.ToDateTime($"{YearBox.Text}-{MonthBox.Text}-{DayBox.Text} {TimeBox.Text}");
+
+                dataAccess.AddAnimalVetVisit(currentId, dateConverted, DiagnosisBox.Text, VetBox.Text, medicationsList, DescriptionText.Text);
+            }
+
 
             Close();
         }

@@ -16,9 +16,9 @@ namespace Zoo.DataContext
         //public virtual List<VetVisit> VetVisits { get; set; }
 
         //[ForeignKey("VetVisit")]
-        public int VetVisitId { get; set; }
+        //public int VetVisitId { get; set; }
 
-        public VetVisit VetVisit { get; set; }
+        public virtual VetVisit VetVisit { get; set; }
 
 
     }

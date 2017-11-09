@@ -48,6 +48,29 @@ namespace Zoo.DAL
             return animal;
         }
 
+        public Model.VetVisit LoadVetVisit(int visitId)
+        {
+            var animal = new Model.VetVisit();
+
+            using (var db = new ZooContext())
+            {
+                var query = db.VetVisits.Select(x => new VetVisit()
+                {
+
+                    Date = x.DateAndTime.ToString(),
+                    VetName = x.Vet.Name
+
+                }).ToList();
+
+
+                var q = query.SingleOrDefault(y => y.VetVisitId == visitId.ToString());
+
+                animal = q;
+            }
+
+            return animal;
+        }
+
         public BindingList<Animal> LoadAnimals()
         {
             BindingList<Animal> animal;
@@ -120,6 +143,7 @@ namespace Zoo.DAL
                 {
                     var q = db.Animals.SingleOrDefault(x => x.Name == item.Name);
                     animal.Parents.Add(q);
+                    q.Children.Add(animal);
                 }
 
                 db.Animals.Add(animal);
@@ -172,6 +196,8 @@ namespace Zoo.DAL
                 {
                     var q = db.Animals.SingleOrDefault(x => x.Name == item.Name);
                     currentAnimal.Parents.Add(q);
+                    q.Children.Add(currentAnimal);
+
                 }
 
                 db.SaveChanges();
@@ -446,10 +472,12 @@ namespace Zoo.DAL
                 {
                     Name = descriptionText,
                     DiagnosisId = diaId,
-                    VetVisitId = vetVisit.VetVisitId
+                    DescriptionId = vetVisit.VetVisitId
                 };
 
-                db.Descriptions.Add(newDiagnosisDescription);
+                vetVisit.Description = newDiagnosisDescription;
+
+                //db.Descriptions.Add(newDiagnosisDescription);
 
                 db.SaveChanges();
             }

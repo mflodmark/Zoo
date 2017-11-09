@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Zoo.DataContext
@@ -50,21 +51,10 @@ namespace Zoo.DataContext
 
             modelBuilder.Entity<Description>().Property(x => x.Name).IsRequired();
 
-            modelBuilder.Entity<Description>().HasRequired(v => v.VetVisit).WithRequiredDependent(d => d.Description);
+            modelBuilder.Entity<Description>().HasKey(x => x.DescriptionId)
+                .Property(x=>x.DescriptionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
-            //modelBuilder.Entity<AnimalAnimals>()
-            //    .HasRequired(t => t.)
-            //    .WithMany(t => t.Parents)
-            //    .HasForeignKey(d => d.Animal_AnimalId)
-            //    .WillCascadeOnDelete(false);
-
-            //modelBuilder.Entity<AnimalAnimals>()
-            //    .HasKey(c => c.Animal_AnimalId)
-            //    .HasRequired(c => c.Animal_AnimalId1)
-            //    .WithRequiredDependent(c => c.).wi
-            //    .WillCascadeOnDelete(true);
-
-            //modelBuilder.Entity<AnimalAnimals>().HasKey(x=>x.Animal_AnimalId)
+            modelBuilder.Entity<Description>().HasRequired(x => x.VetVisit).WithOptional(y => y.Description);
 
         }
     }

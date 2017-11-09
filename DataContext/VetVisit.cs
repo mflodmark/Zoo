@@ -17,11 +17,13 @@ namespace Zoo.DataContext
 
         public virtual Animal Animal { get; set; }
 
-        public int DescriptionId { get; set; }
+        //public int DescriptionId { get; set; }
 
-        public Description Description { get; set; }
+        public virtual Description Description { get; set; }
 
         public virtual List<Medication> Medications { get; set; }
+
+        public bool IsUsed { get; set; }
         
     }
 }
