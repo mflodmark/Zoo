@@ -74,7 +74,7 @@
             <TextBlock Text="Art: " VerticalAlignment="Center" Width="35"></TextBlock>
             <ComboBox x:Name="SpeciesBox" Width="100"
                       Margin="10,0,0,5" Focusable="True" IsEditable="True" IsReadOnly="False"
-                      HorizontalAlignment="Right" DropDownClosed="SpeciesBox_DropDownClosed"/>
+                      HorizontalAlignment="Right" DropDownClosed="SpeciesBox_DropDownClosed" KeyDown="SpeciesBox_KeyDown"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal"

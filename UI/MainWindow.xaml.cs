@@ -244,7 +244,7 @@ namespace Zoo
 
         private void ChangeButtonState()
         {
-            AddButton.IsEnabled = false;
+            //AddButton.IsEnabled = false;
             DeleteButton.IsEnabled = false;
             EditButton.IsEnabled = false;
             DeleteChildrenBtn.IsEnabled = false;

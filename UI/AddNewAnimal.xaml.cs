@@ -269,19 +269,22 @@ namespace Zoo.UI
                 TypeBox.Text = species.Type.Name;
                 EnviromentBox.Text = species.Enviroment.Name;
 
-                TypeBox.IsEditable = true;
-                EnviromentBox.IsEditable = true;
                 ChildrenBox.IsEditable = true;
                 ParentBox.IsEditable = true;
+                ParentBox.IsEnabled = true;
+                ChildrenBox.IsEnabled = true;
 
                 ResultText.Text = "Ändring av typ och miljö sker på alla";
             }
 
             ResultText.Background = Brushes.Chocolate;
+
+            TypeBox.IsEditable = true;
+            EnviromentBox.IsEditable = true;
+
             TypeBox.IsEnabled = true;
             EnviromentBox.IsEnabled = true;
-            ParentBox.IsEnabled = true;
-            ChildrenBox.IsEnabled = true;
+
         }
 
         private bool CheckName(string input)
@@ -305,11 +308,17 @@ namespace Zoo.UI
             return false;
         }
 
+
+
+
+
+
         #endregion
 
-
-
-
-
+        private void SpeciesBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            CheckSpeciesInput(SpeciesBox.Text);
+            AddValuesToComboBoxParentOrChild(SpeciesBox.Text);
+        }
     }
 }
